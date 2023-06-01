@@ -1,6 +1,4 @@
-import { onNavigate } from '../main.js';
-
-export const welcomeApp = () => {
+export const welcomeApp = (onNavigate) => {
   const homeDiv = document.createElement('div');
   homeDiv.textContent = 'Bienvenida a MomConnect';
   const buttonHome = document.createElement('button');
