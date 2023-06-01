@@ -1,5 +1,4 @@
 export const welcomeApp = (onNavigate) => {
-  /* Creo secciones, input, img, nav, main, article, button, etc... */
   const homeDiv = document.createElement('div');
   const homeNav = document.createElement('nav');
   const divNavImg = document.createElement('div');
