@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Este es el punto de entrada de tu aplicacion
 import { home } from './components/home.js';
 import { register } from './components/register.js';

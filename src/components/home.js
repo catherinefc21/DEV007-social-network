@@ -1,4 +1,4 @@
-export const home = (onNavigate) => {
+  export const home = (onNavigate) => {
   document.body.style.backgroundColor = '#FFE8BE';
   const homeDiv = document.createElement('div');
 
