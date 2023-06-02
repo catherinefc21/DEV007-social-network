@@ -5,10 +5,10 @@ export const home = (onNavigate) => {
   document.body.style.backgroundRepeat = 'no-repeat';
   document.body.style.backgroundPosition = 'right-bottom';
 
-
-
   const homeDiv = document.createElement('div');
 
+
+  
   // div para las imágenes
   const imgDiv = document.createElement('div');
   const image1 = document.createElement('img');
