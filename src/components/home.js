@@ -23,7 +23,9 @@ export const home = (onNavigate) => {
   // div para el formulario inicio sesión
   const loginDiv = document.createElement('div');
   const email = document.createElement('input');
+  const image3 = document.createElement('img');
   const password = document.createElement('input');
+  const image4 = document.createElement('img');
   const buttonWelcomeApp = document.createElement('button');
   const buttonRegister = document.createElement('button');
 
@@ -33,14 +35,35 @@ export const home = (onNavigate) => {
   email.setAttribute('placeholder', 'Mail');
   email.setAttribute('id', 'email');
 
-  password.setAttribute('type', 'text');
+  password.setAttribute('type', 'password');
   password.setAttribute('name', 'password');
   password.setAttribute('placeholder', 'Contraseña');
   password.setAttribute('id', 'password');
 
+  image3.setAttribute('src', 'images/Email.png');
+  image4.setAttribute('src', 'images/contraseña.png');
+
+  buttonWelcomeApp.setAttribute('id', 'buttonWelcomeApp');
+
+  const userData = document.getElementById('buttonWelcomeApp');
+  buttonWelcomeApp.addEventListener('click', showData);
+
+  function showData() {
+    const email1 = document.getElementById('email').value;
+    const contraseña1 = document.getElementById('password').value;
+    // sin campos vacios.
+    if (email1 === '' || contraseña1 === '') {
+      alert('Por favor completa todos los campos'); return;
+    }
+    console.log(email1);
+    console.log(contraseña1);
+  }
+
   // Agregar al div de formulario
   loginDiv.appendChild(email);
+  email.appendChild(image3);
   loginDiv.appendChild(password);
+  password.appendChild(image4);
   loginDiv.appendChild(buttonWelcomeApp);
   loginDiv.appendChild(buttonRegister);
 
@@ -88,21 +111,23 @@ export const home = (onNavigate) => {
   buttonRegister.style.marginBottom = '20px';
 
   // agregar estilo a los input
-  email.style.width = '244px';
+  email.style.width = '230px';
   email.style.height = '40px';
   email.style.left = '58px';
   email.style.top = '386px';
   email.style.background = '#FFFFF';
   email.style.border = '1px solid #F40F46';
   email.style.borderRadius = '10px';
+  email.style.paddingLeft = '30px';
 
-  password.style.width = '244px';
+  password.style.width = '230px';
   password.style.height = '40px';
   password.style.left = '58px';
   password.style.top = '386px';
   password.style.background = '#FFFFF';
   password.style.border = '1px solid #F40F46';
   password.style.borderRadius = '10px';
+  password.style.paddingLeft = '30px';
 
   // agregar estilos a los botones
   buttonWelcomeApp.style.width = '219px';
@@ -120,6 +145,20 @@ export const home = (onNavigate) => {
   buttonRegister.style.background = '#F40F46';
   buttonRegister.style.border = '1px solid #FF7563';
   buttonRegister.style.borderRadius = '10px';
+
+  // imagenes del input
+  image3.style.width = '16px';
+  image3.style.height = 'auto';
+  image3.style.position = 'absolute';
+  image3.style.top = '410px';
+  image3.style.left = '58px';
+  image3.style.transform = 'rotate(90deg)';
+
+  image4.style.width = '20px';
+  image4.style.height = 'auto';
+  image4.style.position = 'absolute';
+  image4.style.top = '460px';
+  image4.style.left = '57px';
 
   return homeDiv;
 };
