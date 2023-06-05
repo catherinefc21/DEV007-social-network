@@ -7,8 +7,6 @@ export const home = (onNavigate) => {
 
   const homeDiv = document.createElement('div');
 
-
-  
   // div para las imágenes
   const imgDiv = document.createElement('div');
   const image1 = document.createElement('img');
