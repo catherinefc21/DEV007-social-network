@@ -4,11 +4,11 @@ export const register = (onNavigate) => {
   document.body.style.backgroundSize = '100%';
   document.body.style.backgroundRepeat = 'no-repeat';
   document.body.style.backgroundPosition = 'right-bottom';
-  
+
   const homeDiv = document.createElement('div');
- 
+
   // div para las imagenes //
-  
+
   const divImg = document.createElement('div');
   const img1 = document.createElement('img');
   const img2 = document.createElement('img');
@@ -41,11 +41,11 @@ export const register = (onNavigate) => {
   namE.setAttribute('name', 'namE');
   namE.setAttribute('placeholder', 'Nombre');
   namE.setAttribute('id', 'namE');
-    
+
   lastName.setAttribute('type', 'text');
   lastName.setAttribute('name', 'lastName');
   lastName.setAttribute('placeholder', 'Apellidos');
-  lastName.setAttribute('id', 'lasName');  
+  lastName.setAttribute('id', 'lasName');
 
   Email.setAttribute('type', 'text');
   Email.setAttribute('name', 'Email');
@@ -83,8 +83,6 @@ export const register = (onNavigate) => {
 
   bntRegister.textContent = 'Registrate';
   bntRegister.addEventListener('click', () => onNavigate('/'));
-  
-  
 
   // agregar stilos al homeDiv//
   homeDiv.style.display = 'flex';
@@ -107,7 +105,6 @@ export const register = (onNavigate) => {
   img2.style.height = 'auto';
   img2.style.top = '17px';
   img2.style.left = '42px';
- 
 
   // agregar stilos al register div //
   registerDiv.style.display = 'flex';
@@ -135,7 +132,7 @@ export const register = (onNavigate) => {
   namE.style.background = '#FFFFF';
   namE.style.border = '1px solid #F40F46';
   namE.style.borderRadius = '10px';
-  
+
   lastName.style.width = '130px';
   lastName.style.height = '30px';
   lastName.style.left = '44px';
@@ -192,7 +189,7 @@ export const register = (onNavigate) => {
   bntRegister.style.top = '798px';
   bntRegister.style.background = '#F40F46';
   bntRegister.style.border = '1px solid #FF7563';
-  bntRegister.style.borderRadius = '10px';  
+  bntRegister.style.borderRadius = '10px';
 
   // agregar los divs al padre //
   homeDiv.appendChild(divImg);
