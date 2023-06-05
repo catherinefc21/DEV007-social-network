@@ -31,8 +31,6 @@ export const register = (onNavigate) => {
   const Email = document.createElement('input');
   const passWord = document.createElement('input');
   const age = document.createElement('input');
-  const ageBaby = document.createElement('input');
-  const selecTema = document.createElement('select');
   const bntRegister = document.createElement('button');
 
   // agregar atributos //
@@ -45,7 +43,7 @@ export const register = (onNavigate) => {
   lastName.setAttribute('type', 'text');
   lastName.setAttribute('name', 'lastName');
   lastName.setAttribute('placeholder', 'Apellidos');
-  lastName.setAttribute('id', 'lasName');  
+  lastName.setAttribute('id', 'lastName');  
 
   Email.setAttribute('type', 'text');
   Email.setAttribute('name', 'Email');
@@ -60,17 +58,26 @@ export const register = (onNavigate) => {
   age.setAttribute('type', 'date');
   age.setAttribute('name', 'bday');
   age.setAttribute('placeholder', 'Edad');
-  age.setAttribute('id', 'bday');
+  age.setAttribute('id', 'age');
 
-  ageBaby.setAttribute('type', 'date');
-  ageBaby.setAttribute('name', 'bdaybaby');
-  ageBaby.setAttribute('placeholder', 'Edad de tu hijo');
-  ageBaby.setAttribute('id', 'bdaybaby');
+  bntRegister.setAttribute('id', 'btnRegister');
 
-  selecTema.setAttribute('type', 'select');
-  selecTema.setAttribute('name', 'selecTema');
-  selecTema.setAttribute('placeholder', 'Selecciona el tema de tu interes');
-  selecTema.setAttribute('id', 'selecTema');
+  const userData=document.getElementById("btnRegister");
+  bntRegister.addEventListener('click', mostrar);
+
+  function mostrar() {
+  const nombre=document.getElementById("namE").value;
+  const apellido= document.getElementById("lastName").value;
+  const email= document.getElementById("Email").value;
+  const  contraseña= document.getElementById("passWord").value;
+  const  age= document.getElementById("age").value;
+  //sin campos vacios.
+  if (nombre ==="" || apellido==="" || email==="" || contraseña ==="" || age ==="") {
+    alert("Por favor completa todos los campos"); return;}
+  console.log(nombre);
+  console.log(apellido);
+  console.log(email)
+  console.log(contraseña)}
 
   // agregar el div del formulario //
   registerDiv.appendChild(namE);
@@ -78,13 +85,9 @@ export const register = (onNavigate) => {
   registerDiv.appendChild(Email);
   registerDiv.appendChild(passWord);
   registerDiv.appendChild(age);
-  registerDiv.appendChild(ageBaby);
-  registerDiv.appendChild(selecTema);
 
   bntRegister.textContent = 'Registrate';
-  bntRegister.addEventListener('click', () => onNavigate('/'));
-  
-  
+  bntRegister.addEventListener('click', () => onNavigate('/'));  
 
   // agregar stilos al homeDiv//
   homeDiv.style.display = 'flex';
@@ -122,8 +125,6 @@ export const register = (onNavigate) => {
   Email.style.marginBottom = '10px';
   passWord.style.marginBottom = '10px';
   age.style.marginBottom = '10px';
-  ageBaby.style.marginBottom = '10px';
-  selecTema.style.marginBottom = '10px';
   bntRegister.style.marginBottom = '20px';
 
   // agregar stilos de los inputs//
@@ -167,22 +168,6 @@ export const register = (onNavigate) => {
   age.style.background = '#FFFFF';
   age.style.border = '1px solid #F40F46';
   age.style.borderRadius = '10px';
-
-  ageBaby.style.width = '269.97px';
-  ageBaby.style.height = '30px';
-  ageBaby.style.left = '44px';
-  ageBaby.style.top = '554.69px';
-  ageBaby.style.background = '#FFFFF';
-  ageBaby.style.border = '1px solid #F40F46';
-  ageBaby.style.borderRadius = '10px';
-
-  selecTema.style.width = '269.97px';
-  selecTema.style.height = '30px';
-  selecTema.style.left = '44px';
-  selecTema.style.top = '601.48px';
-  selecTema.style.background = '#FFFFF';
-  selecTema.style.border = '1px solid #F40F46';
-  selecTema.style.borderRadius = '10px';
 
   // agregar stilos a los botones //
 
