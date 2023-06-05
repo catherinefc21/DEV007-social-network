@@ -1,5 +1,10 @@
-  export const home = (onNavigate) => {
+export const home = (onNavigate) => {
   document.body.style.backgroundColor = '#FFE8BE';
+  document.body.style.backgroundImage = 'url("images/fondo.png")';
+  document.body.style.backgroundSize = '100%';
+  document.body.style.backgroundRepeat = 'no-repeat';
+  document.body.style.backgroundPosition = 'right-bottom';
+
   const homeDiv = document.createElement('div');
 
   // div para las imágenes
