@@ -82,6 +82,9 @@ body{
     border-radius: 10px;
     color:#FFFFfF;
 }
+
+/*.buttonWelcomeApp:hover {}*/
+
 .buttonRegister{
     margin-bottom:20px;
     width:160px;
@@ -93,6 +96,7 @@ body{
     border-radius:10px;
     color:#FFFFfF;
 }
+/*.buttonRegister:hover {background-color: #FFD7C8}*/
 .img3{
     width: 16px;
     height: auto;
@@ -151,9 +155,13 @@ body{
      margin-top: 20px;
  }
  
+ .userNameDiv{
+    display: inline-flex;
+    gap: 5px;
+ }
  
  .namE{
-     width: 130px;
+     width: 108px;
      height: 30px;
      left: 44px;
      top: 394px;
@@ -161,6 +169,11 @@ body{
      border :  1px solid #F40F46;
      border-radius: 10px;
      margin-bottom: 10px;
+     padding-Left: 30px;
+     background-image: url("images/user.png");
+     background-size: 17px , auto;
+     background-position: 9px 5px;
+     background-repeat: no-repeat;
  }
  
  
@@ -177,7 +190,7 @@ body{
  
  
  .Email{
-     width: 269.97px;
+     width: 244.97px;
      height: 30px;
      left: 44px;
      top: 428.25px;
@@ -185,11 +198,16 @@ body{
      border: 1px solid #F40F46;
      border-radius: 10px;
      margin-bottom: 10px;
+     padding-Left: 30px;
+     background-image: url("images/Email.png");
+     background-size: 17px , auto;
+     background-position: 9px 10px;
+     background-repeat: no-repeat;
  }
  
  
  .passWord{
-     width: 269.97px;
+     width: 244px;
      height: 30px;
      left: 44px;
      top: 463.51;
@@ -197,11 +215,17 @@ body{
      border: 1px solid #F40F46;
      border-radius: 10px;
      margin-bottom: 10px;
+     padding-Left: 30px;
+     background-image: url("images/contraseña.png");
+     background-size: 17px , auto;
+     background-position: 9px 5px;
+     background-repeat: no-repeat;
+
  }
  
  
  .age{
-     width: 269.97px;
+     width: 244px;
      height: 30px;
      left: 44px;
      top: 516.91px;
@@ -209,6 +233,11 @@ body{
      border: 1px solid #F40F46;
      border-radius: 10px;
      margin-bottom: 10px;
+     padding-Left: 30px;
+     background-image: url("images/torta.png");
+     background-size: 17px , auto;
+     background-position: 9px 5px;
+     background-repeat: no-repeat;
  }
  
  
@@ -326,6 +355,7 @@ body{
     height: 47px;
     border: none;
     transition: width 0.4s ease-in-out;
+    outline: none;
   }
   
   .Search:hover {background-color: #FF946B}
