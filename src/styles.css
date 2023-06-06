@@ -81,9 +81,10 @@ body{
     border: 1px solid #FF946B;
     border-radius: 10px;
     color:#FFFFfF;
+    opacity: 1;
 }
 
-/*.buttonWelcomeApp:hover {}*/
+.buttonWelcomeApp:hover {opacity: 0.8;}
 
 .buttonRegister{
     margin-bottom:20px;
@@ -95,8 +96,9 @@ body{
     border:1px solid #FF7563;
     border-radius:10px;
     color:#FFFFfF;
+    opacity: 1;
 }
-/*.buttonRegister:hover {background-color: #FFD7C8}*/
+.buttonRegister:hover {opacity: 0.8}
 .img3{
     width: 16px;
     height: auto;
@@ -128,7 +130,7 @@ body{
  .divImg{
      display: flex;
      flex-direction: column;
-     align-content : center;
+     align-items : center;
  }
  
  
@@ -174,6 +176,7 @@ body{
      background-size: 17px , auto;
      background-position: 9px 5px;
      background-repeat: no-repeat;
+     outline: none;
  }
  
  
@@ -186,6 +189,7 @@ body{
      border: 1px solid #F40F46;
      border-radius: 10px;
      margin-bottom: 10px;
+     outline: none;
  }
  
  
@@ -203,6 +207,7 @@ body{
      background-size: 17px , auto;
      background-position: 9px 10px;
      background-repeat: no-repeat;
+     outline: none;
  }
  
  
@@ -220,6 +225,7 @@ body{
      background-size: 17px , auto;
      background-position: 9px 5px;
      background-repeat: no-repeat;
+     outline: none;
 
  }
  
@@ -238,19 +244,36 @@ body{
      background-size: 17px , auto;
      background-position: 9px 5px;
      background-repeat: no-repeat;
+     outline: none;
  }
  
- 
+ .bntbackHome{
+    margin-bottom: 10px;
+    width:160px;
+    height:40px;
+    left: calc(50% - 219px/2 + 0.5px);
+    top: 527px;
+    background: #FF946B;
+    border: 1px solid #FF946B;
+    border-radius: 10px;
+    color:#FFFFfF;
+    opacity: 1;
+ }
+ .bntbackHome:hover {opacity: 0.8;}
  .bntRegister{
-     width: 160px;
-     height: 40px;
+    width: 219px;
+    height: 40px;
      left: 860px;
      top: 798px;
      background: #F40F46;
      border: 1px solid #FF7563;
      border-radius: 10px;
      margin-bottom: 20px;
+     color: white;
+     opacity: 1;
  }
+
+ .bntRegister:hover {opacity: 0.8}
  
 /*welcomeDiv*/
 .welcomeAppDiv {display  : flex;
