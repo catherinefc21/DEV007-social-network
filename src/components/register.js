@@ -2,27 +2,35 @@ export const register = (onNavigate) => {
   const regisDiv = document.createElement('div');
   regisDiv.setAttribute('class', 'regisDiv');
 
+
   // div para las imagenes //
+
 
   const divImg = document.createElement('div');
   const img1 = document.createElement('img');
   const img2 = document.createElement('img');
 
+
   // atributos de las imagenes //
 
+
   divImg.setAttribute('class', 'divImg');
-  img1.setAttribute('class', 'img1'); 
+  img1.setAttribute('class', 'img1');
   img2.setAttribute('class', 'img2');
-  img1.setAttribute('src', 'images/logo.png');   
+  img1.setAttribute('src', 'images/logo.png');  
   img2.setAttribute('src', 'images/Monita3.png');
  
 
+
   // agregar las imagenes al div imagenes //
+
 
   divImg.appendChild(img1);
   divImg.appendChild(img2);
 
+
   // div para el formulario de resgistro //
+
 
   const registerDiv = document.createElement('div');
   const namE = document.createElement('input');
@@ -32,21 +40,26 @@ export const register = (onNavigate) => {
   const age = document.createElement('input');
   const bntRegister = document.createElement('button');
 
+
   // agregar atributos //
 
+
   registerDiv.setAttribute('class', 'registerDiv');
-  
+ 
   namE.setAttribute('type', 'text');
   namE.setAttribute('name', 'namE');
   namE.setAttribute('placeholder', 'Nombre');
   namE.setAttribute('id', 'namE');
   namE.setAttribute('class', 'namE');
 
+
   lastName.setAttribute('type', 'text');
   lastName.setAttribute('name', 'lastName');
   lastName.setAttribute('placeholder', 'Apellidos');
-  lastName.setAttribute('id', 'lastName'); 
+  lastName.setAttribute('id', 'lastName');
   lastName.setAttribute('class', 'lastName');  
+
+
 
 
   Email.setAttribute('type', 'text');
@@ -55,11 +68,13 @@ export const register = (onNavigate) => {
   Email.setAttribute('id', 'Email');
   Email.setAttribute('class', 'Email');
 
+
   passWord.setAttribute('type', 'text');
   passWord.setAttribute('name', 'passWord');
   passWord.setAttribute('placeholder', 'Contraseña');
   passWord.setAttribute('id', 'passWord');
   passWord.setAttribute('class', 'passWord');
+
 
   age.setAttribute('type', 'date');
   age.setAttribute('name', 'bday');
@@ -67,11 +82,14 @@ export const register = (onNavigate) => {
   age.setAttribute('id', 'age');
   age.setAttribute('class', 'age');
 
+
   bntRegister.setAttribute('id', 'bntRegister');
   bntRegister.setAttribute('class', 'bntRegister');
 
+
   const userData=document.getElementById("btnRegister");
   bntRegister.addEventListener('click', mostrar);
+
 
   function mostrar() {
   const nombre=document.getElementById("namE").value;
@@ -87,6 +105,7 @@ export const register = (onNavigate) => {
   console.log(email)
   console.log(contraseña)}
 
+
   // agregar el div del formulario //
   registerDiv.appendChild(namE);
   registerDiv.appendChild(lastName);
@@ -94,13 +113,16 @@ export const register = (onNavigate) => {
   registerDiv.appendChild(passWord);
   registerDiv.appendChild(age);
 
+
   bntRegister.textContent = 'Registrate';
   bntRegister.addEventListener('click', () => onNavigate('/'));  
+
 
   // agregar los divs al padre //
   regisDiv.appendChild(divImg);
   regisDiv.appendChild(registerDiv);
   regisDiv.appendChild(bntRegister);
+
 
   return regisDiv;
 };
