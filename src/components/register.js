@@ -13,7 +13,6 @@ export const register = (onNavigate) => {
 
   // atributos de las imagenes //
 
-
   divImg.setAttribute('class', 'divImg');
   img1.setAttribute('class', 'img1');
   img2.setAttribute('class', 'img2');
@@ -33,6 +32,7 @@ export const register = (onNavigate) => {
 
 
   const registerDiv = document.createElement('div');
+  const userNameDiv = document.createElement('div');
   const namE = document.createElement('input');
   const lastName = document.createElement('input');
   const Email = document.createElement('input');
@@ -45,7 +45,7 @@ export const register = (onNavigate) => {
 
 
   registerDiv.setAttribute('class', 'registerDiv');
- 
+  userNameDiv.setAttribute('class','userNameDiv');
   namE.setAttribute('type', 'text');
   namE.setAttribute('name', 'namE');
   namE.setAttribute('placeholder', 'Nombre');
@@ -107,8 +107,9 @@ export const register = (onNavigate) => {
 
 
   // agregar el div del formulario //
-  registerDiv.appendChild(namE);
-  registerDiv.appendChild(lastName);
+  userNameDiv.appendChild(namE);
+  userNameDiv.appendChild(lastName);
+  registerDiv.appendChild(userNameDiv);
   registerDiv.appendChild(Email);
   registerDiv.appendChild(passWord);
   registerDiv.appendChild(age);
