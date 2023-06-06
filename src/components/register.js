@@ -1,3 +1,16 @@
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyBoa8z2MP7Lg5x1byqrGf02Oe_SivMB0Pc',
+  authDomain: 'momconnect3-9d7fd.firebaseapp.com',
+  projectId: 'momconnect3-9d7fd',
+  storageBucket: 'momconnect3-9d7fd.appspot.com',
+  messagingSenderId: '1008948398587',
+  appId: '1:1008948398587:web:584d67080a52f23de5635e',
+  measurementId: 'G-D8XQSGHXPN',
+};
+
 export const register = (onNavigate) => {
   const regisDiv = document.createElement('div');
   regisDiv.setAttribute('class', 'regisDiv');
@@ -39,7 +52,7 @@ export const register = (onNavigate) => {
   const passWord = document.createElement('input');
   const age = document.createElement('input');
   const bntRegister = document.createElement('button');
-
+  const buttonHome = document.createElement('button');
 
   // agregar atributos //
 
@@ -69,7 +82,7 @@ export const register = (onNavigate) => {
   Email.setAttribute('class', 'Email');
 
 
-  passWord.setAttribute('type', 'text');
+  passWord.setAttribute('type', 'password');
   passWord.setAttribute('name', 'passWord');
   passWord.setAttribute('placeholder', 'Contraseña');
   passWord.setAttribute('id', 'passWord');
@@ -85,11 +98,15 @@ export const register = (onNavigate) => {
 
   bntRegister.setAttribute('id', 'bntRegister');
   bntRegister.setAttribute('class', 'bntRegister');
+  buttonHome.setAttribute('class','bntbackHome');
 
 
   const userData=document.getElementById("btnRegister");
   bntRegister.addEventListener('click', mostrar);
 
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
   function mostrar() {
   const nombre=document.getElementById("namE").value;
@@ -103,8 +120,26 @@ export const register = (onNavigate) => {
   console.log(nombre);
   console.log(apellido);
   console.log(email)
-  console.log(contraseña)}
+  console.log(contraseña)
 
+ createUserWithEmailAndPassword(auth, email, contraseña).then(cred => {
+  onNavigate('/');
+ }).catch(error => {
+  const errorCode = error.code;
+
+  if(errorCode == 'auth/email-already-in-use')
+      alert('El correo ya está en uso')&
+      onNavigate('/register');
+  else if (errorCode == 'auth/invalid-email')
+      alert('el correo no es válido')&
+      onNavigate('/register');
+  else if (errorCode == 'auth/weak-password')
+      alert('la contraseña debe tener al menos 6 caracteres')&
+      onNavigate('/register');
+ })
+ };
+
+ buttonHome.addEventListener('click', () => onNavigate('/'));
 
   // agregar el div del formulario //
   userNameDiv.appendChild(namE);
@@ -116,13 +151,14 @@ export const register = (onNavigate) => {
 
 
   bntRegister.textContent = 'Registrate';
-  bntRegister.addEventListener('click', () => onNavigate('/'));  
+  buttonHome.textContent = 'Volver al Home';
 
 
   // agregar los divs al padre //
   regisDiv.appendChild(divImg);
   regisDiv.appendChild(registerDiv);
   regisDiv.appendChild(bntRegister);
+  regisDiv.appendChild(buttonHome);
 
 
   return regisDiv;
