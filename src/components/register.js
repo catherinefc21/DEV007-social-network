@@ -43,7 +43,7 @@ export const register = (onNavigate) => {
   lastName.setAttribute('type', 'text');
   lastName.setAttribute('name', 'lastName');
   lastName.setAttribute('placeholder', 'Apellidos');
-  lastName.setAttribute('id', 'lastName');  
+  lastName.setAttribute('id', 'lastName');
 
 
   Email.setAttribute('type', 'text');
