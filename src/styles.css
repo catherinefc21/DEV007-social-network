@@ -1,0 +1,381 @@
+body{
+    background-color: #FFE8BE;
+    background-image: url("images/fondo.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: right-bottom;
+}
+
+.homeDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.imgDiv{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+.img1{
+    width: 276px;
+    height: auto;
+    left: 17px;
+    top: 17px;
+}
+
+.img2{
+    width: 144px;
+    height: auto;
+    top: 173px;
+    left: calc(50% - 144px/2);
+}
+.loginDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.email{
+    margin-bottom: 10px;
+    width: 230px;
+    height: 40px;
+    left: 58px;
+    top: 386px;
+    background-color: #FFFFfF;
+    border: 1px solid #F40F46;
+    border-radius : 10px;
+    padding-Left: 30px;
+    background-image: url("images/Email.png");
+    background-size: 17px , auto;
+    background-position: 9px 15px;
+    background-repeat: no-repeat;
+    outline: none;
+}
+
+.password{
+    margin-bottom: 10px;
+    width: 230px;
+    height: 40px;
+    left: 58px;
+    top: 386px;
+    background: #FFFFfF;
+    border: 1px solid #F40F46;
+    border-radius: 10px;
+    padding-left: 30px;
+    background-image: url("images/contraseña.png");
+    background-size: 17px , auto;
+    background-position: 10px 8px;
+    background-repeat: no-repeat;
+    outline: none;
+
+}
+.buttonWelcomeApp{
+    margin-bottom: 10px;
+    width: 219px;
+    height: 40px;
+    left: calc(50% - 219px/2 + 0.5px);
+    top: 527px;
+    background: #FF946B;
+    border: 1px solid #FF946B;
+    border-radius: 10px;
+    color:#FFFFfF;
+}
+.buttonRegister{
+    margin-bottom:20px;
+    width:160px;
+    height:40px;
+    left:calc(50% - 169px/2 - 0.5px);
+    top:626px;
+    background:#F40F46;
+    border:1px solid #FF7563;
+    border-radius:10px;
+    color:#FFFFfF;
+}
+.img3{
+    width: 16px;
+    height: auto;
+    position: absolute;
+    top: 410px;
+    left: 58px;
+    transform: rotate(90deg);
+}
+.img4{
+    width: 20px;
+    height: auto;
+    position: absolute;
+    top: 460px;
+    left: 57px;
+}
+
+/*register*/
+
+.regisDiv{
+    display: flex;
+    flex-direction: column;
+    align-items : center;
+    padding: 20px;
+ 
+ 
+ }
+ 
+ 
+ .divImg{
+     display: flex;
+     flex-direction: column;
+     align-content : center;
+ }
+ 
+ 
+ .img1{
+     width: 276px;
+     height: auto;
+     left: 42px;
+     top: 17px;
+ }
+ 
+ 
+ .img2{
+     width: 156px;
+     height: auto;
+     top: 17px;
+     left: 42px;
+ }
+ 
+ 
+ .registerDiv{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-top: 20px;
+ }
+ 
+ 
+ .namE{
+     width: 130px;
+     height: 30px;
+     left: 44px;
+     top: 394px;
+     background: #FFFF;
+     border :  1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+ }
+ 
+ 
+ .lastName{
+     width: 130px;
+     height: 30px;
+     left: 44px;
+     top: 394px;
+     background: #FFFF;
+     border: 1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+ }
+ 
+ 
+ .Email{
+     width: 269.97px;
+     height: 30px;
+     left: 44px;
+     top: 428.25px;
+     background: #FFFF;
+     border: 1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+ }
+ 
+ 
+ .passWord{
+     width: 269.97px;
+     height: 30px;
+     left: 44px;
+     top: 463.51;
+     background: #FFFF;
+     border: 1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+ }
+ 
+ 
+ .age{
+     width: 269.97px;
+     height: 30px;
+     left: 44px;
+     top: 516.91px;
+     background: #FFFF;
+     border: 1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+ }
+ 
+ 
+ .bntRegister{
+     width: 160px;
+     height: 40px;
+     left: 860px;
+     top: 798px;
+     background: #F40F46;
+     border: 1px solid #FF7563;
+     border-radius: 10px;
+     margin-bottom: 20px;
+ }
+ 
+/*welcomeDiv*/
+.welcomeAppDiv {display  : flex;
+    flex-direction  : column;
+    align-items: center
+  }
+  
+  .welcomeNav {
+  display  : inline-flex;
+    justify-content  : space-around;
+    align-items  : flex-end;
+    width  : 360px;
+    height  : 72px;
+  }
+  
+  .buttonTips{
+     width : 48px;
+   height : 48px;
+   background : #F40F46;
+   background-image: url("images/consejos.png");
+   background-position: 10px 3px;
+   background-size: 60%;
+   background-repeat: no-repeat;
+   border-radius: 50px;
+   border : none;
+  }
+  
+  .buttonTips:hover {background-color: #FF946B}
+  
+  .divNavImg{
+      width  : 120px;
+      margin-right  : 30px;
+  }
+  
+  .divNavImg img{
+      width  : 100%;
+  }
+  
+  .btnPicture:hover .ListPicture {
+      display: block;}
+  
+  .buttonPicture{
+      background : #F40F46;
+    background-image : url("images/usuario.png");
+    background-size : 50%;
+    background-position : 12px 8px;
+    background-repeat : no-repeat;
+    width : 48px;
+    height : 48px;
+    border-radius : 50px;
+    display : flex;
+    justify-content : center;
+    border : none;
+  }
+  
+  .ListPicture{
+      display : none;
+    position : absolute;
+    background-color : white;
+    z-index : 1;
+    border-radius: 5px;
+    margin: 40px;
+  }
+  
+  .buttonHome{
+      background : white;
+    border: none;
+    color : #F40F46;
+    width : 60px;
+    height : 40px;
+    border-radius: 5px;
+    text-decoration : none;
+    display : block;
+  }
+  
+  .buttonProfile{
+      background : white;
+    color : #F40F46;
+    border: none;
+    text-decoration : none;
+    display : block;
+    width : 60px;
+    height : 40px;
+    border-radius: 5px;
+  }
+  
+  .buttonHome:hover {background-color: #FFD7C8}
+  .buttonProfile:hover {background-color: #FFD7C8}
+  .btnPicture:hover .buttonPicture {
+      background-color: #FF946B;
+    }
+  
+  .Search{
+      background: #F40F46;
+    background-image: url("images/lupa.png");
+    background-size: 50%;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+    padding-left : 40px;
+    border-radius: 50px;
+    width: 7px;
+    height: 47px;
+    border: none;
+    transition: width 0.4s ease-in-out;
+  }
+  
+  .Search:hover {background-color: #FF946B}
+  .Search:focus {
+      width : 80px;
+      background-image : none;
+  
+    }
+  
+  .welcomeMain{
+      display : inline-flex;
+      margin-bottom : 20px;
+      width  : 360px;
+  }
+  
+  .divMainImage{
+      width : 131px;
+    height : 183px;
+  }
+  
+  .divMainImage img {
+      width : 100%
+  }
+  
+  .divMainPublisher{
+   display : flex;
+   justify-content : center;
+   align-items : center;
+   flex-direction : column;
+   margin-left : 20px;
+  }
+  
+  .inputPublisher{
+   width : 190px;
+   height : 94.5px;
+   border : 1px solid #F40F46;
+   border-radius : 10px 10px 10px 0px;
+   text-align : left start;
+   padding : 5px 7px;
+  }
+  
+  .buttonPublisher{
+      margin-left : 80px;
+    margin-top : -30px;
+    background : #F40F46;
+    border-radius : 10px;
+    width: 100px;
+    height : 24px;
+    border : 1px solid #F40F46;
+    color : white;
+  }
+  
+  
