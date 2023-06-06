@@ -298,7 +298,7 @@ body{
   }
   
   .buttonProfile{
-      background : white;
+    background : white;
     color : #F40F46;
     border: none;
     text-decoration : none;
@@ -315,7 +315,7 @@ body{
     }
   
   .Search{
-      background: #F40F46;
+    background: #F40F46;
     background-image: url("images/lupa.png");
     background-size: 50%;
     background-position: 11px 8px;
