@@ -4,6 +4,7 @@ body{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: right-bottom;
+    font-family: 'Inter';
 }
 
 .homeDiv{
@@ -26,7 +27,7 @@ body{
 }
 
 .img2{
-    width: 144px;
+    width: 175px;
     height: auto;
     top: 173px;
     left: calc(50% - 144px/2);
@@ -39,7 +40,7 @@ body{
 }
 .email{
     margin-bottom: 10px;
-    width: 230px;
+    width: 210px;
     height: 40px;
     left: 58px;
     top: 386px;
@@ -56,7 +57,7 @@ body{
 
 .password{
     margin-bottom: 10px;
-    width: 230px;
+    width: 210px;
     height: 40px;
     left: 58px;
     top: 386px;
@@ -73,7 +74,7 @@ body{
 }
 .buttonWelcomeApp{
     margin-bottom: 10px;
-    width: 219px;
+    width: 210px;
     height: 40px;
     left: calc(50% - 219px/2 + 0.5px);
     top: 527px;
@@ -99,21 +100,6 @@ body{
     opacity: 1;
 }
 .buttonRegister:hover {opacity: 0.8}
-.img3{
-    width: 16px;
-    height: auto;
-    position: absolute;
-    top: 410px;
-    left: 58px;
-    transform: rotate(90deg);
-}
-.img4{
-    width: 20px;
-    height: auto;
-    position: absolute;
-    top: 460px;
-    left: 57px;
-}
 
 /*register*/
 
@@ -122,7 +108,6 @@ body{
     flex-direction: column;
     align-items : center;
     padding: 20px;
- 
  
  }
  
@@ -134,16 +119,16 @@ body{
  }
  
  
- .img1{
+ .imag1{
      width: 276px;
      height: auto;
      left: 42px;
-     top: 17px;
+     top: 17px;;
  }
  
  
- .img2{
-     width: 156px;
+ .imag2{
+     width: 180px;
      height: auto;
      top: 17px;
      left: 42px;
@@ -154,7 +139,6 @@ body{
      display: flex;
      flex-direction: column;
      align-items: center;
-     margin-top: 20px;
  }
  
  .userNameDiv{
@@ -163,8 +147,8 @@ body{
  }
  
  .namE{
-     width: 108px;
-     height: 30px;
+     width: 90px;
+     height: 35px;
      left: 44px;
      top: 394px;
      background: #FFFF;
@@ -181,8 +165,8 @@ body{
  
  
  .lastName{
-     width: 130px;
-     height: 30px;
+     width: 90px;
+     height: 35px;
      left: 44px;
      top: 394px;
      background: #FFFF;
@@ -190,12 +174,13 @@ body{
      border-radius: 10px;
      margin-bottom: 10px;
      outline: none;
+     padding-Left: 20px;
  }
  
  
  .Email{
-     width: 244.97px;
-     height: 30px;
+     width: 210px;
+     height: 35px;
      left: 44px;
      top: 428.25px;
      background: #FFFF;
@@ -212,8 +197,8 @@ body{
  
  
  .passWord{
-     width: 244px;
-     height: 30px;
+     width: 210px;
+     height: 35px;
      left: 44px;
      top: 463.51;
      background: #FFFF;
@@ -231,10 +216,10 @@ body{
  
  
  .age{
-     width: 244px;
-     height: 30px;
+     width: 210px;
+     height: 35px;
      left: 44px;
-     top: 516.91px;
+     top: 463.51;
      background: #FFFF;
      border: 1px solid #F40F46;
      border-radius: 10px;
@@ -248,7 +233,6 @@ body{
  }
  
  .bntbackHome{
-    margin-bottom: 10px;
     width:160px;
     height:40px;
     left: calc(50% - 219px/2 + 0.5px);
@@ -268,7 +252,7 @@ body{
      background: #F40F46;
      border: 1px solid #FF7563;
      border-radius: 10px;
-     margin-bottom: 20px;
+     margin-bottom: 10px;
      color: white;
      opacity: 1;
  }
@@ -350,7 +334,7 @@ body{
   }
   
   .buttonProfile{
-      background : white;
+    background : white;
     color : #F40F46;
     border: none;
     text-decoration : none;
@@ -367,7 +351,7 @@ body{
     }
   
   .Search{
-      background: #F40F46;
+    background: #F40F46;
     background-image: url("images/lupa.png");
     background-size: 50%;
     background-position: 11px 8px;
@@ -431,3 +415,88 @@ body{
     color : white;
   }
 
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+
+    .homeDiv{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 50px;
+    margin-right: 300px;
+    
+
+    }
+    .img1{
+    width: 43%;
+    }
+
+    .img2{
+    width: 30%;
+
+    }
+    .email{
+        width: 160%;
+        
+    }
+    
+    .password{
+        width: 160%;
+      
+    }
+    .buttonWelcomeApp{
+        width: 150%;
+    
+    }
+    
+    .buttonRegister{
+        width: 130%;
+  }
+
+  /*register*/
+  .regisDiv{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 50px;
+    margin-right: 200px;
+  }
+  .imag1{
+    width: 50%;
+  }
+  .imag2{
+    width: 35%;
+  }
+    .namE{
+        width: 92%;
+    }
+    
+    
+    .lastName{
+     width: 92%;
+    }
+    
+    
+    .Email{
+     width: 90%;
+    }
+    
+    
+    .passWord{
+        width: 90%
+    }
+    
+    
+    .age{
+        width: 90%
+    }
+    
+    .bntbackHome{
+        width: 70%;
+    }
+    
+    .bntRegister{
+        width: 85%;
+    }
+   
+}

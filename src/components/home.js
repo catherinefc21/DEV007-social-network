@@ -50,7 +50,7 @@ export const home = (onNavigate) => {
 
   email.setAttribute('type', 'text');
   email.setAttribute('name', 'email');
-  email.setAttribute('placeholder', 'Mail');
+  email.setAttribute('placeholder', 'Email');
   email.setAttribute('id', 'email');
   email.setAttribute('class', 'email');
 
