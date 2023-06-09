@@ -1,20 +1,20 @@
+/* eslint-disable max-len */
 export const welcomeApp = (onNavigate) => {
-
-  //Contenedor General----------------------------------
+  // Contenedor General----------------------------------
   const welcomeAppDiv = document.createElement('div');
   welcomeAppDiv.setAttribute('class', 'welcomeAppDiv');
 
-//---------------------NAV--------------------------------------------------
+  // ---------------------NAV--------------------------------------------------
 
- //NAv div logo y div para "buttons"
+  // NAv div logo y div para "buttons"
   const welcomeNav = document.createElement('nav');
   const divNavImg = document.createElement('div');
   const imgNav = document.createElement('img');
-  const btnPicture=document.createElement('div');
-  const buttonPicture=document.createElement('button');
-  const ListPicture=document.createElement('div');
+  const btnPicture = document.createElement('div');
+  const buttonPicture = document.createElement('button');
+  const ListPicture = document.createElement('div');
   const buttonHome = document.createElement('button');
-  const buttonProfile= document.createElement('button');
+  const buttonProfile = document.createElement('button');
   const Search = document.createElement('input');
   const buttonTips = document.createElement('button');
 
@@ -28,12 +28,12 @@ export const welcomeApp = (onNavigate) => {
   buttonProfile.setAttribute('class', 'buttonProfile');
   Search.setAttribute('class', 'Search');
   buttonTips.setAttribute('class', 'buttonTips');
-   //falta enlazar la imagen de foto de perfil
-   
-   buttonProfile.textContent = 'Perfil'
-   buttonHome.textContent = 'Cerrar sesión';
+  // falta enlazar la imagen de foto de perfil
 
-  //orden de const en Nav
+  buttonProfile.textContent = 'Perfil';
+  buttonHome.textContent = 'Cerrar sesión';
+
+  // orden de const en Nav
   btnPicture.appendChild(buttonPicture);
   buttonPicture.appendChild(ListPicture);
   ListPicture.appendChild(buttonProfile);
@@ -44,16 +44,16 @@ export const welcomeApp = (onNavigate) => {
   welcomeNav.appendChild(buttonTips);
   welcomeNav.appendChild(btnPicture);
 
-  /*esto es un "HOVER"
+  /* esto es un "HOVER"
   btnPicture.addEventListener('mouseover', function() {
     ListPicture.style.display = 'block'; // Muestra el elemento ListPicture
   });
-  
+
   btnPicture.addEventListener('mouseout', function() {
     ListPicture.style.display = 'none'; // Oculta el elemento ListPicture
-  });*/
-  
-//-------------------MAIN (monita+escribe tu comentario)--------------------------------------------
+  }); */
+
+  /* -------------------MAIN (monita+escribe tu comentario)-------------------------------------------- */
 
   const welcomeMain = document.createElement('main');
   const divMainImage = document.createElement('div');
@@ -70,9 +70,8 @@ export const welcomeApp = (onNavigate) => {
   imgMain.setAttribute('src', './images/Monita2.png');
   inputPublisher.setAttribute('placeholder', '¿Que quieres compartir?');
   buttonPublisher.setAttribute('id', 'btnpublisher');
-  buttonPublisher.textContent = 'Publicar'
- 
-  //orden de const
+  buttonPublisher.textContent = 'Publicar';
+  // orden de const
   divMainImage.appendChild(imgMain);
   divMainPublisher.appendChild(inputPublisher);
   divMainPublisher.appendChild(buttonPublisher);
@@ -82,17 +81,16 @@ export const welcomeApp = (onNavigate) => {
   /* esto tambien hay que hacerlo con la parte de buttontips, buttonProfile EN EL FUTURO */
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
-  //---------------------ARTICLE (Publicaciones de mamis "muro")--------------------------
+  // ---------------------ARTICLE (Publicaciones de mamis "muro")--------------------------
   const homeArt = document.createElement('article');
   homeArt.textContent = 'aqui van los estados de las mamis (muro)';
 
-  //Todo en orden a welcomeAppDiv
+  // Todo en orden a welcomeAppDiv
 
   welcomeAppDiv.appendChild(welcomeNav);
   welcomeAppDiv.appendChild(welcomeMain);
   welcomeAppDiv.appendChild(homeArt);
 
   /* finalmente return el div que contiene todo con los divs que le agregamos (nav/main/art) */
-  return welcomeAppDiv
-;
+  return welcomeAppDiv;
 };

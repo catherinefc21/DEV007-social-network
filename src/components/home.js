@@ -1,4 +1,5 @@
-import { createUser, loginGoogle } from "../lib";
+/* eslint-disable no-alert */
+import { createUser, loginGoogle } from '../lib';
 
 export const home = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -19,8 +20,9 @@ export const home = (onNavigate) => {
   const password = document.createElement('input');
   const image4 = document.createElement('img');
   const buttonWelcomeApp = document.createElement('button');
-  const buttonRegister = document.createElement('button');
+  const divO = document.createElement('div');
   const buttonGoogle = document.createElement('button');
+  const buttonRegister = document.createElement('button');
 
   // agregar atributos
   homeDiv.setAttribute('class', 'homeDiv');
@@ -53,7 +55,9 @@ export const home = (onNavigate) => {
   buttonWelcomeApp.setAttribute('id', 'buttonWelcomeApp');
   buttonWelcomeApp.setAttribute('class', 'buttonWelcomeApp');
 
-  buttonGoogle.setAttribute('id','buttonGoogle');
+  divO.setAttribute('class', 'divO');
+
+  buttonGoogle.setAttribute('id', 'buttonGoogle');
   buttonGoogle.setAttribute('class', 'buttonGoogle');
 
   function showData() {
@@ -63,26 +67,26 @@ export const home = (onNavigate) => {
     if (email1 === '' || contraseña1 === '') {
       alert('Por favor completa todos los campos'); return;
     }
-    return createUser(email1, contraseña1,onNavigate);
+    createUser(email1, contraseña1, onNavigate);
   }
 
-  buttonWelcomeApp.addEventListener('click', showData)
-  buttonGoogle.addEventListener('click',(e) => {e.preventDefault();
-    loginGoogle(onNavigate)});
+  buttonWelcomeApp.addEventListener('click', showData);
+  buttonGoogle.addEventListener('click', () => {
+    loginGoogle(onNavigate);
+  });
 
   // Agregar al div de formulario
- 
+
   loginDiv.appendChild(email);
   loginDiv.appendChild(password);
   loginDiv.appendChild(buttonWelcomeApp);
-  loginDiv.appendChild(buttonRegister);
+  loginDiv.appendChild(divO);
   loginDiv.appendChild(buttonGoogle);
- 
-  
-  
+  loginDiv.appendChild(buttonRegister);
 
+  divO.textContent = 'O';
   buttonWelcomeApp.textContent = 'Inicia sesión';
-  buttonRegister.textContent = 'Regístrate';
+  buttonRegister.textContent = '¿Aun no tienes una cuenta? Regístrate';
   buttonGoogle.textContent = 'Inicia sesión con Google';
 
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
