@@ -54,6 +54,7 @@ export const home = (onNavigate) => {
   buttonWelcomeApp.setAttribute('class', 'buttonWelcomeApp');
 
   buttonGoogle.setAttribute('id','buttonGoogle');
+  buttonGoogle.setAttribute('class', 'buttonGoogle');
 
   function showData() {
     const email1 = document.getElementById('email').value;
@@ -70,11 +71,15 @@ export const home = (onNavigate) => {
     loginGoogle(onNavigate)});
 
   // Agregar al div de formulario
+ 
   loginDiv.appendChild(email);
   loginDiv.appendChild(password);
   loginDiv.appendChild(buttonWelcomeApp);
   loginDiv.appendChild(buttonRegister);
   loginDiv.appendChild(buttonGoogle);
+ 
+  
+  
 
   buttonWelcomeApp.textContent = 'Inicia sesión';
   buttonRegister.textContent = 'Regístrate';

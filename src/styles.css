@@ -53,6 +53,7 @@ body{
     background-position: 9px 15px;
     background-repeat: no-repeat;
     outline: none;
+    cursor: pointer;
 }
 
 .password{
@@ -70,6 +71,7 @@ body{
     background-position: 10px 8px;
     background-repeat: no-repeat;
     outline: none;
+    cursor: pointer;
 
 }
 .buttonWelcomeApp{
@@ -83,7 +85,29 @@ body{
     border-radius: 10px;
     color:#FFFFfF;
     opacity: 1;
+    cursor: pointer;
 }
+
+.buttonGoogle{
+    margin-bottom: 10px;
+    width: 180px;
+    height: 40px;
+    left: calc(50% - 219px/2 + 0.5px);
+    top: 527px;
+    background: #d5d5d5;
+    padding-left: 30px;
+    background-image: url("images/Logog.png");
+    background-size: 23px , auto;
+    background-position: 15px 8px;
+    background-repeat: no-repeat;
+    border: 1px solid #d5d5d5;
+    border-radius: 10px;
+    color:#000000;
+    opacity: 1;
+    cursor: pointer;
+
+}
+.buttonGoogle:hover {opacity: 0.8;}
 
 .buttonWelcomeApp:hover {opacity: 0.8;}
 
@@ -98,6 +122,7 @@ body{
     border-radius:10px;
     color:#FFFFfF;
     opacity: 1;
+    cursor: pointer;
 }
 .buttonRegister:hover {opacity: 0.8}
 
@@ -161,6 +186,7 @@ body{
      background-position: 9px 5px;
      background-repeat: no-repeat;
      outline: none;
+     cursor: pointer;
  }
  
  
@@ -175,6 +201,7 @@ body{
      margin-bottom: 10px;
      outline: none;
      padding-Left: 20px;
+     cursor: pointer;
  }
  
  
@@ -193,6 +220,7 @@ body{
      background-position: 9px 10px;
      background-repeat: no-repeat;
      outline: none;
+     cursor: pointer;
  }
  
  
@@ -211,6 +239,7 @@ body{
      background-position: 9px 5px;
      background-repeat: no-repeat;
      outline: none;
+     cursor: pointer;
 
  }
  
@@ -230,6 +259,7 @@ body{
      background-position: 9px 5px;
      background-repeat: no-repeat;
      outline: none;
+     cursor: pointer;
  }
  
  .bntbackHome{
@@ -242,6 +272,7 @@ body{
     border-radius: 10px;
     color:#FFFFfF;
     opacity: 1;
+    cursor: pointer;
  }
  .bntbackHome:hover {opacity: 0.8;}
  .bntRegister{
@@ -255,6 +286,7 @@ body{
      margin-bottom: 10px;
      color: white;
      opacity: 1;
+     cursor: pointer;
  }
 
  .bntRegister:hover {opacity: 0.8}
@@ -283,6 +315,7 @@ body{
    background-repeat: no-repeat;
    border-radius: 50px;
    border : none;
+   cursor: pointer;
   }
   
   .buttonTips:hover {background-color: #FF946B}
@@ -311,6 +344,7 @@ body{
     display : flex;
     justify-content : center;
     border : none;
+    cursor: pointer;
   }
   
   .ListPicture{
@@ -331,6 +365,7 @@ body{
     border-radius: 5px;
     text-decoration : none;
     display : block;
+    cursor: pointer;
   }
   
   .buttonProfile{
@@ -342,6 +377,7 @@ body{
     width : 60px;
     height : 40px;
     border-radius: 5px;
+    cursor: pointer;
   }
   
   .buttonHome:hover {background-color: #FFD7C8}
@@ -363,6 +399,7 @@ body{
     border: none;
     transition: width 0.4s ease-in-out;
     outline: none;
+    cursor: pointer;
   }
   
   .Search:hover {background-color: #FF946B}
@@ -402,6 +439,7 @@ body{
    border-radius : 10px 10px 10px 0px;
    text-align : left start;
    padding : 5px 7px;
+   cursor: pointer;
   }
   
   .buttonPublisher{
@@ -413,6 +451,7 @@ body{
     height : 24px;
     border : 1px solid #F40F46;
     color : white;
+    cursor: pointer;
   }
 
   @media only screen and (min-width: 768px) {
@@ -447,6 +486,10 @@ body{
     .buttonWelcomeApp{
         width: 150%;
     
+    }
+
+    .buttonGoogle{
+        width: 150%;
     }
     
     .buttonRegister{
@@ -498,5 +541,53 @@ body{
     .bntRegister{
         width: 85%;
     }
+
+    .welcomeNav {
+          width  : 100%;
+        }
+        
+        .divNavImg{
+            margin-right  : 60%;
+        }
+        
+        .welcomeMain{
+            width  : 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+        
+        .divMainImage{
+            width : 20%;
+          height : 20%;
+        }
+        
+        
+        .divMainPublisher{
+            width: 60%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: start;
+            padding-top: 20px;
+        }
+        
+        .inputPublisher{
+         width : 100%;
+         height: 30%;
+        }
+        
+        .buttonPublisher{
+            margin-left : 70%;
+        }
    
+}
+
+@media only screen and (min-width: 1100px) {
+    .divNavImg{
+        margin-right  : 75%;
+    }
+    .buttonPublisher{
+        margin-left : 80%;
+    }
+
 }

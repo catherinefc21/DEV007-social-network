@@ -1,5 +1,26 @@
-import { signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
+import { signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider,createUserWithEmailAndPassword} from 'firebase/auth';
 import { auth, provider } from '../firebase/firebaseConfig';
+
+export const RegisterMailAndPassword = (onNavigate, email, contraseña)=>{
+createUserWithEmailAndPassword(auth, email, contraseña).then((cred) => {
+  onNavigate('/');
+}).catch((error) => {
+  const errorCode = error.code;
+
+  if (errorCode == 'auth/email-already-in-use') {
+    alert('El correo ya está en uso')
+  & onNavigate('/register');
+  } else if (errorCode == 'auth/invalid-email') {
+    alert('el correo no es válido')
+  & onNavigate('/register');
+  } else if (errorCode == 'auth/weak-password') {
+    alert('la contraseña debe tener al menos 6 caracteres')
+  & onNavigate('/register');
+  }
+});
+
+}
+
 
 export const createUser = (email, contraseña, onNavigate) => {
   signInWithEmailAndPassword(auth, email, contraseña).then(cred => {
