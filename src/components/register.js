@@ -1,15 +1,4 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyBoa8z2MP7Lg5x1byqrGf02Oe_SivMB0Pc',
-  authDomain: 'momconnect3-9d7fd.firebaseapp.com',
-  projectId: 'momconnect3-9d7fd',
-  storageBucket: 'momconnect3-9d7fd.appspot.com',
-  messagingSenderId: '1008948398587',
-  appId: '1:1008948398587:web:584d67080a52f23de5635e',
-  measurementId: 'G-D8XQSGHXPN',
-};
+import { RegisterMailAndPassword } from '../lib';
 
 export const register = (onNavigate) => {
   const regisDiv = document.createElement('div');
@@ -84,11 +73,8 @@ export const register = (onNavigate) => {
   bntRegister.setAttribute('class', 'bntRegister');
   buttonHome.setAttribute('class', 'bntbackHome');
 
-  const userData = document.getElementById('btnRegister');
-  bntRegister.addEventListener('click', mostrar);
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+  bntRegister.addEventListener('click', mostrar);
 
   function mostrar() {
     const nombre = document.getElementById('namE').value;
@@ -100,27 +86,7 @@ export const register = (onNavigate) => {
     if (nombre === '' || apellido === '' || email === '' || contraseña === '' || age === '') {
       alert('Por favor completa todos los campos'); return;
     }
-    console.log(nombre);
-    console.log(apellido);
-    console.log(email);
-    console.log(contraseña);
-
-    createUserWithEmailAndPassword(auth, email, contraseña).then((cred) => {
-      onNavigate('/');
-    }).catch((error) => {
-      const errorCode = error.code;
-
-      if (errorCode == 'auth/email-already-in-use') {
-        alert('El correo ya está en uso')
-      & onNavigate('/register');
-      } else if (errorCode == 'auth/invalid-email') {
-        alert('el correo no es válido')
-      & onNavigate('/register');
-      } else if (errorCode == 'auth/weak-password') {
-        alert('la contraseña debe tener al menos 6 caracteres')
-      & onNavigate('/register');
-      }
-    });
+    return RegisterMailAndPassword(onNavigate,email,contraseña);
   }
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
