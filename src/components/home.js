@@ -1,4 +1,4 @@
-import { createUser, loginGoogle } from "../lib";
+import { createUser, loginGoogle } from '../lib';
 
 export const home = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -53,7 +53,7 @@ export const home = (onNavigate) => {
   buttonWelcomeApp.setAttribute('id', 'buttonWelcomeApp');
   buttonWelcomeApp.setAttribute('class', 'buttonWelcomeApp');
 
-  buttonGoogle.setAttribute('id','buttonGoogle');
+  buttonGoogle.setAttribute('id', 'buttonGoogle');
 
   function showData() {
     const email1 = document.getElementById('email').value;
@@ -62,18 +62,22 @@ export const home = (onNavigate) => {
     if (email1 === '' || contraseña1 === '') {
       alert('Por favor completa todos los campos'); return;
     }
-    createUser(email1, contraseña1).then((cred) => {
+    .then((cred) => {
       onNavigate('/welcomeApp');
     }).catch((error) => {
       const errorCode = error.code;
-      if (errorCode == 'auth/invalid-email') { alert('El correo no es válido') & onNavigate('/'); } else if (errorCode == 'auth/user-disabled') { alert('el usuario ha sido deshabilitado') & onNavigate('/'); } else if (errorCode == 'auth/user-not-found') { alert('El usuario no existe') & onNavigate('/'); } else if (errorCode == 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
+      if (errorCode == 'auth/invalid-email') {
+        alert('El correo no es válido') & onNavigate('/');
+      } else if (errorCode == 'auth/user-disabled') {
+        alert('el usuario ha sido deshabilitado') & onNavigate('/');
+      } else if (errorCode == 'auth/user-not-found') {
+        alert('El usuario no existe') & onNavigate('/');
+      } else if (errorCode == 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
     });
   }
-  buttonWelcomeApp.addEventListener('click', showData);
+  buttonWelcomeApp.addEventListener('click', createUser(email1, contraseña1));
 
-  buttonGoogle.addEventListener('click', loginGoogle().then(() => {
-    onNavigate('/welcomeApp')}));
-
+  buttonGoogle.addEventListener('click', loginGoogle());
   // Agregar al div de formulario
   loginDiv.appendChild(email);
   loginDiv.appendChild(password);
