@@ -62,17 +62,12 @@ export const home = (onNavigate) => {
     if (email1 === '' || contraseña1 === '') {
       alert('Por favor completa todos los campos'); return;
     }
-    createUser(email1, contraseña1).then((cred) => {
-      onNavigate('/welcomeApp');
-    }).catch((error) => {
-      const errorCode = error.code;
-      if (errorCode == 'auth/invalid-email') { alert('El correo no es válido') & onNavigate('/'); } else if (errorCode == 'auth/user-disabled') { alert('el usuario ha sido deshabilitado') & onNavigate('/'); } else if (errorCode == 'auth/user-not-found') { alert('El usuario no existe') & onNavigate('/'); } else if (errorCode == 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
-    });
+    return createUser(email1, contraseña1,onNavigate);
   }
-  buttonWelcomeApp.addEventListener('click', showData);
 
-  buttonGoogle.addEventListener('click', loginGoogle().then(() => {
-    onNavigate('/welcomeApp')}));
+  buttonWelcomeApp.addEventListener('click', showData)
+  buttonGoogle.addEventListener('click',(e) => {e.preventDefault();
+    loginGoogle(onNavigate)});
 
   // Agregar al div de formulario
   loginDiv.appendChild(email);
