@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Space+Grotesk:wght@500&display=swap');
+
+
+*{
+    font-family: 'inter';
+}
 body{
     background-color: #FFE8BE;
     background-image: url("images/fondo.png");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: right-bottom;
-    font-family: 'Inter';
 }
 
 .homeDiv{
@@ -75,7 +80,6 @@ body{
 
 }
 .buttonWelcomeApp{
-    margin-bottom: 10px;
     width: 210px;
     height: 40px;
     left: calc(50% - 219px/2 + 0.5px);
@@ -88,19 +92,23 @@ body{
     cursor: pointer;
 }
 
+.divO{
+    margin: 10px 1px;
+}
+
 .buttonGoogle{
     margin-bottom: 10px;
-    width: 180px;
+    width: 230px;
     height: 40px;
     left: calc(50% - 219px/2 + 0.5px);
     top: 527px;
-    background: #d5d5d5;
-    padding-left: 30px;
+    background: #eefaadfb;
+    padding-left: 20px;
     background-image: url("images/Logog.png");
     background-size: 23px , auto;
-    background-position: 15px 8px;
+    background-position: 15px 6px;
     background-repeat: no-repeat;
-    border: 1px solid #d5d5d5;
+    border: 2px solid #9ea285fb;
     border-radius: 10px;
     color:#000000;
     opacity: 1;
@@ -117,10 +125,10 @@ body{
     height:40px;
     left:calc(50% - 169px/2 - 0.5px);
     top:626px;
-    background:#F40F46;
-    border:1px solid #FF7563;
+    background:none;
+    border:none ;
     border-radius:10px;
-    color:#FFFFfF;
+    color:rgb(25, 25, 25);
     opacity: 1;
     cursor: pointer;
 }
@@ -148,7 +156,7 @@ body{
      width: 276px;
      height: auto;
      left: 42px;
-     top: 17px;;
+     top: 17px;
  }
  
  
@@ -300,9 +308,10 @@ body{
   .welcomeNav {
   display  : inline-flex;
     justify-content  : space-around;
-    align-items  : flex-end;
+    align-items  : center;
     width  : 360px;
     height  : 72px;
+    background-color: #ff756316;
   }
   
   .buttonTips{
@@ -329,8 +338,7 @@ body{
       width  : 100%;
   }
   
-  .btnPicture:hover .ListPicture {
-      display: block;}
+
   
   .buttonPicture{
       background : #F40F46;
@@ -348,13 +356,16 @@ body{
   }
   
   .ListPicture{
-      display : none;
+    display: none;
     position : absolute;
     background-color : white;
     z-index : 1;
     border-radius: 5px;
     margin: 40px;
   }
+
+  .btnPicture:hover .ListPicture {
+    display: block;}
   
   .buttonHome{
       background : white;
@@ -489,7 +500,7 @@ body{
     }
 
     .buttonGoogle{
-        width: 150%;
+        width: 120%;
     }
     
     .buttonRegister{

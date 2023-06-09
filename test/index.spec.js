@@ -1,8 +1,14 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import { RegisterMailAndPassword, createUser } from '../src/lib/index';
 
-describe('myFunction', () => {
+describe('la funcion de registro', () => {
   it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+    expect(typeof RegisterMailAndPassword).toBe('function');
+  });
+});
+
+describe('la funcion de ingreso', () => {
+  it('debería ser una función', () => {
+    expect(typeof createUser).toBe('function');
   });
 });
