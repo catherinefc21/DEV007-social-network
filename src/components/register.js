@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { RegisterMailAndPassword } from '../lib';
 
 export const register = (onNavigate) => {
@@ -73,21 +74,19 @@ export const register = (onNavigate) => {
   bntRegister.setAttribute('class', 'bntRegister');
   buttonHome.setAttribute('class', 'bntbackHome');
 
-
-  bntRegister.addEventListener('click', mostrar);
-
   function mostrar() {
     const nombre = document.getElementById('namE').value;
     const apellido = document.getElementById('lastName').value;
     const email = document.getElementById('Email').value;
     const contraseña = document.getElementById('passWord').value;
-    const age = document.getElementById('age').value;
+    const age1 = document.getElementById('age').value;
     // sin campos vacios.
-    if (nombre === '' || apellido === '' || email === '' || contraseña === '' || age === '') {
+    if (nombre === '' || apellido === '' || email === '' || contraseña === '' || age1 === '') {
       alert('Por favor completa todos los campos'); return;
     }
-    return RegisterMailAndPassword(onNavigate,email,contraseña);
+    RegisterMailAndPassword(onNavigate, email, contraseña);
   }
+  bntRegister.addEventListener('click', mostrar);
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
