@@ -1,15 +1,4 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyBoa8z2MP7Lg5x1byqrGf02Oe_SivMB0Pc',
-  authDomain: 'momconnect3-9d7fd.firebaseapp.com',
-  projectId: 'momconnect3-9d7fd',
-  storageBucket: 'momconnect3-9d7fd.appspot.com',
-  messagingSenderId: '1008948398587',
-  appId: '1:1008948398587:web:584d67080a52f23de5635e',
-  measurementId: 'G-D8XQSGHXPN',
-};
+import { createUser, loginGoogle } from "../lib";
 
 export const home = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -31,6 +20,7 @@ export const home = (onNavigate) => {
   const image4 = document.createElement('img');
   const buttonWelcomeApp = document.createElement('button');
   const buttonRegister = document.createElement('button');
+  const buttonGoogle = document.createElement('button');
 
   // agregar atributos
   homeDiv.setAttribute('class', 'homeDiv');
@@ -63,10 +53,7 @@ export const home = (onNavigate) => {
   buttonWelcomeApp.setAttribute('id', 'buttonWelcomeApp');
   buttonWelcomeApp.setAttribute('class', 'buttonWelcomeApp');
 
-  const userData = document.getElementById('buttonWelcomeApp');
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  buttonWelcomeApp.addEventListener('click', showData);
+  buttonGoogle.setAttribute('id','buttonGoogle');
 
   function showData() {
     const email1 = document.getElementById('email').value;
@@ -75,35 +62,24 @@ export const home = (onNavigate) => {
     if (email1 === '' || contraseña1 === '') {
       alert('Por favor completa todos los campos'); return;
     }
-    console.log(email1);
-    console.log(contraseña1);
-
-    signInWithEmailAndPassword(auth, email1, contraseña1).then(cred => {
-       onNavigate('/welcomeApp');
-     }).catch(error => {
-      const errorCode = error.code;
-    
-      if(errorCode == 'auth/invalid-email')
-          alert('El correo no es valido')& onNavigate('/');
-      else if (errorCode == 'auth/user-disabled')
-          alert('el usuario ha sido deshabilitado')& onNavigate('/');
-      else if (errorCode == 'auth/user-not-found')
-          alert('El usuario no existe')& onNavigate('/');
-      else if (errorCode == 'auth/wrong-password')
-          alert('Contraseña incorrecta')& onNavigate('/');
-     })
+    return createUser(email1, contraseña1,onNavigate);
   }
+
+  buttonWelcomeApp.addEventListener('click', showData)
+  buttonGoogle.addEventListener('click',(e) => {e.preventDefault();
+    loginGoogle(onNavigate)});
 
   // Agregar al div de formulario
   loginDiv.appendChild(email);
   loginDiv.appendChild(password);
   loginDiv.appendChild(buttonWelcomeApp);
   loginDiv.appendChild(buttonRegister);
+  loginDiv.appendChild(buttonGoogle);
 
   buttonWelcomeApp.textContent = 'Inicia sesión';
   buttonRegister.textContent = 'Regístrate';
+  buttonGoogle.textContent = 'Inicia sesión con Google';
 
-  
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
   // Agregar ambos divs al padre
   homeDiv.appendChild(imgDiv);
