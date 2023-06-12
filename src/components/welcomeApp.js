@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable max-len */
 export const welcomeApp = (onNavigate) => {
   // Contenedor General----------------------------------
@@ -59,24 +60,66 @@ export const welcomeApp = (onNavigate) => {
   const divMainImage = document.createElement('div');
   const imgMain = document.createElement('img');
   const divMainPublisher = document.createElement('div');
+  const buttonMainPublisher = document.createElement('div');
   const inputPublisher = document.createElement('textarea');
+  const selectPublisher = document.createElement('select');
+  const optionPublisher0 = document.createElement('option');
+  const optionPublisher1 = document.createElement('option');
+  const optionPublisher2 = document.createElement('option');
+  const optionPublisher3 = document.createElement('option');
+  const optionPublisher4 = document.createElement('option');
   const buttonPublisher = document.createElement('button');
 
   welcomeMain.setAttribute('class', 'welcomeMain');
   divMainImage.setAttribute('class', 'divMainImage');
   divMainPublisher.setAttribute('class', 'divMainPublisher');
   inputPublisher.setAttribute('class', 'inputPublisher');
+  inputPublisher.setAttribute('id', 'inputPublisher');
+  buttonMainPublisher.setAttribute('class', 'buttonMainPublisher');
+  selectPublisher.setAttribute('id', 'select');
+  selectPublisher.setAttribute('class', 'selectPublisher');
+  optionPublisher0.setAttribute('default', '');
+  optionPublisher0.setAttribute('class', 'option0');
+  optionPublisher1.setAttribute('value', 'Lactancia');
+  optionPublisher2.setAttribute('value', 'Primera Comida');
+  optionPublisher3.setAttribute('value', 'Formulas lacteas');
+  optionPublisher4.setAttribute('value', 'Tips generales');
   buttonPublisher.setAttribute('class', 'buttonPublisher');
   imgMain.setAttribute('src', './images/Monita2.png');
   inputPublisher.setAttribute('placeholder', '¿Que quieres compartir?');
   buttonPublisher.setAttribute('id', 'btnpublisher');
   buttonPublisher.textContent = 'Publicar';
+  optionPublisher0.textContent = 'Etiqueta tu post';
+  optionPublisher1.textContent = '#Lactancia';
+  optionPublisher2.textContent = '#PrimeraComida';
+  optionPublisher3.textContent = '#FormulasLacteas';
+  optionPublisher4.textContent = '#TipsGenerales';
+
   // orden de const
   divMainImage.appendChild(imgMain);
   divMainPublisher.appendChild(inputPublisher);
-  divMainPublisher.appendChild(buttonPublisher);
+  divMainPublisher.appendChild(buttonMainPublisher);
+  buttonMainPublisher.appendChild(selectPublisher);
+  selectPublisher.appendChild(optionPublisher0);
+  selectPublisher.appendChild(optionPublisher1);
+  selectPublisher.appendChild(optionPublisher2);
+  selectPublisher.appendChild(optionPublisher3);
+  selectPublisher.appendChild(optionPublisher4);
+  buttonMainPublisher.appendChild(buttonPublisher);
   welcomeMain.appendChild(divMainImage);
   welcomeMain.appendChild(divMainPublisher);
+
+  function publishPost() {
+    const textPost = document.getElementById('inputPublisher').value;
+    const selectT = document.getElementById('select').value;
+
+    console.log(textPost, selectT);
+    // sin campos vacios.
+    if (textPost === '' || selectT === '') {
+      alert('Por favor completa todos los campos');
+    }
+  }
+  buttonPublisher.addEventListener('click', publishPost);
 
   /* esto tambien hay que hacerlo con la parte de buttontips, buttonProfile EN EL FUTURO */
   buttonHome.addEventListener('click', () => onNavigate('/'));

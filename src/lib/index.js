@@ -26,7 +26,7 @@ export const RegisterMailAndPassword = (onNavigate, email, contraseña) => {
   });
 };
 
-export const createUser = (email, contraseña, onNavigate) => {
+export const loginUser = (email, contraseña, onNavigate) => {
   signInWithEmailAndPassword(auth, email, contraseña).then(() => {
     onNavigate('/welcomeApp');
   }).catch((error) => {
