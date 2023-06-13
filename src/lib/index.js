@@ -5,7 +5,8 @@
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
 } from 'firebase/auth';
-import { auth, provider } from '../firebase/firebaseConfig';
+import { auth, db, provider } from '../firebase/firebaseConfig';
+import { addDoc, collection } from 'firebase/firestore';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña) => {
   createUserWithEmailAndPassword(auth, email, contraseña).then(() => {
@@ -59,3 +60,9 @@ export const loginGoogle = (onNavigate) => {
     // ...
     });
 };
+
+export const createPost = (texto, etiqueta) => {
+  addDoc(collection(db, "publicaciones"), {
+    contenido: texto, etiqueta
+  })
+}

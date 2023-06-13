@@ -1,4 +1,7 @@
 /* eslint-disable no-alert */
+
+import { createPost } from "../lib";
+
 /* eslint-disable max-len */
 export const welcomeApp = (onNavigate) => {
   // Contenedor General----------------------------------
@@ -118,8 +121,10 @@ export const welcomeApp = (onNavigate) => {
     if (textPost === '' || selectT === '') {
       alert('Por favor completa todos los campos');
     }
+    createPost(textPost,selectT)
   }
   buttonPublisher.addEventListener('click', publishPost);
+  buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp') ); 
 
   /* esto tambien hay que hacerlo con la parte de buttontips, buttonProfile EN EL FUTURO */
   buttonHome.addEventListener('click', () => onNavigate('/'));
