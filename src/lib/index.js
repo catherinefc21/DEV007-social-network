@@ -5,8 +5,8 @@
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
 } from 'firebase/auth';
-import { auth, db, provider } from '../firebase/firebaseConfig';
 import { addDoc, collection } from 'firebase/firestore';
+import { auth, db, provider } from '../firebase/firebaseConfig';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña) => {
   createUserWithEmailAndPassword(auth, email, contraseña).then(() => {
@@ -61,8 +61,17 @@ export const loginGoogle = (onNavigate) => {
     });
 };
 
-export const createPost = (texto, etiqueta) => {
-  addDoc(collection(db, "publicaciones"), {
-    contenido: texto, etiqueta
-  })
-}
+export const createPost = (email, texto, etiqueta) => {
+  addDoc(collection(db, 'posts'), {
+    Contenido: texto,
+    Etiqueta: etiqueta,
+    Email: email,
+  });
+};
+
+export const SaveNameandEmail = (name, email) => {
+  addDoc(collection(db, 'Registers'), {
+    contenido: name,
+    Email: email,
+  });
+};

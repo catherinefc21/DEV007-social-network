@@ -1,6 +1,8 @@
 /* eslint-disable no-alert */
 
-import { createPost } from "../lib";
+import { collection, onSnapshot } from 'firebase/firestore';
+import { createPost } from '../lib';
+import { auth, db } from '../firebase/firebaseConfig';
 
 /* eslint-disable max-len */
 export const welcomeApp = (onNavigate) => {
@@ -48,15 +50,7 @@ export const welcomeApp = (onNavigate) => {
   welcomeNav.appendChild(buttonTips);
   welcomeNav.appendChild(btnPicture);
 
-  /* esto es un "HOVER"
-  btnPicture.addEventListener('mouseover', function() {
-    ListPicture.style.display = 'block'; // Muestra el elemento ListPicture
-  });
-
-  btnPicture.addEventListener('mouseout', function() {
-    ListPicture.style.display = 'none'; // Oculta el elemento ListPicture
-  }); */
-
+ 
   /* -------------------MAIN (monita+escribe tu comentario)-------------------------------------------- */
 
   const welcomeMain = document.createElement('main');
@@ -83,10 +77,10 @@ export const welcomeApp = (onNavigate) => {
   selectPublisher.setAttribute('class', 'selectPublisher');
   optionPublisher0.setAttribute('default', '');
   optionPublisher0.setAttribute('class', 'option0');
-  optionPublisher1.setAttribute('value', 'Lactancia');
-  optionPublisher2.setAttribute('value', 'Primera Comida');
-  optionPublisher3.setAttribute('value', 'Formulas lacteas');
-  optionPublisher4.setAttribute('value', 'Tips generales');
+  optionPublisher1.setAttribute('value', '#Lactancia');
+  optionPublisher2.setAttribute('value', '#PrimeraComida');
+  optionPublisher3.setAttribute('value', '#Formulaslacteas');
+  optionPublisher4.setAttribute('value', '#TipsGenerales');
   buttonPublisher.setAttribute('class', 'buttonPublisher');
   imgMain.setAttribute('src', './images/Monita2.png');
   inputPublisher.setAttribute('placeholder', '¿Que quieres compartir?');
@@ -115,29 +109,94 @@ export const welcomeApp = (onNavigate) => {
   function publishPost() {
     const textPost = document.getElementById('inputPublisher').value;
     const selectT = document.getElementById('select').value;
+    let nameEmail = '';
+
+    if (auth.currentUser.displayName === 'null') { nameEmail = auth.currentUser.email; } else { nameEmail = auth.currentUser.displayName; }
 
     console.log(textPost, selectT);
     // sin campos vacios.
     if (textPost === '' || selectT === '') {
       alert('Por favor completa todos los campos');
     }
-    createPost(textPost,selectT)
+    console.log(auth.currentUser);
+
+    createPost(nameEmail, textPost, selectT);
   }
+
   buttonPublisher.addEventListener('click', publishPost);
-  buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp') ); 
+  buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
+
+  /* const Publicaciones = collection(db,'publicaciones');
+  console.log(Publicaciones); */
 
   /* esto tambien hay que hacerlo con la parte de buttontips, buttonProfile EN EL FUTURO */
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
   // ---------------------ARTICLE (Publicaciones de mamis "muro")--------------------------
-  const homeArt = document.createElement('article');
-  homeArt.textContent = 'aqui van los estados de las mamis (muro)';
+
+  const timeline = document.createElement('div');
+  timeline.setAttribute('class', 'timeline');
+
+  const post = document.createElement('div');
+  post.setAttribute('class', 'post');
+  const savePostsArray = [];
+
+  onSnapshot(collection(db, 'posts'), (querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const savePost = doc.data();
+      console.log(savePost);
+      savePostsArray.push(savePost); // Agrega el objeto al array
+      console.log(savePost);
+    });
+    // Limpiar el contenido anterior de la variable post
+    post.innerHTML = '';
+
+    // Recorrer el array y crear elementos adicionales para cada objeto
+    savePostsArray.forEach((savePost) => {
+      const containerPost = document.createElement('div');
+      const postEmail = document.createElement('div');
+      const postText = document.createElement('div');
+      const postLabel = document.createElement('div');
+      const like = document.createElement('button');
+
+      postEmail.setAttribute('class', 'postEmail');
+      postText.setAttribute('class', 'postText');
+      postLabel.setAttribute('class', 'postLabel');
+      like.setAttribute('class', 'like');
+      containerPost.setAttribute('class', 'containerPost');
+
+  /*like.addEventListener('click', function () {
+    like.style.backgroundImage = url("images/corazon2.png")
+  });
+btnPicture.addEventListener('mouseout', function() {
+    ListPicture.style.display = 'none'; // Oculta el elemento ListPicture
+  }); */
+
+
+      // Configurar el contenido del elemento postItem según los datos del objeto savePost
+      postEmail.textContent = savePost.Email;
+      postText.textContent = savePost.Contenido;
+      postLabel.textContent = savePost.Etiqueta;
+      like.textContent = '';
+
+      containerPost.appendChild(postEmail);
+      containerPost.appendChild(postText);
+      containerPost.appendChild(postLabel);
+      containerPost.appendChild(like);
+      post.appendChild(containerPost);
+    });
+  });
 
   // Todo en orden a welcomeAppDiv
 
+  timeline.appendChild(post);
+  const welcomeArt = document.createElement('div');
+  welcomeArt.setAttribute('class','welcomeArt');
+
+  welcomeArt.appendChild(timeline);
   welcomeAppDiv.appendChild(welcomeNav);
   welcomeAppDiv.appendChild(welcomeMain);
-  welcomeAppDiv.appendChild(homeArt);
+  welcomeAppDiv.appendChild(welcomeArt);
 
   /* finalmente return el div que contiene todo con los divs que le agregamos (nav/main/art) */
   return welcomeAppDiv;

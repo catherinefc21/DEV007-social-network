@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { RegisterMailAndPassword } from '../lib';
+import { RegisterMailAndPassword, SaveNameandEmail } from '../lib';
 
 export const register = (onNavigate) => {
   const regisDiv = document.createElement('div');
@@ -85,6 +85,8 @@ export const register = (onNavigate) => {
       alert('Por favor completa todos los campos'); return;
     }
     RegisterMailAndPassword(onNavigate, email, contraseña);
+
+    SaveNameandEmail(nombre, email);
   }
   bntRegister.addEventListener('click', mostrar);
 
