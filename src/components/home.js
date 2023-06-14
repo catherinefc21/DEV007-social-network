@@ -74,8 +74,6 @@ export const home = (onNavigate) => {
   buttonGoogle.addEventListener('click', () => {
     loginGoogle(onNavigate);
   });
-
-  buttonGoogle.addEventListener('click', loginGoogle());
   // Agregar al div de formulario
 
   loginDiv.appendChild(email);
