@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { createUser, loginGoogle } from '../lib';
+import { loginUser, loginGoogle } from '../lib';
 
 export const home = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -67,7 +67,7 @@ export const home = (onNavigate) => {
     if (email1 === '' || contraseña1 === '') {
       alert('Por favor completa todos los campos'); return;
     }
-    createUser(email1, contraseña1, onNavigate);
+    loginUser(email1, contraseña1, onNavigate);
   }
 
   buttonWelcomeApp.addEventListener('click', showData);

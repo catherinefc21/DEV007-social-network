@@ -5,7 +5,8 @@
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
 } from 'firebase/auth';
-import { auth, provider } from '../firebase/firebaseConfig';
+import { addDoc, collection } from 'firebase/firestore';
+import { auth, db, provider } from '../firebase/firebaseConfig';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña) => {
   createUserWithEmailAndPassword(auth, email, contraseña).then(() => {
@@ -26,7 +27,7 @@ export const RegisterMailAndPassword = (onNavigate, email, contraseña) => {
   });
 };
 
-export const createUser = (email, contraseña, onNavigate) => {
+export const loginUser = (email, contraseña, onNavigate) => {
   signInWithEmailAndPassword(auth, email, contraseña).then(() => {
     onNavigate('/welcomeApp');
   }).catch((error) => {
@@ -58,4 +59,19 @@ export const loginGoogle = (onNavigate) => {
       const credential = GoogleAuthProvider.credentialFromError(error);
     // ...
     });
+};
+
+export const createPost = (email, texto, etiqueta) => {
+  addDoc(collection(db, 'posts'), {
+    Contenido: texto,
+    Etiqueta: etiqueta,
+    Email: email,
+  });
+};
+
+export const SaveNameandEmail = (name, email) => {
+  addDoc(collection(db, 'Registers'), {
+    contenido: name,
+    Email: email,
+  });
 };
