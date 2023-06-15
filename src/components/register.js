@@ -86,8 +86,6 @@ export const register = (onNavigate) => {
     }
 
     RegisterMailAndPassword(onNavigate, email, contraseña, nombre, apellido);
-
-    /* SaveNameandEmail(nombre, email); */
   }
   bntRegister.addEventListener('click', mostrar);
 

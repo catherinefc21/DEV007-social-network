@@ -74,15 +74,3 @@ export const createPost = (email, texto, etiqueta) => {
     Email: email,
   });
 };
-
-export const SaveNameandEmail = (name, email) => {
-  addDoc(collection(db, 'Registers'), {
-    contenido: name,
-    Email: email,
-  });
-};
-/* export const SaveNameRegister = (nombre) => {
-  updateProfile(auth.currentUser, {
-    displayName: nombre,
-  });
-}; */
