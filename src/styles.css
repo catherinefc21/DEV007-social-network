@@ -505,11 +505,11 @@ body{
   }
 
   .post{
+    width: 100%;
     margin: 20px;
     gap: 20px;
     display: flex;
     flex-direction: column;
-    width: 100%;
 
   }
 
@@ -689,8 +689,8 @@ margin-bottom: 15px;
             display: flex;
             justify-content: flex-end;
         }
-        .post {
-          width: 85%;
+        .post{
+          width: 90%;
         }
 
         .welcomeArt{
