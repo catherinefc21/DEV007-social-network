@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 
-import { collection, onSnapshot } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { createPost } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
 
@@ -138,13 +138,22 @@ export const welcomeApp = (onNavigate) => {
   post.setAttribute('class', 'post');
   const savePostsArray = [];
   /* onSnapshot(query(collection(db, 'posts'), orderBy('contenido', 'desc'), limit(7)), (querySnapshot) => { */
-  onSnapshot(collection(db, 'posts'), (querySnapshot) => {
+  const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'));
+  onSnapshot(q, (querySnapshot) => {
     querySnapshot.forEach((doc) => {
       const savePost = doc.data();
       console.log(savePost);
       savePostsArray.push(savePost); // Agrega el objeto al array
       console.log(savePost);
     });
+
+    /* onSnapshot(collection(db, 'posts'), orderBy('fecha', 'desc'), (querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const savePost = doc.data();
+      console.log(savePost);
+      savePostsArray.push(savePost); // Agrega el objeto al array
+      console.log(savePost);
+    }); */
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
 
