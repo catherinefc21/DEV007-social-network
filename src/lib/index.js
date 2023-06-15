@@ -6,7 +6,7 @@
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
@@ -72,5 +72,6 @@ export const createPost = (email, texto, etiqueta) => {
     Contenido: texto,
     Etiqueta: etiqueta,
     Email: email,
+    fecha: serverTimestamp()
   });
 };
