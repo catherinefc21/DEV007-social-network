@@ -50,7 +50,6 @@ export const welcomeApp = (onNavigate) => {
   welcomeNav.appendChild(buttonTips);
   welcomeNav.appendChild(btnPicture);
 
- 
   /* -------------------MAIN (monita+escribe tu comentario)-------------------------------------------- */
 
   const welcomeMain = document.createElement('main');
@@ -109,14 +108,12 @@ export const welcomeApp = (onNavigate) => {
   function publishPost() {
     const textPost = document.getElementById('inputPublisher').value;
     const selectT = document.getElementById('select').value;
-    let nameEmail = '';
-
-    if (auth.currentUser.displayName === 'null') { nameEmail = auth.currentUser.email; } else { nameEmail = auth.currentUser.displayName; }
+    const nameEmail = auth.currentUser.displayName;
 
     console.log(textPost, selectT);
     // sin campos vacios.
-    if (textPost === '' || selectT === '') {
-      alert('Por favor completa todos los campos');
+    if (textPost === '' || selectT === 'Etiqueta tu post') {
+      alert('Por favor completa todos los campos'); return;
     }
     console.log(auth.currentUser);
 
@@ -140,7 +137,7 @@ export const welcomeApp = (onNavigate) => {
   const post = document.createElement('div');
   post.setAttribute('class', 'post');
   const savePostsArray = [];
-
+  /* onSnapshot(query(collection(db, 'posts'), orderBy('contenido', 'desc'), limit(7)), (querySnapshot) => { */
   onSnapshot(collection(db, 'posts'), (querySnapshot) => {
     querySnapshot.forEach((doc) => {
       const savePost = doc.data();
@@ -165,13 +162,12 @@ export const welcomeApp = (onNavigate) => {
       like.setAttribute('class', 'like');
       containerPost.setAttribute('class', 'containerPost');
 
-  /*like.addEventListener('click', function () {
+      /* like.addEventListener('click', function () {
     like.style.backgroundImage = url("images/corazon2.png")
   });
 btnPicture.addEventListener('mouseout', function() {
     ListPicture.style.display = 'none'; // Oculta el elemento ListPicture
   }); */
-
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
       postEmail.textContent = savePost.Email;
@@ -191,7 +187,7 @@ btnPicture.addEventListener('mouseout', function() {
 
   timeline.appendChild(post);
   const welcomeArt = document.createElement('div');
-  welcomeArt.setAttribute('class','welcomeArt');
+  welcomeArt.setAttribute('class', 'welcomeArt');
 
   welcomeArt.appendChild(timeline);
   welcomeAppDiv.appendChild(welcomeNav);
