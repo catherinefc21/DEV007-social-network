@@ -50,7 +50,6 @@ export const welcomeApp = (onNavigate) => {
   welcomeNav.appendChild(buttonTips);
   welcomeNav.appendChild(btnPicture);
 
- 
   /* -------------------MAIN (monita+escribe tu comentario)-------------------------------------------- */
 
   const welcomeMain = document.createElement('main');
@@ -165,13 +164,12 @@ export const welcomeApp = (onNavigate) => {
       like.setAttribute('class', 'like');
       containerPost.setAttribute('class', 'containerPost');
 
-  /*like.addEventListener('click', function () {
+      /* like.addEventListener('click', function () {
     like.style.backgroundImage = url("images/corazon2.png")
   });
 btnPicture.addEventListener('mouseout', function() {
     ListPicture.style.display = 'none'; // Oculta el elemento ListPicture
   }); */
-
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
       postEmail.textContent = savePost.Email;
@@ -191,7 +189,7 @@ btnPicture.addEventListener('mouseout', function() {
 
   timeline.appendChild(post);
   const welcomeArt = document.createElement('div');
-  welcomeArt.setAttribute('class','welcomeArt');
+  welcomeArt.setAttribute('class', 'welcomeArt');
 
   welcomeArt.appendChild(timeline);
   welcomeAppDiv.appendChild(welcomeNav);
