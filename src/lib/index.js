@@ -1,30 +1,36 @@
+/* eslint-disable max-len */
 /* eslint-disable no-alert */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-bitwise */
 /* eslint-disable no-unused-expressions */
 import {
-  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
 import { addDoc, collection } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
 
-export const RegisterMailAndPassword = (onNavigate, email, contraseña) => {
-  createUserWithEmailAndPassword(auth, email, contraseña).then(() => {
-    onNavigate('/');
-  }).catch((error) => {
-    const errorCode = error.code;
+export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
+  createUserWithEmailAndPassword(auth, email, contraseña)
+    .then(() => updateProfile(auth.currentUser, {
+      displayName: `${nombre1} ${apellido}`,
+    }))
+    .then(() => {
+      onNavigate('/');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
 
-    if (errorCode === 'auth/email-already-in-use') {
-      alert('El correo ya está en uso')
-  & onNavigate('/register');
-    } else if (errorCode === 'auth/invalid-email') {
-      alert('el correo no es válido')
-  & onNavigate('/register');
-    } else if (errorCode === 'auth/weak-password') {
-      alert('la contraseña debe tener al menos 6 caracteres')
-  & onNavigate('/register');
-    }
-  });
+      if (errorCode === 'auth/email-already-in-use') {
+        alert('El correo ya está en uso');
+        onNavigate('/register');
+      } else if (errorCode === 'auth/invalid-email') {
+        alert('El correo no es válido');
+        onNavigate('/register');
+      } else if (errorCode === 'auth/weak-password') {
+        alert('La contraseña debe tener al menos 6 caracteres');
+        onNavigate('/register');
+      }
+    });
 };
 
 export const loginUser = (email, contraseña, onNavigate) => {
@@ -75,3 +81,8 @@ export const SaveNameandEmail = (name, email) => {
     Email: email,
   });
 };
+/* export const SaveNameRegister = (nombre) => {
+  updateProfile(auth.currentUser, {
+    displayName: nombre,
+  });
+}; */
