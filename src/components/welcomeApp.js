@@ -1,6 +1,6 @@
 /* eslint-disable no-alert */
 
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query} from 'firebase/firestore';
 import { createPost } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
 
@@ -136,25 +136,17 @@ export const welcomeApp = (onNavigate) => {
 
   const post = document.createElement('div');
   post.setAttribute('class', 'post');
-  const savePostsArray = [];
+
   /* onSnapshot(query(collection(db, 'posts'), orderBy('contenido', 'desc'), limit(7)), (querySnapshot) => { */
   const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'));
   onSnapshot(q, (querySnapshot) => {
+    const savePostsArray = [];
     querySnapshot.forEach((doc) => {
       const savePost = doc.data();
       console.log(savePost);
       savePostsArray.push(savePost); // Agrega el objeto al array
       console.log(savePost);
     });
-
-    /* onSnapshot(collection(db, 'posts'), orderBy('fecha', 'desc'), (querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      const savePost = doc.data();
-      console.log(savePost);
-      savePostsArray.push(savePost); // Agrega el objeto al array
-      console.log(savePost);
-    }); */
-    // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
 
     // Recorrer el array y crear elementos adicionales para cada objeto
@@ -170,13 +162,6 @@ export const welcomeApp = (onNavigate) => {
       postLabel.setAttribute('class', 'postLabel');
       like.setAttribute('class', 'like');
       containerPost.setAttribute('class', 'containerPost');
-
-      /* like.addEventListener('click', function () {
-    like.style.backgroundImage = url("images/corazon2.png")
-  });
-btnPicture.addEventListener('mouseout', function() {
-    ListPicture.style.display = 'none'; // Oculta el elemento ListPicture
-  }); */
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
       postEmail.textContent = savePost.Email;
