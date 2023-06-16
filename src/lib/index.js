@@ -72,6 +72,6 @@ export const createPost = (email, texto, etiqueta) => {
     Contenido: texto,
     Etiqueta: etiqueta,
     Email: email,
-    fecha: serverTimestamp()
+    fecha: serverTimestamp(),
   });
 };

@@ -10,6 +10,7 @@ body{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: right-bottom;
+    margin: 0;
 }
 .homeDiv{
     display: flex;
@@ -549,7 +550,67 @@ margin-bottom: 15px;
   .postText{
     padding-left: 20px;
   }
-  
+  .btnPostConfig{
+    background : #ffffff;
+  background-image : url("images/editar.png");
+  background-size : 70%;
+  background-position : 7px 5px;
+  background-repeat : no-repeat;
+  width : 40px;
+  height : 40px;
+  border-radius : 50px;
+  display : flex;
+  justify-content : center;
+  border : none;
+  cursor: pointer;
+}
+
+.listPostConfig{
+  display: none;
+  position : absolute;
+  background-color : white;
+  z-index : 1;
+  border-radius: 5px;
+  margin: 40px;
+}
+
+.postConfig{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+.postConfig:hover .listPostConfig {
+  display: block;}
+
+.btnConfigEdit{
+    background : white;
+  border: none;
+  color : #F40F46;
+  width : 60px;
+  height : 40px;
+  border-radius: 5px;
+  text-decoration : none;
+  display : block;
+  cursor: pointer;
+}
+
+.btnConfigDelete{
+  background : white;
+  color : #F40F46;
+  border: none;
+  text-decoration : none;
+  display : block;
+  width : 60px;
+  height : 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btnConfigDelete:hover {background-color: #FFD7C8}
+.btnConfigEdit:hover {background-color: #FFD7C8}
+.postConfig:hover .btnPostConfig {
+    background-color: #FF946B;
+  }
 
   @media only screen and (min-width: 768px) {
     /* For desktop: */
