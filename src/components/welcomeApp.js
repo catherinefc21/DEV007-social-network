@@ -118,6 +118,7 @@ export const welcomeApp = (onNavigate) => {
     console.log(auth.currentUser);
 
     createPost(nameEmail, textPost, selectT);
+  
   }
 
  

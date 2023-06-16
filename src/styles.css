@@ -580,6 +580,8 @@ margin-top: -20px;
   display: flex;
   justify-content: flex-end;
   margin-right: 10px;
+  width: 15%;
+  margin-left: 83%;
 }
 .postConfig:hover .listPostConfig {
   display: block;}
