@@ -516,18 +516,19 @@ body{
 
   .containerPost{
     min-height: 87px ;
-    padding: 10px 10px 0px 15px;
+    padding: 10px 10px 0px 30px;
     background-color: #FFFFFF;
     border-radius: 20px;
   }
   .postEmail{
     font-weight: 600;
 margin-bottom: 15px;
+margin-top: -20px;
   }
 
   .like{
-    margin-top: 5px;
-    margin-left: 90% ;
+    margin-top: -15px;
+    margin-left: 92% ;
     width: 40px;
     height: 40px;
     background-color: #FFFF;
@@ -550,6 +551,8 @@ margin-bottom: 15px;
   .postText{
     padding-left: 20px;
   }
+
+  /* ----- botones editar y borrar --- */
   .btnPostConfig{
     background : #ffffff;
   background-image : url("images/editar.png");
@@ -611,6 +614,8 @@ margin-bottom: 15px;
 .postConfig:hover .btnPostConfig {
     background-color: #FF946B;
   }
+
+  
 
   @media only screen and (min-width: 768px) {
     /* For desktop: */
