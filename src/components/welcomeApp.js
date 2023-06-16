@@ -119,7 +119,8 @@ export const welcomeApp = (onNavigate) => {
 
     createPost(nameEmail, textPost, selectT);
   }
-  
+
+ 
   /* const Publicaciones = collection(db,'publicaciones');
   console.log(Publicaciones); */
 
@@ -143,7 +144,6 @@ export const welcomeApp = (onNavigate) => {
       savePostsArray.push(savePost); // Agrega el objeto al array
       console.log(savePost);
     });
-
     buttonPublisher.addEventListener('click', publishPost);
     buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
 
@@ -164,11 +164,21 @@ export const welcomeApp = (onNavigate) => {
       const postText = document.createElement('div');
       const postLabel = document.createElement('div');
       const like = document.createElement('button');
+      const postConfig = document.createElement('div');
+      const btnPostConfig = document.createElement('button');
+      const listPostConfig = document.createElement('div');
+      const btnConfigEdit = document.createElement('button');
+      const btnConfigDelete = document.createElement('button');
 
       postEmail.setAttribute('class', 'postEmail');
       postText.setAttribute('class', 'postText');
       postLabel.setAttribute('class', 'postLabel');
       like.setAttribute('class', 'like');
+      postConfig.setAttribute('class', 'postConfig');
+      btnPostConfig.setAttribute('class', 'btnPostConfig');
+      listPostConfig.setAttribute('class', 'listPostConfig');
+      btnConfigEdit.setAttribute('class', 'btnConfigEdit');
+      btnConfigDelete.setAttribute('class', 'btnConfigDelete');
       containerPost.setAttribute('class', 'containerPost');
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
@@ -176,7 +186,14 @@ export const welcomeApp = (onNavigate) => {
       postText.textContent = savePost.Contenido;
       postLabel.textContent = savePost.Etiqueta;
       like.textContent = '';
+      btnConfigDelete.textContent = 'Borrar';
+      btnConfigEdit.textContent = 'Editar';
 
+      postConfig.appendChild(btnPostConfig);
+      btnPostConfig.appendChild(listPostConfig);
+      listPostConfig.appendChild(btnConfigEdit);
+      listPostConfig.appendChild(btnConfigDelete);
+      containerPost.appendChild(postConfig);
       containerPost.appendChild(postEmail);
       containerPost.appendChild(postText);
       containerPost.appendChild(postLabel);
