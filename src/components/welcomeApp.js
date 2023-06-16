@@ -164,26 +164,36 @@ export const welcomeApp = (onNavigate) => {
       const postText = document.createElement('div');
       const postLabel = document.createElement('div');
       const like = document.createElement('button');
+      const postConfig = document.createElement('div');
+      const btnPostConfig = document.createElement('button');
+      const listPostConfig = document.createElement('div');
+      const btnConfigEdit = document.createElement('button');
+      const btnConfigDelete = document.createElement('button');
 
       postEmail.setAttribute('class', 'postEmail');
       postText.setAttribute('class', 'postText');
       postLabel.setAttribute('class', 'postLabel');
       like.setAttribute('class', 'like');
+      postConfig.setAttribute('class', 'postConfig');
+      btnPostConfig.setAttribute('class', 'btnPostConfig');
+      listPostConfig.setAttribute('class', 'listPostConfig');
+      btnConfigEdit.setAttribute('class', 'btnConfigEdit');
+      btnConfigDelete.setAttribute('class', 'btnConfigDelete');
       containerPost.setAttribute('class', 'containerPost');
-
-      /* like.addEventListener('click', function () {
-    like.style.backgroundImage = url("images/corazon2.png")
-  });
-btnPicture.addEventListener('mouseout', function() {
-    ListPicture.style.display = 'none'; // Oculta el elemento ListPicture
-  }); */
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
       postEmail.textContent = savePost.Email;
       postText.textContent = savePost.Contenido;
       postLabel.textContent = savePost.Etiqueta;
       like.textContent = '';
+      btnConfigDelete.textContent = 'Borrar';
+      btnConfigEdit.textContent = 'Editar';
 
+      postConfig.appendChild(btnPostConfig);
+      btnPostConfig.appendChild(listPostConfig);
+      listPostConfig.appendChild(btnConfigEdit);
+      listPostConfig.appendChild(btnConfigDelete);
+      containerPost.appendChild(postConfig);
       containerPost.appendChild(postEmail);
       containerPost.appendChild(postText);
       containerPost.appendChild(postLabel);
