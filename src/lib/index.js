@@ -1,9 +1,10 @@
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
-import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc} from 'firebase/firestore';
+import {
+  addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc,
+} from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
-import { async } from 'regenerator-runtime';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
@@ -63,7 +64,6 @@ export const loginGoogle = (onNavigate) => {
     });
 };
 
-
 export const createPost = async (email, texto, etiqueta) => {
   try {
     const docRef = await addDoc(collection(db, 'posts'), {
@@ -76,19 +76,18 @@ export const createPost = async (email, texto, etiqueta) => {
   } catch (error) {
     console.error('Error adding document: ', error);
   }
- };
+};
 
 export const deletePost = async (id) => {
-    const opcion = confirm("Estas seguro de borrar el post");
-    if (opcion == true) {
-      await deleteDoc(doc(db, 'posts', id));
-	} else {
+  const opcion = confirm('¿Estás segura de borrar el post?');
+  if (opcion == true) {
+    await deleteDoc(doc(db, 'posts', id));
+  } else {
     onNavigate('/welcomeApp');
-	}
-}
+  }
+};
 
-
-export const addLikeToDocument = async (documentId, userId,btn) => {
+export const addLikeToDocument = async (documentId, userId, btn) => {
   const documentRef = doc(db, 'coleccionLikes', documentId);
   const likesCollectionRef = collection(documentRef, 'likes');
 
@@ -108,6 +107,7 @@ export const addLikeToDocument = async (documentId, userId,btn) => {
   // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
   btn.style.backgroundImage = 'url("images/corazon2.png")';
 };
+// Editar posts
 export const editPost = async (id1, newText, newTag) => {
   const editPostRef = doc(db, 'posts', id1);
   await updateDoc(editPostRef, {
