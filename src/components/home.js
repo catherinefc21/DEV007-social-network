@@ -87,7 +87,7 @@ export const home = (onNavigate) => {
   divO.textContent = 'O';
   buttonWelcomeApp.textContent = 'Inicia sesión';
   buttonRegister.textContent = '¿Aun no tienes una cuenta? Regístrate';
-  buttonGoogle.textContent = 'Inicia sesión con Google';
+  buttonGoogle.textContent = 'Acceder con Google';
 
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
   // Agregar ambos divs al padre
