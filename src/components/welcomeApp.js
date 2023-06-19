@@ -1,11 +1,7 @@
-/* eslint-disable no-alert */
-
-
 import { collection, onSnapshot, orderBy, query, limit } from 'firebase/firestore';
-import { createPost, deletePost, addLikeToDocument } from '../lib'
+import { createPost, deletePost, addLikeToDocument, editPost  } from '../lib'
 import { auth, db } from '../firebase/firebaseConfig';
 
-/* eslint-disable max-len */
 export const welcomeApp = (onNavigate) => {
   // Contenedor General----------------------------------
   const welcomeAppDiv = document.createElement('div');
@@ -117,9 +113,7 @@ export const welcomeApp = (onNavigate) => {
       alert('Por favor completa todos los campos'); return;
     }
     console.log(auth.currentUser);
-
     createPost(nameEmail, textPost, selectT);
-  
   }
 
   /* const Publicaciones = collection(db,'publicaciones');
@@ -143,7 +137,7 @@ export const welcomeApp = (onNavigate) => {
     querySnapshot.forEach((doc) => {
       const savePost = doc.data();
       savePost.id = doc.id;
-      //console.log(savePost);
+
       savePostsArray.push(savePost); // Agrega el objeto al array
       //console.log(savePost);
     });
@@ -225,6 +219,92 @@ export const welcomeApp = (onNavigate) => {
       containerPost.appendChild(containerLike);
       post.appendChild(containerPost);
 
+      btnConfigEdit.addEventListener('click', () => {
+        // Obtener el ID del post y los datos del post
+        const postId = savePost.id;
+
+        // Crear un elemento de div para el pop-up
+        const popupContainer = document.createElement('div');
+        popupContainer.setAttribute('class', 'popup-container');
+
+        // Crear los elementos del pop-up
+        const popupContent = document.createElement('div');
+        popupContent.setAttribute('class', 'popup-content');
+        const closeButton = document.createElement('span');
+        closeButton.setAttribute('class', 'close-button');
+        closeButton.innerHTML = '&times;';
+        const inputEdit = document.createElement('textarea');
+        const selectEdit = document.createElement('select');
+        const optionEdit0 = document.createElement('option');
+        const optionEdit1 = document.createElement('option');
+        const optionEdit2 = document.createElement('option');
+        const optionEdit3 = document.createElement('option');
+        const optionEdit4 = document.createElement('option');
+        const buttonSaveChanges = document.createElement('button');
+
+        inputEdit.setAttribute('class', 'inputPublisher');
+        inputEdit.setAttribute('id', 'inputEdit');
+        selectEdit.setAttribute('id', 'selectEdit');
+        selectEdit.setAttribute('class', 'selectPublisher');
+        optionEdit0.setAttribute('class', 'option0');
+        optionEdit1.setAttribute('value', '#Lactancia');
+        optionEdit2.setAttribute('value', '#PrimeraComida');
+        optionEdit3.setAttribute('value', '#Formulaslacteas');
+        optionEdit4.setAttribute('value', '#TipsGenerales');
+        buttonSaveChanges.setAttribute('class', 'buttonPublisher');
+        buttonSaveChanges.setAttribute('id', 'buttonSaveChanges');
+        buttonSaveChanges.textContent = 'Guardar';
+        optionEdit0.textContent = 'Etiqueta tu post';
+        optionEdit1.textContent = '#Lactancia';
+        optionEdit2.textContent = '#PrimeraComida';
+        optionEdit3.textContent = '#FormulasLacteas';
+        optionEdit4.textContent = '#TipsGenerales';
+        inputEdit.textContent = savePost.Contenido;
+        selectEdit.textContent = savePost.Etiqueta;
+
+        // Agregar los elementos al pop-up
+        popupContainer.appendChild(popupContent);
+        popupContent.appendChild(inputEdit);
+        popupContent.appendChild(selectEdit);
+        selectEdit.appendChild(optionEdit0);
+        selectEdit.appendChild(optionEdit1);
+        selectEdit.appendChild(optionEdit2);
+        selectEdit.appendChild(optionEdit3);
+        selectEdit.appendChild(optionEdit4);
+        popupContent.appendChild(buttonSaveChanges);
+        popupContent.appendChild(closeButton);
+
+        // Agregar el pop-up al documento
+        document.body.appendChild(popupContainer);
+
+        // Función para cerrar el pop-up
+        const closePopup = () => {
+          document.body.removeChild(popupContainer);
+        };
+
+        // Función para guardar los cambios del pop-up
+        const saveChanges = () => {
+          const editedText = document.getElementById('inputEdit').value;
+          const editedTag = document.getElementById('selectEdit').value;
+          if (editedText === '' || editedTag === 'Etiqueta tu post') {
+            alert('Completa todos los campos');
+            return;
+          }
+          editPost(postId, editedText, editedTag)
+            .then(() => {
+              alert('Los cambios se han guardado correctamente');
+              closePopup();
+            })
+            .catch((error) => {
+              console.error('Error al editar el post:', error);
+              alert('Ha ocurrido un error al guardar los cambios');
+            });
+        };
+
+        // Agregar eventos al pop-up
+        closeButton.addEventListener('click', closePopup);
+        buttonSaveChanges.addEventListener('click', saveChanges);
+      });
     });
   });
 
