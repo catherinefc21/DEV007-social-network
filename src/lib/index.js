@@ -8,6 +8,7 @@ import {
 } from 'firebase/auth';
 import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp, setDoc } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
+import { async } from 'regenerator-runtime';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
@@ -67,14 +68,30 @@ export const loginGoogle = (onNavigate) => {
     });
 };
 
-export const createPost = (email, texto, etiqueta) => {
-  addDoc(collection(db, 'posts'), {
-    Contenido: texto,
-    Etiqueta: etiqueta,
-    Email: email,
-    fecha: serverTimestamp(),
-  });
-};
+
+export const createPost = async (email, texto, etiqueta) => {
+  try {
+    const docRef = await addDoc(collection(db, 'posts'), {
+      Contenido: texto,
+      Etiqueta: etiqueta,
+      Email: email,
+      fecha: serverTimestamp()
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+ };
+
+export const deletePost = async (id) => {
+    const opcion = confirm("Estas seguro de borrar el post");
+    if (opcion == true) {
+      await deleteDoc(doc(db, 'posts', id));
+	} else {
+    onNavigate('/welcomeApp');
+	}
+}
+
 
 export const addLikeToDocument = async (documentId, userId,btn) => {
   const documentRef = doc(db, 'coleccionLikes', documentId);
@@ -97,4 +114,4 @@ export const addLikeToDocument = async (documentId, userId,btn) => {
   btn.style.backgroundImage = 'url("images/corazon2.png")';
 };
 
-//contar los likes
+

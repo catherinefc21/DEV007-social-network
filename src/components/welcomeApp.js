@@ -1,9 +1,8 @@
 /* eslint-disable no-alert */
 
-import {
-  collection, onSnapshot, orderBy, query, limit,
-} from 'firebase/firestore';
-import { createPost, addLikeToDocument } from '../lib';
+
+import { collection, onSnapshot, orderBy, query, limit } from 'firebase/firestore';
+import { createPost, deletePost, addLikeToDocument } from '../lib'
 import { auth, db } from '../firebase/firebaseConfig';
 
 /* eslint-disable max-len */
@@ -140,12 +139,13 @@ export const welcomeApp = (onNavigate) => {
   const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'), limit(15));
   onSnapshot(q, (querySnapshot) => {
     const savePostsArray = [];
-    querySnapshot.forEach((doc1) => {
-      const savePost = doc1.data();
-      savePost.id = doc1.id;
-      console.log(savePost);
+
+    querySnapshot.forEach((doc) => {
+      const savePost = doc.data();
+      savePost.id = doc.id;
+      //console.log(savePost);
       savePostsArray.push(savePost); // Agrega el objeto al array
-      console.log(savePost);
+      //console.log(savePost);
     });
     buttonPublisher.addEventListener('click', publishPost);
     buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
@@ -153,7 +153,9 @@ export const welcomeApp = (onNavigate) => {
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
 
+    
     // Recorrer el array y crear elementos adicionales para cada objeto
+    
     savePostsArray.forEach(async (savePost) => {
       const postId = savePost.id; // aqui esta el ID de los post cada uno
 
@@ -188,6 +190,7 @@ export const welcomeApp = (onNavigate) => {
       btnConfigEdit.setAttribute('class', 'btnConfigEdit');
       btnConfigDelete.setAttribute('class', 'btnConfigDelete');
       containerPost.setAttribute('class', 'containerPost');
+      
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
       postEmail.textContent = savePost.Email;
@@ -197,9 +200,17 @@ export const welcomeApp = (onNavigate) => {
       btnConfigDelete.textContent = 'Borrar';
       btnConfigEdit.textContent = 'Editar';
 
+      // Boton de borrar post //
+
+     
+     btnConfigDelete.addEventListener('click', () => deletePost(postId));
+     
+
+
       like.addEventListener('click', async () => {
         addLikeToDocument(postId, auth.currentUser.displayName, like);
       });
+
 
       postConfig.appendChild(btnPostConfig);
       btnPostConfig.appendChild(listPostConfig);
@@ -213,10 +224,11 @@ export const welcomeApp = (onNavigate) => {
       containerLike.appendChild(likeCountElement);
       containerPost.appendChild(containerLike);
       post.appendChild(containerPost);
+
     });
   });
 
-  // Todo en orden a welcomeAppDiv
+    // Todo en orden a welcomeAppDiv
 
   timeline.appendChild(post);
   const welcomeArt = document.createElement('div');
