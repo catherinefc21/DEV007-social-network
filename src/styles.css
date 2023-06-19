@@ -454,8 +454,7 @@ body{
    border-radius : 10px 10px 10px 0px;
    text-align : left start;
    padding : 5px 7px;
-   cursor: text;
-   outline: none;
+   cursor: pointer;
   }
 .buttonMainPublisher{
     display: flex;
@@ -474,14 +473,12 @@ body{
     cursor: pointer;
     outline: none;
     text-align:left;
-    
   }
 
 .selectPublisher .option0{
     background : white;
     color : #b1b1b1;
-    width: 140px;
-  }
+    width: 140px;}
   
   .selectPublisher option{
     background : white;
@@ -566,64 +563,7 @@ margin-top: -20px;
     justify-content: center;
     align-items: center;
   }
-  .popup-content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    flex-direction: column;
 
-  }
-  
-
-  .inputEdit{
-    width : 300px;
-    height : 100px;
-    border : 1.5px solid #F40F46;
-    border-radius : 10px;
-    text-align : left start;
-    padding : 5px 7px;
-    cursor: text;
-    outline: none;
-    
-   }
-   .selectEdit{
-     background :#FF946B;
-     border-radius : 10px;
-     width: 140px;
-     height : 24px;
-     border : 1px solid #FF946B;
-     color : white;
-     cursor: pointer;
-     outline: none;
-     text-align:left;
-   }
- 
- .selectEdit .option0{
-     background : white;
-     color : #b1b1b1;
-     width: 140px;}
-   
-   .selectEdit option{
-     background : white;
-     color : #F40F46;
-     width: 140px;}
-   
-   .buttonEdit{
-     background : #F40F46;
-     border-radius : 10px;
-     width: 100px;
-     height : 24px;
-     border : 1px solid #F40F46;
-     color : white;
-     cursor: pointer;
-   }
-   .close-button{
-    display: flex;
-    justify-content: flex-end;
-    cursor: default;
-    color: #b1b1b1;
-    font-size: 30px;
-   }
   /* ----- botones editar y borrar --- */
   .btnPostConfig{
     background : #ffffff;
@@ -839,11 +779,6 @@ margin-top: -20px;
             justify-content: flex-end;
             margin-top: -20%;
         }
-        .popup-container {
-          width: 100% ;
-      
-        }
-        
    
 }
 

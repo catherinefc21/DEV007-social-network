@@ -271,8 +271,6 @@ export const welcomeApp = (onNavigate) => {
         selectEdit.appendChild(optionEdit3);
         selectEdit.appendChild(optionEdit4);
         popupContent.appendChild(buttonSaveChanges);
-        
-
         // Agregar el pop-up al documento
         document.body.appendChild(popupContainer);
 
