@@ -1,7 +1,9 @@
 /* eslint-disable no-alert */
 
-import { collection, onSnapshot, orderBy, query, limit } from 'firebase/firestore';
-import { createPost } from '../lib';
+import {
+  collection, onSnapshot, orderBy, query, limit,
+} from 'firebase/firestore';
+import { createPost, addLikeToDocument } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
 
 /* eslint-disable max-len */
@@ -120,7 +122,6 @@ export const welcomeApp = (onNavigate) => {
     createPost(nameEmail, textPost, selectT);
   }
 
- 
   /* const Publicaciones = collection(db,'publicaciones');
   console.log(Publicaciones); */
 
@@ -135,11 +136,12 @@ export const welcomeApp = (onNavigate) => {
   const post = document.createElement('div');
   post.setAttribute('class', 'post');
   /* onSnapshot(query(collection(db, 'posts'), orderBy('contenido', 'desc'), limit(7)), (querySnapshot) => { */
-  const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'), limit(3));
+  const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'), limit(15));
   onSnapshot(q, (querySnapshot) => {
     const savePostsArray = [];
-    querySnapshot.forEach((doc) => {
-      const savePost = doc.data();
+    querySnapshot.forEach((doc1) => {
+      const savePost = doc1.data();
+      savePost.id = doc1.id;
       console.log(savePost);
       savePostsArray.push(savePost); // Agrega el objeto al array
       console.log(savePost);
@@ -147,22 +149,25 @@ export const welcomeApp = (onNavigate) => {
     buttonPublisher.addEventListener('click', publishPost);
     buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
 
-    /* onSnapshot(collection(db, 'posts'), orderBy('fecha', 'desc'), (querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      const savePost = doc.data();
-      console.log(savePost);
-      savePostsArray.push(savePost); // Agrega el objeto al array
-      console.log(savePost);
-    }); */
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
 
     // Recorrer el array y crear elementos adicionales para cada objeto
-    savePostsArray.forEach((savePost) => {
+    savePostsArray.forEach(async (savePost) => {
+      const postId = savePost.id; // aqui esta el ID de los post cada uno
+
+      // crear donde guardar like
+      const likeCountElement = document.createElement('span');
+      onSnapshot(query(collection(db, 'coleccionLikes', postId, 'likes')), (snapshot) => {
+        const likesCount = snapshot.size;
+        likeCountElement.textContent = `${likesCount}`;
+      });
+
       const containerPost = document.createElement('div');
       const postEmail = document.createElement('div');
       const postText = document.createElement('div');
       const postLabel = document.createElement('div');
+      const containerLike = document.createElement('div');
       const like = document.createElement('button');
       const postConfig = document.createElement('div');
       const btnPostConfig = document.createElement('button');
@@ -173,7 +178,9 @@ export const welcomeApp = (onNavigate) => {
       postEmail.setAttribute('class', 'postEmail');
       postText.setAttribute('class', 'postText');
       postLabel.setAttribute('class', 'postLabel');
+      containerLike.setAttribute('class', 'containerLike');
       like.setAttribute('class', 'like');
+      likeCountElement.setAttribute('class', 'likeCountElement');
       postConfig.setAttribute('class', 'postConfig');
       btnPostConfig.setAttribute('class', 'btnPostConfig');
       listPostConfig.setAttribute('class', 'listPostConfig');
@@ -189,6 +196,10 @@ export const welcomeApp = (onNavigate) => {
       btnConfigDelete.textContent = 'Borrar';
       btnConfigEdit.textContent = 'Editar';
 
+      like.addEventListener('click', async () => {
+        addLikeToDocument(postId, auth.currentUser.displayName, like);
+      });
+
       postConfig.appendChild(btnPostConfig);
       btnPostConfig.appendChild(listPostConfig);
       listPostConfig.appendChild(btnConfigEdit);
@@ -197,7 +208,9 @@ export const welcomeApp = (onNavigate) => {
       containerPost.appendChild(postEmail);
       containerPost.appendChild(postText);
       containerPost.appendChild(postLabel);
-      containerPost.appendChild(like);
+      containerLike.appendChild(like);
+      containerLike.appendChild(likeCountElement);
+      containerPost.appendChild(containerLike);
       post.appendChild(containerPost);
     });
   });
