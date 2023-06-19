@@ -1,5 +1,12 @@
-import { collection, onSnapshot, orderBy, query, limit } from 'firebase/firestore';
-import { createPost, deletePost, addLikeToDocument, editPost  } from '../lib'
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
+/* eslint-disable max-len */
+import {
+  collection, onSnapshot, orderBy, query, limit,
+} from 'firebase/firestore';
+import {
+  createPost, deletePost, addLikeToDocument, editPost,
+} from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
 
 export const welcomeApp = (onNavigate) => {
@@ -47,7 +54,7 @@ export const welcomeApp = (onNavigate) => {
   welcomeNav.appendChild(buttonTips);
   welcomeNav.appendChild(btnPicture);
 
-  /* -------------------MAIN (monita+escribe tu comentario)-------------------------------------------- */
+  /*  -------------------MAIN (monita+escribe tu comentario)--------------------------------------------  */
 
   const welcomeMain = document.createElement('main');
   const divMainImage = document.createElement('div');
@@ -139,7 +146,7 @@ export const welcomeApp = (onNavigate) => {
       savePost.id = doc.id;
 
       savePostsArray.push(savePost); // Agrega el objeto al array
-      //console.log(savePost);
+      // console.log(savePost);
     });
     buttonPublisher.addEventListener('click', publishPost);
     buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
@@ -147,9 +154,8 @@ export const welcomeApp = (onNavigate) => {
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
 
-    
     // Recorrer el array y crear elementos adicionales para cada objeto
-    
+
     savePostsArray.forEach(async (savePost) => {
       const postId = savePost.id; // aqui esta el ID de los post cada uno
 
@@ -184,7 +190,6 @@ export const welcomeApp = (onNavigate) => {
       btnConfigEdit.setAttribute('class', 'btnConfigEdit');
       btnConfigDelete.setAttribute('class', 'btnConfigDelete');
       containerPost.setAttribute('class', 'containerPost');
-      
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
       postEmail.textContent = savePost.Email;
@@ -196,15 +201,11 @@ export const welcomeApp = (onNavigate) => {
 
       // Boton de borrar post //
 
-     
-     btnConfigDelete.addEventListener('click', () => deletePost(postId));
-     
-
+      btnConfigDelete.addEventListener('click', () => deletePost(postId));
 
       like.addEventListener('click', async () => {
         addLikeToDocument(postId, auth.currentUser.displayName, like);
       });
-
 
       postConfig.appendChild(btnPostConfig);
       btnPostConfig.appendChild(listPostConfig);
@@ -220,9 +221,6 @@ export const welcomeApp = (onNavigate) => {
       post.appendChild(containerPost);
 
       btnConfigEdit.addEventListener('click', () => {
-        // Obtener el ID del post y los datos del post
-        const postId = savePost.id;
-
         // Crear un elemento de div para el pop-up
         const popupContainer = document.createElement('div');
         popupContainer.setAttribute('class', 'popup-container');
@@ -308,7 +306,7 @@ export const welcomeApp = (onNavigate) => {
     });
   });
 
-    // Todo en orden a welcomeAppDiv
+  // Todo en orden a welcomeAppDiv
 
   timeline.appendChild(post);
   const welcomeArt = document.createElement('div');

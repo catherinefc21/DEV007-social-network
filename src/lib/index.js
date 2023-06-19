@@ -1,3 +1,11 @@
+/* eslint-disable brace-style */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-bitwise */
+/* eslint-disable max-len */
+/* eslint-disable no-alert */
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
@@ -36,7 +44,9 @@ export const loginUser = (email, contraseña, onNavigate) => {
   }).catch((error) => {
     const errorCode = error.code;
 
-    if (errorCode === 'auth/invalid-email') { alert('El correo no es valido') & onNavigate('/'); } else if (errorCode === 'auth/user-disabled') { alert('el usuario ha sido deshabilitado') & onNavigate('/'); } else if (errorCode === 'auth/user-not-found') { alert('El usuario no existe') & onNavigate('/'); } else if (errorCode === 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
+    if (errorCode === 'auth/invalid-email') { alert('El correo no es valido') & onNavigate('/'); } else if (errorCode === 'auth/user-disabled')
+    // eslint-disable-next-line no-unused-expressions
+    { alert('el usuario ha sido deshabilitado') & onNavigate('/'); } else if (errorCode === 'auth/user-not-found') { alert('El usuario no existe') & onNavigate('/'); } else if (errorCode === 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
   });
 };
 
