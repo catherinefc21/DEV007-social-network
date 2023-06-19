@@ -6,7 +6,10 @@
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
-import { addDoc, collection, serverTimestamp, doc, deleteDoc } from 'firebase/firestore';
+import {
+  addDoc, collection, serverTimestamp, doc, updateDoc,
+} from 'firebase/firestore';
+import { async } from 'regenerator-runtime';
 import { auth, db, provider } from '../firebase/firebaseConfig';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
@@ -73,12 +76,17 @@ export const createPost = async (email, texto, etiqueta) => {
       Contenido: texto,
       Etiqueta: etiqueta,
       Email: email,
-      fecha: serverTimestamp()
+      fecha: serverTimestamp(),
     });
-    console.log("Document written with ID: ", docRef.id);
+    console.log('Document written with ID: ', docRef.id);
   } catch (error) {
-    console.error("Error adding document: ", error);
+    console.error('Error adding document: ', error);
   }
 };
-
-
+export const editPost = async (id1, newText, newTag) => {
+  const editPostRef = doc(db, 'posts', id1);
+  await updateDoc(editPostRef, {
+    Contenido: newText,
+    Etiqueta: newTag,
+  });
+};
