@@ -106,8 +106,8 @@ export const addLikeToDocument = async (documentId, userId, btn) => {
   const alreadyLiked = likedSnapshot.exists();
 
   if (alreadyLiked) {
-    alert('El usuario ya dio "like" al documento.');
-    btn.style.backgroundImage = 'url("images/corazon2.png")';
+    await deleteDoc(doc(likesCollectionRef, userId));
+    btn.style.backgroundImage = 'url("images/corazon1.png")';
     return;
   }
 
