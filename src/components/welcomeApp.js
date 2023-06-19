@@ -240,16 +240,16 @@ export const welcomeApp = (onNavigate) => {
         const optionEdit4 = document.createElement('option');
         const buttonSaveChanges = document.createElement('button');
 
-        inputEdit.setAttribute('class', 'inputPublisher');
+        inputEdit.setAttribute('class', 'inputEdit');
         inputEdit.setAttribute('id', 'inputEdit');
         selectEdit.setAttribute('id', 'selectEdit');
-        selectEdit.setAttribute('class', 'selectPublisher');
+        selectEdit.setAttribute('class', 'selectEdit');
         optionEdit0.setAttribute('class', 'option0');
         optionEdit1.setAttribute('value', '#Lactancia');
         optionEdit2.setAttribute('value', '#PrimeraComida');
         optionEdit3.setAttribute('value', '#Formulaslacteas');
         optionEdit4.setAttribute('value', '#TipsGenerales');
-        buttonSaveChanges.setAttribute('class', 'buttonPublisher');
+        buttonSaveChanges.setAttribute('class', 'buttonEdit');
         buttonSaveChanges.setAttribute('id', 'buttonSaveChanges');
         buttonSaveChanges.textContent = 'Guardar';
         optionEdit0.textContent = 'Etiqueta tu post';
@@ -262,6 +262,7 @@ export const welcomeApp = (onNavigate) => {
 
         // Agregar los elementos al pop-up
         popupContainer.appendChild(popupContent);
+        popupContent.appendChild(closeButton);
         popupContent.appendChild(inputEdit);
         popupContent.appendChild(selectEdit);
         selectEdit.appendChild(optionEdit0);
@@ -270,7 +271,7 @@ export const welcomeApp = (onNavigate) => {
         selectEdit.appendChild(optionEdit3);
         selectEdit.appendChild(optionEdit4);
         popupContent.appendChild(buttonSaveChanges);
-        popupContent.appendChild(closeButton);
+        
 
         // Agregar el pop-up al documento
         document.body.appendChild(popupContainer);
@@ -290,7 +291,6 @@ export const welcomeApp = (onNavigate) => {
           }
           editPost(postId, editedText, editedTag)
             .then(() => {
-              alert('Los cambios se han guardado correctamente');
               closePopup();
             })
             .catch((error) => {

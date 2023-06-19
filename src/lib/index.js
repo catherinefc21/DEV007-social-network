@@ -88,9 +88,9 @@ export const createPost = async (email, texto, etiqueta) => {
   }
 };
 
-export const deletePost = async (id, onNavigate) => {
-  const opcion = confirm('Estas seguro de borrar el post');
-  if (opcion === true) {
+export const deletePost = async (id) => {
+  const opcion = confirm('¿Estás segura de borrar el post?');
+  if (opcion == true) {
     await deleteDoc(doc(db, 'posts', id));
   } else {
     onNavigate('/welcomeApp');
@@ -117,6 +117,7 @@ export const addLikeToDocument = async (documentId, userId, btn) => {
   // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
   btn.style.backgroundImage = 'url("images/corazon2.png")';
 };
+// Editar posts
 export const editPost = async (id1, newText, newTag) => {
   const editPostRef = doc(db, 'posts', id1);
   await updateDoc(editPostRef, {
