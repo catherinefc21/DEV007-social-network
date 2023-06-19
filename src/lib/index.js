@@ -8,6 +8,7 @@ import {
 } from 'firebase/auth';
 import { addDoc, collection, serverTimestamp, doc, deleteDoc } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
+import { async } from 'regenerator-runtime';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
@@ -79,6 +80,15 @@ export const createPost = async (email, texto, etiqueta) => {
   } catch (error) {
     console.error("Error adding document: ", error);
   }
-};
+ };
+
+export const deletePost = async (id) => {
+    const opcion = confirm("Estas seguro de borrar el post");
+    if (opcion == true) {
+      await deleteDoc(doc(db, 'posts', id));
+	} else {
+    onNavigate('/welcomeApp');
+	}
+}
 
 

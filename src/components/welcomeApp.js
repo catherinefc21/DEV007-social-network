@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 
 import { collection, onSnapshot, orderBy, query, limit } from 'firebase/firestore';
-import { createPost } from '../lib';
+import { createPost, deletePost } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
 
 /* eslint-disable max-len */
@@ -141,9 +141,10 @@ export const welcomeApp = (onNavigate) => {
     const savePostsArray = [];
     querySnapshot.forEach((doc) => {
       const savePost = doc.data();
-      console.log(savePost);
+      savePost.id = doc.id;
+      //console.log(savePost);
       savePostsArray.push(savePost); // Agrega el objeto al array
-      console.log(savePost);
+      //console.log(savePost);
     });
     buttonPublisher.addEventListener('click', publishPost);
     buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
@@ -158,8 +159,10 @@ export const welcomeApp = (onNavigate) => {
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
 
+    
     // Recorrer el array y crear elementos adicionales para cada objeto
     savePostsArray.forEach((savePost) => {
+      const postId = savePost.id
       const containerPost = document.createElement('div');
       const postEmail = document.createElement('div');
       const postText = document.createElement('div');
@@ -181,6 +184,7 @@ export const welcomeApp = (onNavigate) => {
       btnConfigEdit.setAttribute('class', 'btnConfigEdit');
       btnConfigDelete.setAttribute('class', 'btnConfigDelete');
       containerPost.setAttribute('class', 'containerPost');
+      
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
       postEmail.textContent = savePost.Email;
@@ -189,6 +193,13 @@ export const welcomeApp = (onNavigate) => {
       like.textContent = '';
       btnConfigDelete.textContent = 'Borrar';
       btnConfigEdit.textContent = 'Editar';
+
+      // Boton de borrar post //
+
+     
+     btnConfigDelete.addEventListener('click', () => deletePost(postId));
+     
+
 
       postConfig.appendChild(btnPostConfig);
       btnPostConfig.appendChild(listPostConfig);
@@ -200,10 +211,11 @@ export const welcomeApp = (onNavigate) => {
       containerPost.appendChild(postLabel);
       containerPost.appendChild(like);
       post.appendChild(containerPost);
+
     });
   });
 
-  // Todo en orden a welcomeAppDiv
+    // Todo en orden a welcomeAppDiv
 
   timeline.appendChild(post);
   const welcomeArt = document.createElement('div');
