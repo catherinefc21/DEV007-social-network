@@ -524,10 +524,11 @@ body{
 margin-bottom: 15px;
 margin-top: -20px;
   }
-
+.containerLike{
+  margin-top: -15px;
+    margin-left: 90% ;
+}
   .like{
-    margin-top: -15px;
-    margin-left: 92% ;
     width: 40px;
     height: 40px;
     background-color: #FFFF;
@@ -538,8 +539,8 @@ margin-top: -20px;
     border: none;
   }
 
-  .like:hover{background-image : url("images/corazon2.png");
-  }
+  /*.like:hover{background-image : url("images/corazon2.png");
+  }*/
 
   .postLabel{
     color: #e51243;

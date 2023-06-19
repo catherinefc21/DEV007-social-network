@@ -6,7 +6,7 @@
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
-import { addDoc, collection, serverTimestamp, doc, deleteDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp, setDoc } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
@@ -67,18 +67,34 @@ export const loginGoogle = (onNavigate) => {
     });
 };
 
-export const createPost = async (email, texto, etiqueta) => {
-  try {
-    const docRef = await addDoc(collection(db, 'posts'), {
-      Contenido: texto,
-      Etiqueta: etiqueta,
-      Email: email,
-      fecha: serverTimestamp()
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (error) {
-    console.error("Error adding document: ", error);
-  }
+export const createPost = (email, texto, etiqueta) => {
+  addDoc(collection(db, 'posts'), {
+    Contenido: texto,
+    Etiqueta: etiqueta,
+    Email: email,
+    fecha: serverTimestamp(),
+  });
 };
 
+export const addLikeToDocument = async (documentId, userId,btn) => {
+  const documentRef = doc(db, 'coleccionLikes', documentId);
+  const likesCollectionRef = collection(documentRef, 'likes');
 
+  // Verificar si el usuario ya dio "like" al documento
+  const likedSnapshot = await getDoc(doc(likesCollectionRef, userId));
+  const alreadyLiked = likedSnapshot.exists();
+
+  if (alreadyLiked) {
+    alert('El usuario ya dio "like" al documento.');
+    btn.style.backgroundImage = 'url("images/corazon2.png")';
+    return;
+  }
+
+  // Agregar el like a la colección de likes
+  await setDoc(doc(likesCollectionRef, userId), {});
+
+  // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
+  btn.style.backgroundImage = 'url("images/corazon2.png")';
+};
+
+//contar los likes
