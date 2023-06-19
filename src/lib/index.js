@@ -1,16 +1,9 @@
-/* eslint-disable max-len */
-/* eslint-disable no-alert */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-bitwise */
-/* eslint-disable no-unused-expressions */
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
-import {
-  addDoc, collection, serverTimestamp, doc, updateDoc,
-} from 'firebase/firestore';
-import { async } from 'regenerator-runtime';
+import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc} from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
+import { async } from 'regenerator-runtime';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
@@ -70,6 +63,7 @@ export const loginGoogle = (onNavigate) => {
     });
 };
 
+
 export const createPost = async (email, texto, etiqueta) => {
   try {
     const docRef = await addDoc(collection(db, 'posts'), {
@@ -82,6 +76,37 @@ export const createPost = async (email, texto, etiqueta) => {
   } catch (error) {
     console.error('Error adding document: ', error);
   }
+ };
+
+export const deletePost = async (id) => {
+    const opcion = confirm("Estas seguro de borrar el post");
+    if (opcion == true) {
+      await deleteDoc(doc(db, 'posts', id));
+	} else {
+    onNavigate('/welcomeApp');
+	}
+}
+
+
+export const addLikeToDocument = async (documentId, userId,btn) => {
+  const documentRef = doc(db, 'coleccionLikes', documentId);
+  const likesCollectionRef = collection(documentRef, 'likes');
+
+  // Verificar si el usuario ya dio "like" al documento
+  const likedSnapshot = await getDoc(doc(likesCollectionRef, userId));
+  const alreadyLiked = likedSnapshot.exists();
+
+  if (alreadyLiked) {
+    alert('El usuario ya dio "like" al documento.');
+    btn.style.backgroundImage = 'url("images/corazon2.png")';
+    return;
+  }
+
+  // Agregar el like a la colección de likes
+  await setDoc(doc(likesCollectionRef, userId), {});
+
+  // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
+  btn.style.backgroundImage = 'url("images/corazon2.png")';
 };
 export const editPost = async (id1, newText, newTag) => {
   const editPostRef = doc(db, 'posts', id1);
