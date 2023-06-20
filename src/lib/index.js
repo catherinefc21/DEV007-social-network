@@ -124,7 +124,7 @@ export const addLikeToDocument = async (documentId, userId, btn) => {
 };
 
 // Editar posts
-export const editPost = async (id1, newText, newTag, name, userID) => {
+export const editPost = async (id1, newText, newTag) => {
   const editPostRef = doc(db, 'posts', id1);
   await updateDoc(editPostRef, {
     Contenido: newText,
