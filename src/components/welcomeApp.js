@@ -5,9 +5,11 @@ import {
   collection, onSnapshot, orderBy, query, limit,
 } from 'firebase/firestore';
 import {
-  createPost, deletePost, addLikeToDocument, editPost,
+  createPost, deletePost, addLikeToDocument, editPost, likeRed,
 } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
+import monitasdos from '../images/Monita2.png';
+import logo from '../images/Logo.png';
 
 export const welcomeApp = (onNavigate) => {
   // Contenedor General----------------------------------
@@ -30,7 +32,7 @@ export const welcomeApp = (onNavigate) => {
 
   welcomeNav.setAttribute('class', 'welcomeNav');
   divNavImg.setAttribute('class', 'divNavImg');
-  imgNav.setAttribute('src', './images/Logo.png');
+  imgNav.setAttribute('src', logo);
   btnPicture.setAttribute('class', 'btnPicture');
   buttonPicture.setAttribute('class', 'buttonPicture');
   ListPicture.setAttribute('class', 'ListPicture');
@@ -85,7 +87,7 @@ export const welcomeApp = (onNavigate) => {
   optionPublisher3.setAttribute('value', '#Formulaslacteas');
   optionPublisher4.setAttribute('value', '#TipsGenerales');
   buttonPublisher.setAttribute('class', 'buttonPublisher');
-  imgMain.setAttribute('src', './images/Monita2.png');
+  imgMain.setAttribute('src', monitasdos);
   inputPublisher.setAttribute('placeholder', '¿Que quieres compartir?');
   buttonPublisher.setAttribute('id', 'btnpublisher');
   buttonPublisher.textContent = 'Publicar';
@@ -200,8 +202,9 @@ export const welcomeApp = (onNavigate) => {
       btnConfigEdit.textContent = 'Editar';
 
       // Boton de borrar post //
+      likeRed(postId, auth.currentUser.displayName, like);
 
-      btnConfigDelete.addEventListener('click', () => deletePost(postId));
+      btnConfigDelete.addEventListener('click', () => deletePost(postId, savePost.Email, auth.currentUser.displayName));
 
       like.addEventListener('click', async () => {
         addLikeToDocument(postId, auth.currentUser.displayName, like);
@@ -271,8 +274,6 @@ export const welcomeApp = (onNavigate) => {
         selectEdit.appendChild(optionEdit3);
         selectEdit.appendChild(optionEdit4);
         popupContent.appendChild(buttonSaveChanges);
-        
-
         // Agregar el pop-up al documento
         document.body.appendChild(popupContainer);
 
@@ -289,7 +290,7 @@ export const welcomeApp = (onNavigate) => {
             alert('Completa todos los campos');
             return;
           }
-          editPost(postId, editedText, editedTag)
+          editPost(postId, editedText, editedTag, savePost.Email, auth.currentUser.displayName)
             .then(() => {
               closePopup();
             })

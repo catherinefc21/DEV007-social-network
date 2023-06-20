@@ -1,5 +1,7 @@
 /* eslint-disable no-alert */
 import { RegisterMailAndPassword } from '../lib';
+import logo from '../images/Logo.png';
+import monitaRegister from '../images/Monita3.png';
 
 export const register = (onNavigate) => {
   const regisDiv = document.createElement('div');
@@ -16,8 +18,8 @@ export const register = (onNavigate) => {
   divImg.setAttribute('class', 'divImg');
   img1.setAttribute('class', 'imag1');
   img2.setAttribute('class', 'imag2');
-  img1.setAttribute('src', 'images/logo.png');
-  img2.setAttribute('src', 'images/Monita3.png');
+  img1.setAttribute('src', logo);
+  img2.setAttribute('src', monitaRegister);
 
   // agregar las imagenes al div imagenes //
 

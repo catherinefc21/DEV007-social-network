@@ -13,6 +13,8 @@ import {
   addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
+import corazonuno from '../images/corazon1.png';
+import corazondos from '../images/corazon2.png';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
@@ -88,12 +90,15 @@ export const createPost = async (email, texto, etiqueta) => {
   }
 };
 
-export const deletePost = async (id) => {
-  const opcion = confirm('¿Estás segura de borrar el post?');
-  if (opcion == true) {
-    await deleteDoc(doc(db, 'posts', id));
-  } else {
-    onNavigate('/welcomeApp');
+export const deletePost = async (id, nombre, userId, onNavigate) => {
+  if (nombre === userId) {
+    const opcion = confirm('¿Estás segura de borrar el post?');
+    if (opcion === true) {
+      await deleteDoc(doc(db, 'posts', id));
+    } else {
+      onNavigate('/welcomeApp');
+    } } else {
+    alert('No puedes borrar este post');
   }
 };
 
@@ -107,7 +112,7 @@ export const addLikeToDocument = async (documentId, userId, btn) => {
 
   if (alreadyLiked) {
     await deleteDoc(doc(likesCollectionRef, userId));
-    btn.style.backgroundImage = 'url("images/corazon1.png")';
+    btn.style.backgroundImage = `url(${corazonuno})`;
     return;
   }
 
@@ -115,13 +120,27 @@ export const addLikeToDocument = async (documentId, userId, btn) => {
   await setDoc(doc(likesCollectionRef, userId), {});
 
   // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
-  btn.style.backgroundImage = 'url("images/corazon2.png")';
+  btn.style.backgroundImage = `url(${corazondos})`;
 };
+
 // Editar posts
-export const editPost = async (id1, newText, newTag) => {
+export const editPost = async (id1, newText, newTag, name, userID) => {
   const editPostRef = doc(db, 'posts', id1);
   await updateDoc(editPostRef, {
     Contenido: newText,
     Etiqueta: newTag,
   });
+};
+
+export const likeRed = async (documentId, userId, btn) => {
+  const documentRef = doc(db, 'coleccionLikes', documentId);
+  const likesCollectionRef = collection(documentRef, 'likes');
+
+  // Verificar si el usuario ya dio "like" al documento
+  const likedSnapshot = await getDoc(doc(likesCollectionRef, userId));
+  const alreadyLiked = likedSnapshot.exists();
+
+  if (alreadyLiked) {
+    btn.style.backgroundImage = `url(${corazondos})`;
+  }
 };
