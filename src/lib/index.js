@@ -90,12 +90,15 @@ export const createPost = async (email, texto, etiqueta) => {
   }
 };
 
-export const deletePost = async (id, onNavigate) => {
-  const opcion = confirm('¿Estás segura de borrar el post?');
-  if (opcion === true) {
-    await deleteDoc(doc(db, 'posts', id));
-  } else {
-    onNavigate('/welcomeApp');
+export const deletePost = async (id, nombre, userId, onNavigate) => {
+  if (nombre === userId) {
+    const opcion = confirm('¿Estás segura de borrar el post?');
+    if (opcion === true) {
+      await deleteDoc(doc(db, 'posts', id));
+    } else {
+      onNavigate('/welcomeApp');
+    } } else {
+    alert('No puedes borrar este post');
   }
 };
 
@@ -119,11 +122,25 @@ export const addLikeToDocument = async (documentId, userId, btn) => {
   // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
   btn.style.backgroundImage = `url(${corazondos})`;
 };
+
 // Editar posts
-export const editPost = async (id1, newText, newTag) => {
+export const editPost = async (id1, newText, newTag, name, userID) => {
   const editPostRef = doc(db, 'posts', id1);
   await updateDoc(editPostRef, {
     Contenido: newText,
     Etiqueta: newTag,
   });
+};
+
+export const likeRed = async (documentId, userId, btn) => {
+  const documentRef = doc(db, 'coleccionLikes', documentId);
+  const likesCollectionRef = collection(documentRef, 'likes');
+
+  // Verificar si el usuario ya dio "like" al documento
+  const likedSnapshot = await getDoc(doc(likesCollectionRef, userId));
+  const alreadyLiked = likedSnapshot.exists();
+
+  if (alreadyLiked) {
+    btn.style.backgroundImage = `url(${corazondos})`;
+  }
 };

@@ -5,7 +5,7 @@ import {
   collection, onSnapshot, orderBy, query, limit,
 } from 'firebase/firestore';
 import {
-  createPost, deletePost, addLikeToDocument, editPost,
+  createPost, deletePost, addLikeToDocument, editPost, likeRed,
 } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
 import monitasdos from '../images/Monita2.png';
@@ -202,8 +202,9 @@ export const welcomeApp = (onNavigate) => {
       btnConfigEdit.textContent = 'Editar';
 
       // Boton de borrar post //
+      likeRed(postId, auth.currentUser.displayName, like);
 
-      btnConfigDelete.addEventListener('click', () => deletePost(postId));
+      btnConfigDelete.addEventListener('click', () => deletePost(postId, savePost.Email, auth.currentUser.displayName));
 
       like.addEventListener('click', async () => {
         addLikeToDocument(postId, auth.currentUser.displayName, like);
@@ -273,7 +274,6 @@ export const welcomeApp = (onNavigate) => {
         selectEdit.appendChild(optionEdit3);
         selectEdit.appendChild(optionEdit4);
         popupContent.appendChild(buttonSaveChanges);
-
         // Agregar el pop-up al documento
         document.body.appendChild(popupContainer);
 
@@ -290,7 +290,7 @@ export const welcomeApp = (onNavigate) => {
             alert('Completa todos los campos');
             return;
           }
-          editPost(postId, editedText, editedTag)
+          editPost(postId, editedText, editedTag, savePost.Email, auth.currentUser.displayName)
             .then(() => {
               closePopup();
             })
