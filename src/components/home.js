@@ -1,5 +1,7 @@
 /* eslint-disable no-alert */
 import { loginUser, loginGoogle } from '../lib';
+import logo from '../images/Logo.png';
+import monitaHome from '../images/MONITA1.png';
 
 export const home = (onNavigate) => {
   const homeDiv = document.createElement('div');
@@ -30,10 +32,10 @@ export const home = (onNavigate) => {
   loginDiv.setAttribute('class', 'loginDiv');
   buttonRegister.setAttribute('class', 'buttonRegister');
 
-  image1.setAttribute('src', 'images/Logo.png');
+  image1.setAttribute('src', logo);
   image1.setAttribute('class', 'img1');
 
-  image2.setAttribute('src', 'images/MONITA1.png');
+  image2.setAttribute('src', monitaHome);
   image2.setAttribute('class', 'img2');
 
   image3.setAttribute('src', 'images/Email.png');
