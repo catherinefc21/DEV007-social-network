@@ -527,7 +527,8 @@ margin-top: -20px;
   }
 .containerLike{
   margin-top: -15px;
-    margin-left: 90% ;
+    margin-left: 85% ;
+    width: 100px;
 }
   .like{
     width: 40px;
@@ -777,7 +778,6 @@ margin-top: -20px;
             width: 96%;
             display: flex;
             justify-content: flex-end;
-            margin-top: -20%;
         }
    
 }

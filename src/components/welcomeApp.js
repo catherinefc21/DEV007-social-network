@@ -8,6 +8,8 @@ import {
   createPost, deletePost, addLikeToDocument, editPost,
 } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
+import monitasdos from '../images/Monita2.png';
+import logo from '../images/Logo.png';
 
 export const welcomeApp = (onNavigate) => {
   // Contenedor General----------------------------------
@@ -30,7 +32,7 @@ export const welcomeApp = (onNavigate) => {
 
   welcomeNav.setAttribute('class', 'welcomeNav');
   divNavImg.setAttribute('class', 'divNavImg');
-  imgNav.setAttribute('src', './images/Logo.png');
+  imgNav.setAttribute('src', logo);
   btnPicture.setAttribute('class', 'btnPicture');
   buttonPicture.setAttribute('class', 'buttonPicture');
   ListPicture.setAttribute('class', 'ListPicture');
@@ -85,7 +87,7 @@ export const welcomeApp = (onNavigate) => {
   optionPublisher3.setAttribute('value', '#Formulaslacteas');
   optionPublisher4.setAttribute('value', '#TipsGenerales');
   buttonPublisher.setAttribute('class', 'buttonPublisher');
-  imgMain.setAttribute('src', './images/Monita2.png');
+  imgMain.setAttribute('src', monitasdos);
   inputPublisher.setAttribute('placeholder', '¿Que quieres compartir?');
   buttonPublisher.setAttribute('id', 'btnpublisher');
   buttonPublisher.textContent = 'Publicar';
@@ -271,6 +273,10 @@ export const welcomeApp = (onNavigate) => {
         selectEdit.appendChild(optionEdit3);
         selectEdit.appendChild(optionEdit4);
         popupContent.appendChild(buttonSaveChanges);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5e281766bcad25c5556c1eb77fbddde47eef64f0
         // Agregar el pop-up al documento
         document.body.appendChild(popupContainer);
 
