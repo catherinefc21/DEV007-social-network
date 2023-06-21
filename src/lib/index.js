@@ -90,15 +90,12 @@ export const createPost = async (email, texto, etiqueta) => {
   }
 };
 
-export const deletePost = async (id, nombre, userId, onNavigate) => {
-  if (nombre === userId) {
-    const opcion = confirm('¿Estás segura de borrar el post?');
-    if (opcion === true) {
-      await deleteDoc(doc(db, 'posts', id));
-    } else {
-      onNavigate('/welcomeApp');
-    } } else {
-    alert('No puedes borrar este post');
+export const deletePost = async (id, onNavigate) => {
+  const opcion = confirm('¿Estás segura de borrar el post?');
+  if (opcion === true) {
+    await deleteDoc(doc(db, 'posts', id));
+  } else {
+    onNavigate('/welcomeApp');
   }
 };
 
