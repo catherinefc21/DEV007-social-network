@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Space+Grotesk:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto:wght@300&family=Space+Grotesk:wght@500&display=swap');
 
 
 *{
@@ -109,11 +110,10 @@ body{
     background-size: 23px , auto;
     background-position: 15px 6px;
     background-repeat: no-repeat;
-    border: 2px solid #9ea285fb;
     border-radius: 10px;
-    color:#000000;
     opacity: 1;
     cursor: pointer;
+    font-family: roboto;
 
 }
 .buttonGoogle:hover {opacity: 0.8;}
