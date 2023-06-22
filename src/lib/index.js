@@ -17,7 +17,6 @@ import { auth, db, provider } from '../firebase/firebaseConfig';
 import corazonuno from '../images/corazon1.png';
 import corazondos from '../images/corazon2.png';
 
-
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
     .then(() => updateProfile(auth.currentUser, {
@@ -40,6 +39,7 @@ export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1,
         onNavigate('/register');
       }
     });
+    console.log(auth);
 };
 
 export const loginUser = (email, contraseña, onNavigate) => {
@@ -143,4 +143,3 @@ export const likeRed = async (documentId, userId, btn) => {
     btn.style.backgroundImage = `url(${corazondos})`;
   }
 };
-
