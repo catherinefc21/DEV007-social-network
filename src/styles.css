@@ -826,7 +826,6 @@ margin-top: -20px;
 
         .timeline{
             width: 60%;
-            margin-top: -20px;
             display: flex;
             justify-content: flex-end;
         }
@@ -838,6 +837,7 @@ margin-top: -20px;
             width: 96%;
             display: flex;
             justify-content: flex-end;
+            margin-top: -23%;
         }
         .popup-container {
           width: 100% ;
@@ -853,7 +853,6 @@ margin-top: -20px;
     }
 
     .welcomeArt{
-      margin-top: -25%;
-    }
-
+      margin-top: -26%;
+  }
 }
