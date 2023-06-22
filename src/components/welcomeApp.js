@@ -171,6 +171,7 @@ export const welcomeApp = (onNavigate) => {
         likeCountElement.textContent = `${likesCount}`;
       });
 
+
       const containerPost = document.createElement('div');
       const postEmail = document.createElement('div');
       const postText = document.createElement('div');
@@ -216,8 +217,17 @@ export const welcomeApp = (onNavigate) => {
       // Boton de borrar post //
       likeRed(postId, auth.currentUser.displayName, like);
 
-      btnConfigDelete.addEventListener('click', () => deletePost(postId));
+      if (auth.currentUser.displayName === savePost.Email) {
+        btnPostConfig.style.display = 'flex';
+      } else {
+        // Ocultar el botón
+        btnPostConfig.style.visibility = 'hidden';
+      }
 
+      // Boton de borrar post //
+      likeRed(postId, auth.currentUser.displayName, like);
+
+      btnConfigDelete.addEventListener('click', () => deletePost(postId));
 
      
       like.addEventListener('click', async () => {
