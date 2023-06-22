@@ -150,8 +150,11 @@ export const welcomeApp = (onNavigate) => {
       savePostsArray.push(savePost); // Agrega el objeto al array
       // console.log(savePost);
     });
-    buttonPublisher.addEventListener('click', publishPost);
-    buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
+    buttonPublisher.addEventListener('click', () => {
+      publishPost ,
+      onNavigate('/welcomeApp')
+    }); 
+    
 
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
@@ -215,6 +218,8 @@ export const welcomeApp = (onNavigate) => {
 
       btnConfigDelete.addEventListener('click', () => deletePost(postId));
 
+
+     
       like.addEventListener('click', async () => {
         addLikeToDocument(postId, auth.currentUser.displayName, like);
       });
@@ -299,7 +304,7 @@ export const welcomeApp = (onNavigate) => {
             alert('Completa todos los campos');
             return;
           }
-          editPost(postId, editedText, editedTag)
+          editPost(postId, editedText, editedTag, savePost.Email, auth.currentUser.displayName)
             .then(() => {
               closePopup();
             })
