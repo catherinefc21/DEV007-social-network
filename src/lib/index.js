@@ -1,9 +1,8 @@
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
-import { addDoc, collection, doc, getDoc, getDocs, serverTimestamp, setDoc, updateDoc} from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc} from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
-import { async } from 'regenerator-runtime';
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
@@ -108,10 +107,13 @@ export const addLikeToDocument = async (documentId, userId,btn) => {
   // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
   btn.style.backgroundImage = 'url("images/corazon2.png")';
 };
-export const editPost = async (id1, newText, newTag) => {
-  const editPostRef = doc(db, 'posts', id1);
-  await updateDoc(editPostRef, {
-    Contenido: newText,
-    Etiqueta: newTag,
-  });
+export const editPost = async (id1, newText, newTag, name, userID) => {
+  if (name === userID) {
+    const editPostRef = doc(db, 'posts', id1);
+    await updateDoc(editPostRef, {
+      Contenido: newText,
+      Etiqueta: newTag,
+    }); } else {
+    alert('No puedes editar este post');
+  }
 };
