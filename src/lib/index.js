@@ -1,8 +1,22 @@
+/* eslint-disable brace-style */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-bitwise */
+/* eslint-disable max-len */
+/* eslint-disable no-alert */
 import {
   signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
-import { addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc} from 'firebase/firestore';
+
+import {
+  addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc,
+} from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
+import corazonuno from '../images/corazon1.png';
+import corazondos from '../images/corazon2.png';
+
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
@@ -34,7 +48,9 @@ export const loginUser = (email, contraseña, onNavigate) => {
   }).catch((error) => {
     const errorCode = error.code;
 
-    if (errorCode === 'auth/invalid-email') { alert('El correo no es valido') & onNavigate('/'); } else if (errorCode === 'auth/user-disabled') { alert('el usuario ha sido deshabilitado') & onNavigate('/'); } else if (errorCode === 'auth/user-not-found') { alert('El usuario no existe') & onNavigate('/'); } else if (errorCode === 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
+    if (errorCode === 'auth/invalid-email') { alert('El correo no es valido') & onNavigate('/'); } else if (errorCode === 'auth/user-disabled')
+    // eslint-disable-next-line no-unused-expressions
+    { alert('el usuario ha sido deshabilitado') & onNavigate('/'); } else if (errorCode === 'auth/user-not-found') { alert('El usuario no existe') & onNavigate('/'); } else if (errorCode === 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
   });
 };
 
@@ -62,7 +78,6 @@ export const loginGoogle = (onNavigate) => {
     });
 };
 
-
 export const createPost = async (email, texto, etiqueta) => {
   try {
     const docRef = await addDoc(collection(db, 'posts'), {
@@ -75,19 +90,18 @@ export const createPost = async (email, texto, etiqueta) => {
   } catch (error) {
     console.error('Error adding document: ', error);
   }
- };
+};
 
-export const deletePost = async (id) => {
-    const opcion = confirm("Estas seguro de borrar el post");
-    if (opcion == true) {
-      await deleteDoc(doc(db, 'posts', id));
-	} else {
+export const deletePost = async (id, onNavigate) => {
+  const opcion = confirm('¿Estás segura de borrar el post?');
+  if (opcion === true) {
+    await deleteDoc(doc(db, 'posts', id));
+  } else {
     onNavigate('/welcomeApp');
-	}
-}
+  }
+};
 
-
-export const addLikeToDocument = async (documentId, userId,btn) => {
+export const addLikeToDocument = async (documentId, userId, btn) => {
   const documentRef = doc(db, 'coleccionLikes', documentId);
   const likesCollectionRef = collection(documentRef, 'likes');
 
@@ -96,8 +110,8 @@ export const addLikeToDocument = async (documentId, userId,btn) => {
   const alreadyLiked = likedSnapshot.exists();
 
   if (alreadyLiked) {
-    alert('El usuario ya dio "like" al documento.');
-    btn.style.backgroundImage = 'url("images/corazon2.png")';
+    await deleteDoc(doc(likesCollectionRef, userId));
+    btn.style.backgroundImage = `url(${corazonuno})`;
     return;
   }
 
@@ -105,15 +119,28 @@ export const addLikeToDocument = async (documentId, userId,btn) => {
   await setDoc(doc(likesCollectionRef, userId), {});
 
   // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
-  btn.style.backgroundImage = 'url("images/corazon2.png")';
+  btn.style.backgroundImage = `url(${corazondos})`;
 };
-export const editPost = async (id1, newText, newTag, name, userID) => {
-  if (name === userID) {
-    const editPostRef = doc(db, 'posts', id1);
-    await updateDoc(editPostRef, {
-      Contenido: newText,
-      Etiqueta: newTag,
-    }); } else {
-    alert('No puedes editar este post');
+
+// Editar posts
+export const editPost = async (id1, newText, newTag) => {
+  const editPostRef = doc(db, 'posts', id1);
+  await updateDoc(editPostRef, {
+    Contenido: newText,
+    Etiqueta: newTag,
+  });
+};
+
+export const likeRed = async (documentId, userId, btn) => {
+  const documentRef = doc(db, 'coleccionLikes', documentId);
+  const likesCollectionRef = collection(documentRef, 'likes');
+
+  // Verificar si el usuario ya dio "like" al documento
+  const likedSnapshot = await getDoc(doc(likesCollectionRef, userId));
+  const alreadyLiked = likedSnapshot.exists();
+
+  if (alreadyLiked) {
+    btn.style.backgroundImage = `url(${corazondos})`;
   }
 };
+

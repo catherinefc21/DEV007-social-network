@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Space+Grotesk:wght@500&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto:wght@300&family=Space+Grotesk:wght@500&display=swap');
 *{
     font-family: 'inter';
 }
@@ -11,6 +9,7 @@ body{
     background-repeat: no-repeat;
     background-position: right-bottom;
     margin: 0;
+    font-family: 'inter';
 }
 .homeDiv{
     display: flex;
@@ -59,7 +58,7 @@ body{
     background-position: 9px 15px;
     background-repeat: no-repeat;
     outline: none;
-    cursor: pointer;
+    cursor: text;
 }
 
 .password{
@@ -77,11 +76,11 @@ body{
     background-position: 10px 8px;
     background-repeat: no-repeat;
     outline: none;
-    cursor: pointer;
+    cursor: text;
 
 }
 .buttonWelcomeApp{
-    width: 210px;
+    width: 243px;
     height: 40px;
     left: calc(50% - 219px/2 + 0.5px);
     top: 527px;
@@ -99,24 +98,25 @@ body{
 
 .buttonGoogle{
     margin-bottom: 10px;
-    width: 230px;
+    width: 243px;
     height: 40px;
     left: calc(50% - 219px/2 + 0.5px);
     top: 527px;
-    background: #eefaadfb;
+    background:#FFFFFF;
     padding-left: 20px;
     background-image: url("images/Logog.png");
     background-size: 23px , auto;
     background-position: 15px 6px;
     background-repeat: no-repeat;
-    border: 2px solid #9ea285fb;
     border-radius: 10px;
-    color:#000000;
     opacity: 1;
+    border-color: #ffffff;
     cursor: pointer;
+    font-family:'Roboto' !important;
+    color: #686767;
 
 }
-.buttonGoogle:hover {opacity: 0.8;}
+.buttonGoogle:hover {opacity: 0.8; font-family: 'Roboto', sans-serif;}
 
 .buttonWelcomeApp:hover {opacity: 0.8;}
 
@@ -195,7 +195,7 @@ body{
      background-position: 9px 5px;
      background-repeat: no-repeat;
      outline: none;
-     cursor: pointer;
+     cursor: text;
  }
  
  
@@ -210,7 +210,7 @@ body{
      margin-bottom: 10px;
      outline: none;
      padding-Left: 20px;
-     cursor: pointer;
+     cursor: text;
  }
  
  
@@ -229,7 +229,7 @@ body{
      background-position: 9px 10px;
      background-repeat: no-repeat;
      outline: none;
-     cursor: pointer;
+     cursor: text;
  }
  
  
@@ -248,7 +248,7 @@ body{
      background-position: 9px 5px;
      background-repeat: no-repeat;
      outline: none;
-     cursor: pointer;
+     cursor: text;
 
  }
  
@@ -272,7 +272,7 @@ body{
  }
  
  .bntbackHome{
-    width:160px;
+    width:240px;
     height:40px;
     left: calc(50% - 219px/2 + 0.5px);
     top: 527px;
@@ -285,7 +285,7 @@ body{
  }
  .bntbackHome:hover {opacity: 0.8;}
  .bntRegister{
-    width: 219px;
+    width: 240px;
     height: 40px;
      left: 860px;
      top: 798px;
@@ -454,7 +454,8 @@ body{
    border-radius : 10px 10px 10px 0px;
    text-align : left start;
    padding : 5px 7px;
-   cursor: pointer;
+   cursor: text;
+   outline: none;
   }
 .buttonMainPublisher{
     display: flex;
@@ -473,12 +474,14 @@ body{
     cursor: pointer;
     outline: none;
     text-align:left;
+    
   }
 
 .selectPublisher .option0{
     background : white;
     color : #b1b1b1;
-    width: 140px;}
+    width: 140px;
+  }
   
   .selectPublisher option{
     background : white;
@@ -527,7 +530,8 @@ margin-top: -20px;
   }
 .containerLike{
   margin-top: -15px;
-    margin-left: 90% ;
+    margin-left: 85% ;
+    width: 100px;
 }
   .like{
     width: 40px;
@@ -538,8 +542,9 @@ margin-top: -20px;
     background-position : 2px -2px;
     background-repeat : no-repeat;
     border: none;
+    cursor: pointer;
   }
-
+  
   /*.like:hover{background-image : url("images/corazon2.png");
   }*/
 
@@ -563,7 +568,64 @@ margin-top: -20px;
     justify-content: center;
     align-items: center;
   }
+  .popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
 
+  }
+  
+
+  .inputEdit{
+    width : 300px;
+    height : 100px;
+    border : 1.5px solid #F40F46;
+    border-radius : 10px;
+    text-align : left start;
+    padding : 5px 7px;
+    cursor: text;
+    outline: none;
+    
+   }
+   .selectEdit{
+     background :#FF946B;
+     border-radius : 10px;
+     width: 140px;
+     height : 24px;
+     border : 1px solid #FF946B;
+     color : white;
+     cursor: pointer;
+     outline: none;
+     text-align:left;
+   }
+ 
+ .selectEdit .option0{
+     background : white;
+     color : #b1b1b1;
+     width: 140px;}
+   
+   .selectEdit option{
+     background : white;
+     color : #F40F46;
+     width: 140px;}
+   
+   .buttonEdit{
+     background : #F40F46;
+     border-radius : 10px;
+     width: 100px;
+     height : 24px;
+     border : 1px solid #F40F46;
+     color : white;
+     cursor: pointer;
+   }
+   .close-button{
+    display: flex;
+    justify-content: flex-end;
+    cursor: default;
+    color: #b1b1b1;
+    font-size: 30px;
+   }
   /* ----- botones editar y borrar --- */
   .btnPostConfig{
     background : #ffffff;
@@ -661,12 +723,12 @@ margin-top: -20px;
       
     }
     .buttonWelcomeApp{
-        width: 150%;
+        width: 175%;
     
     }
 
     .buttonGoogle{
-        width: 120%;
+        width: 175%;
     }
     
     .buttonRegister{
@@ -712,11 +774,11 @@ margin-top: -20px;
     }
     
     .bntbackHome{
-        width: 70%;
+        width: 99%;
     }
     
     .bntRegister{
-        width: 85%;
+        width: 99%;
     }
 
     .welcomeNav {
@@ -777,8 +839,12 @@ margin-top: -20px;
             width: 96%;
             display: flex;
             justify-content: flex-end;
-            margin-top: -20%;
         }
+        .popup-container {
+          width: 100% ;
+      
+        }
+        
    
 }
 

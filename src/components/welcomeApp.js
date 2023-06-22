@@ -1,6 +1,15 @@
-import { collection, onSnapshot, orderBy, query, limit } from 'firebase/firestore';
-import { createPost, deletePost, addLikeToDocument, editPost  } from '../lib'
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
+/* eslint-disable max-len */
+import {
+  collection, onSnapshot, orderBy, query, limit,
+} from 'firebase/firestore';
+import {
+  createPost, deletePost, addLikeToDocument, editPost, likeRed,
+} from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
+import monitasdos from '../images/Monita2.png';
+import logo from '../images/Logo.png';
 
 export const welcomeApp = (onNavigate) => {
   // Contenedor General----------------------------------
@@ -23,7 +32,7 @@ export const welcomeApp = (onNavigate) => {
 
   welcomeNav.setAttribute('class', 'welcomeNav');
   divNavImg.setAttribute('class', 'divNavImg');
-  imgNav.setAttribute('src', './images/Logo.png');
+  imgNav.setAttribute('src', logo);
   btnPicture.setAttribute('class', 'btnPicture');
   buttonPicture.setAttribute('class', 'buttonPicture');
   ListPicture.setAttribute('class', 'ListPicture');
@@ -47,7 +56,7 @@ export const welcomeApp = (onNavigate) => {
   welcomeNav.appendChild(buttonTips);
   welcomeNav.appendChild(btnPicture);
 
-  /* -------------------MAIN (monita+escribe tu comentario)-------------------------------------------- */
+  /*  -------------------MAIN (monita+escribe tu comentario)--------------------------------------------  */
 
   const welcomeMain = document.createElement('main');
   const divMainImage = document.createElement('div');
@@ -78,7 +87,7 @@ export const welcomeApp = (onNavigate) => {
   optionPublisher3.setAttribute('value', '#Formulaslacteas');
   optionPublisher4.setAttribute('value', '#TipsGenerales');
   buttonPublisher.setAttribute('class', 'buttonPublisher');
-  imgMain.setAttribute('src', './images/Monita2.png');
+  imgMain.setAttribute('src', monitasdos);
   inputPublisher.setAttribute('placeholder', '¿Que quieres compartir?');
   buttonPublisher.setAttribute('id', 'btnpublisher');
   buttonPublisher.textContent = 'Publicar';
@@ -139,7 +148,7 @@ export const welcomeApp = (onNavigate) => {
       savePost.id = doc.id;
 
       savePostsArray.push(savePost); // Agrega el objeto al array
-      //console.log(savePost);
+      // console.log(savePost);
     });
     buttonPublisher.addEventListener('click', () => {
       publishPost ,
@@ -150,9 +159,8 @@ export const welcomeApp = (onNavigate) => {
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
 
-    
     // Recorrer el array y crear elementos adicionales para cada objeto
-    
+
     savePostsArray.forEach(async (savePost) => {
       const postId = savePost.id; // aqui esta el ID de los post cada uno
 
@@ -187,7 +195,6 @@ export const welcomeApp = (onNavigate) => {
       btnConfigEdit.setAttribute('class', 'btnConfigEdit');
       btnConfigDelete.setAttribute('class', 'btnConfigDelete');
       containerPost.setAttribute('class', 'containerPost');
-      
 
       // Configurar el contenido del elemento postItem según los datos del objeto savePost
       postEmail.textContent = savePost.Email;
@@ -197,14 +204,25 @@ export const welcomeApp = (onNavigate) => {
       btnConfigDelete.textContent = 'Borrar';
       btnConfigEdit.textContent = 'Editar';
 
-      // Boton de borrar post //     
-     btnConfigDelete.addEventListener('click', () => deletePost(postId));
+      // editar o eliminar solo la persona del post
+
+      if (auth.currentUser.displayName === savePost.Email) {
+        btnPostConfig.style.display = 'flex';
+      } else {
+        // Ocultar el botón
+        btnPostConfig.style.visibility = 'hidden';
+      }
+
+      // Boton de borrar post //
+      likeRed(postId, auth.currentUser.displayName, like);
+
+      btnConfigDelete.addEventListener('click', () => deletePost(postId));
+
 
      
       like.addEventListener('click', async () => {
         addLikeToDocument(postId, auth.currentUser.displayName, like);
       });
-
 
       postConfig.appendChild(btnPostConfig);
       btnPostConfig.appendChild(listPostConfig);
@@ -220,9 +238,6 @@ export const welcomeApp = (onNavigate) => {
       post.appendChild(containerPost);
 
       btnConfigEdit.addEventListener('click', () => {
-        // Obtener el ID del post y los datos del post
-        const postId = savePost.id;
-
         // Crear un elemento de div para el pop-up
         const popupContainer = document.createElement('div');
         popupContainer.setAttribute('class', 'popup-container');
@@ -242,16 +257,16 @@ export const welcomeApp = (onNavigate) => {
         const optionEdit4 = document.createElement('option');
         const buttonSaveChanges = document.createElement('button');
 
-        inputEdit.setAttribute('class', 'inputPublisher');
+        inputEdit.setAttribute('class', 'inputEdit');
         inputEdit.setAttribute('id', 'inputEdit');
         selectEdit.setAttribute('id', 'selectEdit');
-        selectEdit.setAttribute('class', 'selectPublisher');
+        selectEdit.setAttribute('class', 'selectEdit');
         optionEdit0.setAttribute('class', 'option0');
         optionEdit1.setAttribute('value', '#Lactancia');
         optionEdit2.setAttribute('value', '#PrimeraComida');
         optionEdit3.setAttribute('value', '#Formulaslacteas');
         optionEdit4.setAttribute('value', '#TipsGenerales');
-        buttonSaveChanges.setAttribute('class', 'buttonPublisher');
+        buttonSaveChanges.setAttribute('class', 'buttonEdit');
         buttonSaveChanges.setAttribute('id', 'buttonSaveChanges');
         buttonSaveChanges.textContent = 'Guardar';
         optionEdit0.textContent = 'Etiqueta tu post';
@@ -264,6 +279,7 @@ export const welcomeApp = (onNavigate) => {
 
         // Agregar los elementos al pop-up
         popupContainer.appendChild(popupContent);
+        popupContent.appendChild(closeButton);
         popupContent.appendChild(inputEdit);
         popupContent.appendChild(selectEdit);
         selectEdit.appendChild(optionEdit0);
@@ -272,8 +288,6 @@ export const welcomeApp = (onNavigate) => {
         selectEdit.appendChild(optionEdit3);
         selectEdit.appendChild(optionEdit4);
         popupContent.appendChild(buttonSaveChanges);
-        popupContent.appendChild(closeButton);
-
         // Agregar el pop-up al documento
         document.body.appendChild(popupContainer);
 
@@ -292,7 +306,6 @@ export const welcomeApp = (onNavigate) => {
           }
           editPost(postId, editedText, editedTag, savePost.Email, auth.currentUser.displayName)
             .then(() => {
-              alert('Los cambios se han guardado correctamente');
               closePopup();
             })
             .catch((error) => {
@@ -307,8 +320,7 @@ export const welcomeApp = (onNavigate) => {
       });
     });
   });
-
-    // Todo en orden a welcomeAppDiv
+  // Todo en orden a welcomeAppDiv
 
   timeline.appendChild(post);
   const welcomeArt = document.createElement('div');
