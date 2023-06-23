@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto:wght@300&family=Space+Grotesk:wght@500&display=swap');
 *{
-    font-family: 'inter';
+    font-family: 'Inter', sans-serif;
 }
 body{
     background-color: #FFE8BE;
@@ -9,7 +9,7 @@ body{
     background-repeat: no-repeat;
     background-position: right-bottom;
     margin: 0;
-    font-family: 'inter';
+    font-family: 'Inter', sans-serif;
 }
 .homeDiv{
     display: flex;
@@ -112,7 +112,7 @@ body{
     opacity: 1;
     border-color: #ffffff;
     cursor: pointer;
-    font-family:'Roboto' !important;
+    font-family:'Roboto', sans-serif !important;
     color: #686767;
 
 }
