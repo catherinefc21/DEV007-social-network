@@ -220,11 +220,31 @@ export const welcomeApp = (onNavigate) => {
         btnPostConfig.style.visibility = 'hidden';
       }
 
-      // Boton de borrar post //
       likeRed(postId, auth.currentUser.displayName, like);
 
-      btnConfigDelete.addEventListener('click', () => deletePost(postId));
+      // configuracion de las confirmaciones de borrado
 
+      btnConfigDelete.addEventListener('click', () => {
+        const ConfirmationDiv = document.createElement('div');
+        ConfirmationDiv.setAttribute('class', 'confirmation-content');
+
+        document.body.appendChild(ConfirmationDiv);
+        ConfirmationDiv.innerHTML = `
+              <p> ¿Borrar posts? </p>
+              <div class='container-confirmationBts'>
+                <button id='buttonYes' class='buttonYes'> Sí </button> <button id='buttonNo' class='buttonNo'> No </button>
+              </div>`;
+        ConfirmationDiv.style.display = 'block';
+        const buttonYes = document.querySelector('.buttonYes');
+        buttonYes.addEventListener('click', () => {
+          deletePost(postId);
+          ConfirmationDiv.style.display = 'none';
+        });
+        const buttonNo = document.querySelector('.buttonNo');
+        buttonNo.addEventListener('click', () => {
+          ConfirmationDiv.style.display = 'none';
+        });
+      });
       like.addEventListener('click', async () => {
         addLikeToDocument(postId, auth.currentUser.displayName, like);
       });
