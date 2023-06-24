@@ -1,14 +1,15 @@
-/* eslint-disable brace-style */
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-bitwise */
-/* eslint-disable max-len */
 /* eslint-disable no-alert */
+/* eslint-disable no-bitwise */
+/* eslint-disable no-unused-expressions */
+
 import {
-  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
+
 import {
   addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
@@ -46,9 +47,15 @@ export const loginUser = (email, contraseña, onNavigate) => {
   }).catch((error) => {
     const errorCode = error.code;
 
-    if (errorCode === 'auth/invalid-email') { alert('El correo no es valido') & onNavigate('/'); } else if (errorCode === 'auth/user-disabled')
-    // eslint-disable-next-line no-unused-expressions
-    { alert('el usuario ha sido deshabilitado') & onNavigate('/'); } else if (errorCode === 'auth/user-not-found') { alert('El usuario no existe') & onNavigate('/'); } else if (errorCode === 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
+    if (errorCode === 'auth/invalid-email') {
+      alert('El correo no es valido') & onNavigate('/');
+    } else if (errorCode === 'auth/user-disabled') {
+      alert('el usuario ha sido deshabilitado') & onNavigate('/');
+    } else if (errorCode === 'auth/user-not-found') {
+      alert('El usuario no existe') & onNavigate('/');
+    } else if (errorCode === 'auth/wrong-password') {
+      alert('Contraseña incorrecta') & onNavigate('/');
+    }
   });
 };
 
@@ -65,7 +72,7 @@ export const loginGoogle = (onNavigate) => {
     // IdP data available using getAdditionalUserInfo(result)
     // ...
     }).catch((error) => {
-      error.code;
+    // Handle Errors here.
       error.message;
       // The email of the user's account used.
       error.customData.email;
@@ -76,27 +83,15 @@ export const loginGoogle = (onNavigate) => {
 };
 
 export const createPost = async (email, texto, etiqueta) => {
-  try {
-    const docRef = await addDoc(collection(db, 'posts'), {
-      Contenido: texto,
-      Etiqueta: etiqueta,
-      Email: email,
-      fecha: serverTimestamp(),
-    });
-    console.log('Document written with ID: ', docRef.id);
-  } catch (error) {
-    console.error('Error adding document: ', error);
-  }
+  await addDoc(collection(db, 'posts'), {
+    Contenido: texto,
+    Etiqueta: etiqueta,
+    Email: email,
+    fecha: serverTimestamp(),
+  });
 };
 
-export const deletePost = async (id, onNavigate) => {
-  const opcion = confirm('¿Estás segura de borrar el post?');
-  if (opcion === true) {
-    await deleteDoc(doc(db, 'posts', id));
-  } else {
-    onNavigate('/welcomeApp');
-  }
-};
+export const deletePost = async (id) => { await deleteDoc(doc(db, 'posts', id)); };
 
 export const addLikeToDocument = async (documentId, userId, btn) => {
   const documentRef = doc(db, 'coleccionLikes', documentId);

@@ -1,14 +1,25 @@
-// importamos la funcion que vamos a testear
-import { RegisterMailAndPassword, createUser } from '../src/lib/index';
+import { loginUser } from '../src/lib';
 
-describe('la funcion de registro', () => {
-  it('debería ser una función', () => {
-    expect(typeof RegisterMailAndPassword).toBe('function');
+jest.mock('firebase/auth');
+jest.mock('../__mocks__/main.js');
+
+describe('inicio de sesion', () => {
+  it('deberia ser una funcion', () => {
+    expect(typeof loginUser).toBe('function');
+  });
+  it('deberia retornar error de mail', () => {
+    loginUser('a', '123213', null)
+      .then((user) => user)
+      .catch((error) => {
+        expect(error.code).toBe('auth/invalid-email');
+        expect(window.location.pathname).toBe('/');
+        return error.code;
+      });
+  });
+  it('deberia retornar email correcto', () => {
+    loginUser('a', '123213', null)
+      .then((user) => user);
+    expect(window.location.pathname).toBe('/welcome');
   });
 });
-
-describe('la funcion de ingreso', () => {
-  it('debería ser una función', () => {
-    expect(typeof createUser).toBe('function');
-  });
-});
+// expect(user).toBe({mail: 'a',  crateUser})
