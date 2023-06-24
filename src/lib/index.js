@@ -11,8 +11,16 @@ import {
 } from 'firebase/auth';
 
 import {
-  addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc,
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+  setDoc,
+  updateDoc,
+  deleteDoc,
 } from 'firebase/firestore';
+
 import { auth, db, provider } from '../firebase/firebaseConfig';
 import corazonuno from '../images/corazon1.png';
 import corazondos from '../images/corazon2.png';
