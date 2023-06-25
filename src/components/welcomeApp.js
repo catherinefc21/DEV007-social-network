@@ -151,7 +151,7 @@ export const welcomeApp = (onNavigate) => {
       // console.log(savePost);
     });
     buttonPublisher.addEventListener('click', publishPost);
-    buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
+    buttonPublisher.addEventListener('click', onNavigate('/welcomeApp'));
 
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
@@ -202,7 +202,6 @@ export const welcomeApp = (onNavigate) => {
       btnConfigEdit.textContent = 'Editar';
 
       // Boton de borrar post //
-      likeRed(postId, auth.currentUser.displayName, like);
 
       if (auth.currentUser.displayName === savePost.Email) {
         btnPostConfig.style.display = 'flex';
