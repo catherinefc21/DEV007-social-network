@@ -150,11 +150,8 @@ export const welcomeApp = (onNavigate) => {
       savePostsArray.push(savePost); // Agrega el objeto al array
       // console.log(savePost);
     });
-    buttonPublisher.addEventListener('click', () => {
-      publishPost ,
-      onNavigate('/welcomeApp')
-    }); 
-    
+    buttonPublisher.addEventListener('click', publishPost);
+    buttonPublisher.addEventListener('click', onNavigate('/welcomeApp'));
 
     // Limpiar el contenido anterior de la variable post
     post.innerHTML = '';
@@ -170,7 +167,6 @@ export const welcomeApp = (onNavigate) => {
         const likesCount = snapshot.size;
         likeCountElement.textContent = `${likesCount}`;
       });
-
 
       const containerPost = document.createElement('div');
       const postEmail = document.createElement('div');
@@ -215,7 +211,6 @@ export const welcomeApp = (onNavigate) => {
       }
 
       // Boton de borrar post //
-      likeRed(postId, auth.currentUser.displayName, like);
 
       if (auth.currentUser.displayName === savePost.Email) {
         btnPostConfig.style.display = 'flex';
@@ -229,7 +224,6 @@ export const welcomeApp = (onNavigate) => {
 
       btnConfigDelete.addEventListener('click', () => deletePost(postId));
 
-     
       like.addEventListener('click', async () => {
         addLikeToDocument(postId, auth.currentUser.displayName, like);
       });

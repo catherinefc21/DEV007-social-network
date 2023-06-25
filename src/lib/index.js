@@ -14,9 +14,6 @@ import {
   addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc,
 } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
-import corazonuno from '../images/corazon1.png';
-import corazondos from '../images/corazon2.png';
-
 
 export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
   createUserWithEmailAndPassword(auth, email, contraseña)
@@ -111,7 +108,7 @@ export const addLikeToDocument = async (documentId, userId, btn) => {
 
   if (alreadyLiked) {
     await deleteDoc(doc(likesCollectionRef, userId));
-    btn.style.backgroundImage = `url(${corazonuno})`;
+    btn.style.backgroundImage = 'url(../images/corazon1.png';
     return;
   }
 
@@ -119,7 +116,7 @@ export const addLikeToDocument = async (documentId, userId, btn) => {
   await setDoc(doc(likesCollectionRef, userId), {});
 
   // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
-  btn.style.backgroundImage = `url(${corazondos})`;
+  btn.style.backgroundImage = 'url(../images/corazon2.png)';
 };
 
 // Editar posts
@@ -140,7 +137,6 @@ export const likeRed = async (documentId, userId, btn) => {
   const alreadyLiked = likedSnapshot.exists();
 
   if (alreadyLiked) {
-    btn.style.backgroundImage = `url(${corazondos})`;
+    btn.style.backgroundImage = 'url(../images/corazon1.png';
   }
 };
-
