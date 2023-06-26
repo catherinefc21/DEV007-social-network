@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-bitwise */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-alert */
@@ -82,7 +83,13 @@ export const home = (onNavigate) => {
     });
   });
   buttonGoogle.addEventListener('click', () => {
-    loginGoogle(onNavigate);
+    try {
+      loginGoogle(onNavigate).then(() => {
+        onNavigate('/welcomeApp');
+      });
+    } catch (error) {
+      console.error(error);
+    }
   });
 
   // Agregar al div de formulario
