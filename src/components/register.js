@@ -74,6 +74,7 @@ export const register = (onNavigate) => {
 
   bntRegister.setAttribute('id', 'bntRegister');
   bntRegister.setAttribute('class', 'bntRegister');
+  buttonHome.setAttribute('id', 'bntbackHome');
   buttonHome.setAttribute('class', 'bntbackHome');
 
   function mostrar() {
