@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { RegisterMailAndPassword } from '../lib';
+import { RegisterMailAndPassword, saveName } from '../lib';
 import logo from '../images/Logo.png';
 import monitaRegister from '../images/Monita3.png';
 
@@ -77,7 +77,8 @@ export const register = (onNavigate) => {
   buttonHome.setAttribute('id', 'bntbackHome');
   buttonHome.setAttribute('class', 'bntbackHome');
 
-  function mostrar() {
+  // formulario registro mas guardar user
+  bntRegister.addEventListener('click', () => {
     const nombre = document.getElementById('namE').value;
     const apellido = document.getElementById('lastName').value;
     const email = document.getElementById('Email').value;
@@ -88,9 +89,25 @@ export const register = (onNavigate) => {
       alert('Por favor completa todos los campos'); return;
     }
 
-    RegisterMailAndPassword(onNavigate, email, contraseña, nombre, apellido);
-  }
-  bntRegister.addEventListener('click', mostrar);
+    RegisterMailAndPassword(email, contraseña)
+      .then(() => saveName(nombre, apellido))
+      .then(() => {
+        onNavigate('/');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        if (errorCode === 'auth/email-already-in-use') {
+          alert('El correo ya está en uso');
+          onNavigate('/register');
+        } else if (errorCode === 'auth/invalid-email') {
+          alert('El correo no es válido');
+          onNavigate('/register');
+        } else if (errorCode === 'auth/weak-password') {
+          alert('La contraseña debe tener al menos 6 caracteres');
+        }
+        onNavigate('/register');
+      });
+  });
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
 

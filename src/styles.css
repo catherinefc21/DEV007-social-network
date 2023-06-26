@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto:wght@300&family=Space+Grotesk:wght@500&display=swap');
 *{
-    font-family: 'Inter', sans-serif;
+    font-family: 'inter', sans-serif;
 }
 body{
     background-color: #FFE8BE;
@@ -9,7 +9,7 @@ body{
     background-repeat: no-repeat;
     background-position: right-bottom;
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'inter', sans-serif;
 }
 .homeDiv{
     display: flex;

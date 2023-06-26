@@ -1,3 +1,9 @@
+/* eslint-disable brace-style */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-bitwise */
+/* eslint-disable max-len */
 /* eslint-disable no-alert */
 /* eslint-disable no-bitwise */
 /* eslint-disable no-unused-expressions */
@@ -11,53 +17,17 @@ import {
 } from 'firebase/auth';
 
 import {
-  addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc,
+  addDoc, collection, doc, getDoc, serverTimestamp, setDoc, updateDoc, deleteDoc, onSnapshot, query,
 } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
-import corazonuno from '../images/corazon1.png';
-import corazondos from '../images/corazon2.png';
 
-export const RegisterMailAndPassword = (onNavigate, email, contraseña, nombre1, apellido) => {
-  createUserWithEmailAndPassword(auth, email, contraseña)
-    .then(() => updateProfile(auth.currentUser, {
-      displayName: `${nombre1} ${apellido}`,
-    }))
-    .then(() => {
-      onNavigate('/');
-    })
-    .catch((error) => {
-      const errorCode = error.code;
+export const saveName = (nombre1, apellido) => updateProfile(auth.currentUser, {
+  displayName: `${nombre1} ${apellido}`,
+});
 
-      if (errorCode === 'auth/email-already-in-use') {
-        alert('El correo ya está en uso');
-        onNavigate('/register');
-      } else if (errorCode === 'auth/invalid-email') {
-        alert('El correo no es válido');
-        onNavigate('/register');
-      } else if (errorCode === 'auth/weak-password') {
-        alert('La contraseña debe tener al menos 6 caracteres');
-        onNavigate('/register');
-      }
-    });
-};
+export const RegisterMailAndPassword = (email, contraseña) => createUserWithEmailAndPassword(auth, email, contraseña);
 
-export const loginUser = (email, contraseña, onNavigate) => {
-  signInWithEmailAndPassword(auth, email, contraseña).then(() => {
-    onNavigate('/welcomeApp');
-  }).catch((error) => {
-    const errorCode = error.code;
-
-    if (errorCode === 'auth/invalid-email') {
-      alert('El correo no es valido') & onNavigate('/');
-    } else if (errorCode === 'auth/user-disabled') {
-      alert('el usuario ha sido deshabilitado') & onNavigate('/');
-    } else if (errorCode === 'auth/user-not-found') {
-      alert('El usuario no existe') & onNavigate('/');
-    } else if (errorCode === 'auth/wrong-password') {
-      alert('Contraseña incorrecta') & onNavigate('/');
-    }
-  });
-};
+export const loginUser = (email, contraseña) => signInWithEmailAndPassword(auth, email, contraseña);
 
 export const loginGoogle = (onNavigate) => {
   signInWithPopup(auth, provider)
@@ -83,7 +53,7 @@ export const loginGoogle = (onNavigate) => {
 };
 
 export const createPost = async (email, texto, etiqueta) => {
-  await addDoc(collection(db, 'posts'), {
+  const docRef = await addDoc(collection(db, 'posts'), {
     Contenido: texto,
     Etiqueta: etiqueta,
     Email: email,
@@ -93,25 +63,33 @@ export const createPost = async (email, texto, etiqueta) => {
 
 export const deletePost = async (id) => { await deleteDoc(doc(db, 'posts', id)); };
 
-export const addLikeToDocument = async (documentId, userId, btn) => {
+export const addLikeToDocument = async (documentId, userId, btn, imagen1, imagen2) => {
   const documentRef = doc(db, 'coleccionLikes', documentId);
+  // se hace coleccion considerando como nombre ID del documento
   const likesCollectionRef = collection(documentRef, 'likes');
 
   // Verificar si el usuario ya dio "like" al documento
   const likedSnapshot = await getDoc(doc(likesCollectionRef, userId));
   const alreadyLiked = likedSnapshot.exists();
 
+  // si le da Like se pone el boto rojo, pero si ya le habia dado vuelve a quedar naranjo como dislike
   if (alreadyLiked) {
+    // dislike
     await deleteDoc(doc(likesCollectionRef, userId));
-    btn.style.backgroundImage = `url(${corazonuno})`;
+    btn.style.backgroundImage = `url(${imagen1})`;
     return;
   }
 
-  // Agregar el like a la colección de likes
+  // Like
   await setDoc(doc(likesCollectionRef, userId), {});
+  btn.style.backgroundImage = `url(${imagen2})`;
+};
 
-  // Aquí puedes realizar las acciones necesarias cuando un usuario da "like" al documento
-  btn.style.backgroundImage = `url(${corazondos})`;
+// contar los Likes
+export const CountLikes = (postId, conteo) => {
+  onSnapshot(query(collection(db, 'coleccionLikes', postId, 'likes')), (snapshot) => {
+    const likesCount = snapshot.size;
+    conteo.textContent = `${likesCount}`; });
 };
 
 // Editar posts
@@ -123,7 +101,10 @@ export const editPost = async (id1, newText, newTag) => {
   });
 };
 
-export const likeRed = async (documentId, userId, btn) => {
+/* Esto es para cuando la persona ya le dio like (se hace distinto al otro
+ya que, el otro funciona al hacer click y en el if va que se ponga naranjo) */
+
+export const likeRed = async (documentId, userId, btn, imagen2) => {
   const documentRef = doc(db, 'coleccionLikes', documentId);
   const likesCollectionRef = collection(documentRef, 'likes');
 
@@ -132,6 +113,6 @@ export const likeRed = async (documentId, userId, btn) => {
   const alreadyLiked = likedSnapshot.exists();
 
   if (alreadyLiked) {
-    btn.style.backgroundImage = `url(${corazondos})`;
+    btn.style.backgroundImage = `url(${imagen2})`;
   }
 };

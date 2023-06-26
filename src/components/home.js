@@ -1,3 +1,5 @@
+/* eslint-disable no-bitwise */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-alert */
 import { loginUser, loginGoogle } from '../lib';
 import logo from '../images/Logo.png';
@@ -62,17 +64,23 @@ export const home = (onNavigate) => {
   buttonGoogle.setAttribute('id', 'buttonGoogle');
   buttonGoogle.setAttribute('class', 'buttonGoogle');
 
-  function showData() {
+  // Iniciar sesion
+  buttonWelcomeApp.addEventListener('click', () => {
     const email1 = document.getElementById('email').value;
     const contraseña1 = document.getElementById('password').value;
     // sin campos vacios.
     if (email1 === '' || contraseña1 === '') {
       alert('Por favor completa todos los campos'); return;
     }
-    loginUser(email1, contraseña1, onNavigate);
-  }
 
-  buttonWelcomeApp.addEventListener('click', showData);
+    loginUser(email1, contraseña1).then(() => {
+      onNavigate('/welcomeApp');
+    }).catch((error) => {
+      const errorCode = error.code;
+
+      if (errorCode === 'auth/invalid-email') { alert('El correo no es valido') & onNavigate('/'); } else if (errorCode === 'auth/user-disabled') { alert('el usuario ha sido deshabilitado') & onNavigate('/'); } else if (errorCode === 'auth/user-not-found') { alert('El usuario no existe') & onNavigate('/'); } else if (errorCode === 'auth/wrong-password') { alert('Contraseña incorrecta') & onNavigate('/'); }
+    });
+  });
   buttonGoogle.addEventListener('click', () => {
     loginGoogle(onNavigate);
   });
