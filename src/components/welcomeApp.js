@@ -5,13 +5,13 @@ import {
   collection, onSnapshot, orderBy, query, limit,
 } from 'firebase/firestore';
 import {
-  createPost, deletePost, addLikeToDocument, editPost, likeRed, CountLikes,
+  createPost, deletePost, editPost, CountLikes, addLike, deleteLike, AlreadyLiked,
 } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
 import monitasdos from '../images/Monita2.png';
 import logo from '../images/Logo.png';
-import corazonuno from '../images/corazon1.png';
 import corazondos from '../images/corazon2.png';
+import corazonuno from '../images/corazon1.png';
 
 export const welcomeApp = (onNavigate) => {
   // Contenedor General----------------------------------
@@ -206,9 +206,20 @@ export const welcomeApp = (onNavigate) => {
         btnPostConfig.style.visibility = 'hidden';
       }
       // LIKE---------------------------
-      likeRed(postId, auth.currentUser.displayName, like, corazondos);
+      // mantener like rojo
+      if (await AlreadyLiked(postId, auth.currentUser.displayName)) {
+        like.style.backgroundImage = `url(${corazondos})`;
+      }
+      // dar y quitar
       like.addEventListener('click', async () => {
-        addLikeToDocument(postId, auth.currentUser.displayName, like, corazonuno, corazondos);
+        const existLiked = await AlreadyLiked(postId, auth.currentUser.displayName);
+        if (existLiked) {
+          deleteLike(postId, auth.currentUser.displayName);
+          like.style.backgroundImage = `url(${corazonuno})`;
+        } else {
+          addLike(postId, auth.currentUser.displayName);
+          like.style.backgroundImage = `url(${corazondos})`;
+        }
       });
 
       // boton eliminar + modal
@@ -219,8 +230,8 @@ export const welcomeApp = (onNavigate) => {
         document.body.appendChild(ConfirmationDiv);
         ConfirmationDiv.innerHTML = `
               <p> ¿Borrar posts? </p>
-              <div class='inputEdit2'>
-                <button id='buttonYes' class='buttonEdit'> Sí </button> <button id='buttonNo' class='buttonEdit'> No </button>
+              <div class='container-confirmationBts'>
+                <button id='buttonYes' class='buttonYes'> Sí </button> <button id='buttonNo' class='buttonNo'> No </button>
               </div>`;
         ConfirmationDiv.style.display = 'block';
         const buttonYes = document.querySelector('.buttonYes');

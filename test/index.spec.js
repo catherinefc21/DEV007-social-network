@@ -8,8 +8,9 @@ import {
   loginGoogle,
   createPost,
   deletePost,
-  addLikeToDocument,
-  likeRed,
+  addLike,
+  deleteLike,
+  AlreadyLiked,
   editPost,
   CountLikes,
 } from '../src/lib/index';
@@ -34,8 +35,9 @@ describe('Iniciar sesión', () => {
     await loginUser('correo@gmail.com', '123456');
     expect(signInWithEmailAndPassword).toHaveBeenCalled();
   });
-  // por aqui "mockeamos" signInWithEmailAndPassword y definimos que hará
+
   it('debería retornar inicio de sesion con la propiedad email', async () => {
+    // por aqui "mockeamos" signInWithEmailAndPassword y definimos que hará
     signInWithEmailAndPassword.mockReturnValueOnce({ user: { email: 'mvgomez.alonso@gmail.com' } });
     const response = await loginUser('mvgomez.alonso@gmail.com', 'Vivi123');
     expect(response.user.email).toBe('mvgomez.alonso@gmail.com');
@@ -81,13 +83,19 @@ describe('la funcion de editar un post', () => {
 
 describe('la funcion de dar like a un post', () => {
   it('debería ser una función', () => {
-    expect(typeof addLikeToDocument).toBe('function');
+    expect(typeof addLike).toBe('function');
   });
 });
 
-describe('la funcion de mantener el like rojo', () => {
+describe('la funcion de verificar si la coleccion contiene like de un user', () => {
   it('debería ser una función', () => {
-    expect(typeof likeRed).toBe('function');
+    expect(typeof AlreadyLiked).toBe('function');
+  });
+});
+
+describe('la funcion de quitar like a un post', () => {
+  it('debería ser una función', () => {
+    expect(typeof deleteLike).toBe('function');
   });
 });
 
