@@ -54,34 +54,31 @@ export const createPost = async (email, texto, etiqueta) => {
     fecha: serverTimestamp(),
   });
 };
-
+// delete del post
 export const deletePost = async (id) => { await deleteDoc(doc(db, 'posts', id)); };
 
-export const addLikeToDocument = async (documentId, userId, btn, imagen1, imagen2) => {
-  const documentRef = doc(db, 'coleccionLikes', documentId);
-  // se hace coleccion considerando como nombre ID del documento
-  const likesCollectionRef = collection(documentRef, 'likes');
+// add like
+export const addLike = async (postId, userID) => {
+  const docRefLike = doc(db, 'posts', postId, 'likes', userID);
+  await setDoc(docRefLike, { like: true });
+};
 
-  // Verificar si el usuario ya dio "like" al documento
-  const likedSnapshot = await getDoc(doc(likesCollectionRef, userId));
-  const alreadyLiked = likedSnapshot.exists();
+// delete like
+export const deleteLike = async (postId, userID) => {
+  const docRefLike = doc(db, 'posts', postId, 'likes', userID);
+  await deleteDoc(docRefLike);
+};
 
-  // si le da Like se pone el boto rojo, pero si ya le habia dado vuelve a quedar naranjo como dislike
-  if (alreadyLiked) {
-    // dislike
-    await deleteDoc(doc(likesCollectionRef, userId));
-    btn.style.backgroundImage = `url(${imagen1})`;
-    return;
-  }
-
-  // Like
-  await setDoc(doc(likesCollectionRef, userId), {});
-  btn.style.backgroundImage = `url(${imagen2})`;
+// verificar si la publicacion tiene Like
+export const AlreadyLiked = async (postId, userID) => {
+  const docRefLike = doc(db, 'posts', postId, 'likes', userID);
+  const docSnap = await getDoc(docRefLike);
+  return docSnap.exists();
 };
 
 // contar los Likes
 export const CountLikes = (postId, conteo) => {
-  onSnapshot(query(collection(db, 'coleccionLikes', postId, 'likes')), (snapshot) => {
+  onSnapshot(query(collection(db, 'posts', postId, 'likes')), (snapshot) => {
     const likesCount = snapshot.size;
     conteo.textContent = `${likesCount}`; });
 };
@@ -93,20 +90,4 @@ export const editPost = async (id1, newText, newTag) => {
     Contenido: newText,
     Etiqueta: newTag,
   });
-};
-
-/* Esto es para cuando la persona ya le dio like (se hace distinto al otro
-ya que, el otro funciona al hacer click y en el if va que se ponga naranjo) */
-
-export const likeRed = async (documentId, userId, btn, imagen2) => {
-  const documentRef = doc(db, 'coleccionLikes', documentId);
-  const likesCollectionRef = collection(documentRef, 'likes');
-
-  // Verificar si el usuario ya dio "like" al documento
-  const likedSnapshot = await getDoc(doc(likesCollectionRef, userId));
-  const alreadyLiked = likedSnapshot.exists();
-
-  if (alreadyLiked) {
-    btn.style.backgroundImage = `url(${imagen2})`;
-  }
 };
