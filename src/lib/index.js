@@ -29,28 +29,7 @@ export const RegisterMailAndPassword = (email, contraseña) => createUserWithEma
 
 export const loginUser = (email, contraseña) => signInWithEmailAndPassword(auth, email, contraseña);
 
-export const loginGoogle = (onNavigate) => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      onNavigate('/welcomeApp');
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      // eslint-disable-next-line no-unused-vars
-      credential.accessToken;
-      // The signed-in user info.
-      result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
-    }).catch((error) => {
-    // Handle Errors here.
-      error.message;
-      // The email of the user's account used.
-      error.customData.email;
-      // The AuthCredential type that was used.
-      GoogleAuthProvider.credentialFromError(error);
-    // ...
-    });
-};
+export const loginGoogle = () => signInWithPopup(auth, provider);
 
 export const createPost = async (email, texto, etiqueta) => {
   const docRef = await addDoc(collection(db, 'posts'), {
