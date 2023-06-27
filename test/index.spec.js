@@ -213,4 +213,14 @@ describe('la funcion de contar los likes', () => {
     await CountLikes('ID', 'UserID');
     expect(onSnapshot).toHaveBeenCalled();
   });
+  it('debería llamar a la función onSnapshot cuando es ejecutada', () => {
+    const snapshotMock = { size: 3 }; // Mock conteo de likes
+    onSnapshot.mockImplementationOnce((query, callback) => {
+      callback(snapshotMock);
+    });
+    const conteo = { textContent: '' };
+    CountLikes('ID', conteo);
+    expect(onSnapshot).toHaveBeenCalled();
+    expect(conteo.textContent).toBe('3');
+  });
 });
