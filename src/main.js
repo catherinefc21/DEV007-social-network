@@ -12,7 +12,7 @@ const routes = {
   '/welcomeApp': welcomeApp,
 };
 
-export const onNavigate = (pathname) => {
+const onNavigate = (pathname) => {
   window.history.pushState(
     {},
     pathname,
@@ -21,13 +21,13 @@ export const onNavigate = (pathname) => {
   while (rootDiv.firstChild) {
     rootDiv.removeChild(rootDiv.firstChild);
   }
-  rootDiv.appendChild(routes[pathname]());
+  rootDiv.appendChild(routes[pathname](onNavigate));
 };
 // rootDiv.appendChild(routes[window.location.pathname]());
 const component = routes[window.location.pathname];
 // Esto de abajo se supone que es para que funcione mejor(investigar???)
 window.onpopstate = () => {
-  rootDiv.appendChild(component());
+  rootDiv.appendChild(component(onNavigate));
 };
 
-rootDiv.appendChild(component());
+rootDiv.appendChild(component(onNavigate));

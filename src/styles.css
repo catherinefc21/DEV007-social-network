@@ -1,0 +1,859 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Roboto:wght@300&family=Space+Grotesk:wght@500&display=swap');
+*{
+    font-family: 'inter', sans-serif;
+}
+body{
+    background-color: #FFE8BE;
+    background-image: url("images/fondo.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: right-bottom;
+    margin: 0;
+    font-family: 'inter', sans-serif;
+}
+.homeDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+.imgDiv{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
+.img1{
+    width: 276px;
+    height: auto;
+    left: 17px;
+    top: 17px;
+}
+
+.img2{
+    width: 175px;
+    height: auto;
+    top: 173px;
+    left: calc(50% - 144px/2);
+}
+.loginDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.email{
+    margin-bottom: 10px;
+    width: 210px;
+    height: 40px;
+    left: 58px;
+    top: 386px;
+    background-color: #FFFFfF;
+    border: 1px solid #F40F46;
+    border-radius : 10px;
+    padding-Left: 30px;
+    background-image: url("images/Email.png");
+    background-size: 17px , auto;
+    background-position: 9px 15px;
+    background-repeat: no-repeat;
+    outline: none;
+    cursor: text;
+}
+
+.password{
+    margin-bottom: 10px;
+    width: 210px;
+    height: 40px;
+    left: 58px;
+    top: 386px;
+    background: #FFFFfF;
+    border: 1px solid #F40F46;
+    border-radius: 10px;
+    padding-left: 30px;
+    background-image: url("images/contraseña.png");
+    background-size: 17px , auto;
+    background-position: 10px 8px;
+    background-repeat: no-repeat;
+    outline: none;
+    cursor: text;
+
+}
+.buttonWelcomeApp{
+    width: 243px;
+    height: 40px;
+    left: calc(50% - 219px/2 + 0.5px);
+    top: 527px;
+    background: #FF946B;
+    border: 1px solid #FF946B;
+    border-radius: 10px;
+    color:#FFFFfF;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.divO{
+    margin: 10px 1px;
+}
+
+.buttonGoogle{
+    margin-bottom: 10px;
+    width: 243px;
+    height: 40px;
+    left: calc(50% - 219px/2 + 0.5px);
+    top: 527px;
+    background:#FFFFFF;
+    padding-left: 20px;
+    background-image: url("images/Logog.png");
+    background-size: 23px , auto;
+    background-position: 15px 6px;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    opacity: 1;
+    border-color: #ffffff;
+    cursor: pointer;
+    font-family:'Roboto', sans-serif !important;
+    color: #686767;
+
+}
+.buttonGoogle:hover {opacity: 0.8; font-family: 'Roboto', sans-serif;}
+
+.buttonWelcomeApp:hover {opacity: 0.8;}
+
+.buttonRegister{
+    margin-bottom:20px;
+    width:160px;
+    height:40px;
+    left:calc(50% - 169px/2 - 0.5px);
+    top:626px;
+    background:none;
+    border:none ;
+    border-radius:10px;
+    color:rgb(25, 25, 25);
+    opacity: 1;
+    cursor: pointer;
+}
+.buttonRegister:hover {opacity: 0.8}
+
+/*register*/
+
+.regisDiv{
+    display: flex;
+    flex-direction: column;
+    align-items : center;
+    padding: 20px;
+ 
+ }
+ 
+ 
+ .divImg{
+     display: flex;
+     flex-direction: column;
+     align-items : center;
+ }
+ 
+ 
+ .imag1{
+     width: 276px;
+     height: auto;
+     left: 42px;
+     top: 17px;
+ }
+ 
+ 
+ .imag2{
+     width: 180px;
+     height: auto;
+     top: 17px;
+     left: 42px;
+ }
+ 
+ 
+ .registerDiv{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ 
+ .userNameDiv{
+    display: inline-flex;
+    gap: 5px;
+ }
+ 
+ .namE{
+     width: 90px;
+     height: 35px;
+     left: 44px;
+     top: 394px;
+     background: #FFFF;
+     border :  1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+     padding-Left: 30px;
+     background-image: url("images/user.png");
+     background-size: 17px , auto;
+     background-position: 9px 5px;
+     background-repeat: no-repeat;
+     outline: none;
+     cursor: text;
+ }
+ 
+ 
+ .lastName{
+     width: 90px;
+     height: 35px;
+     left: 44px;
+     top: 394px;
+     background: #FFFF;
+     border: 1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+     outline: none;
+     padding-Left: 20px;
+     cursor: text;
+ }
+ 
+ 
+ .Email{
+     width: 210px;
+     height: 35px;
+     left: 44px;
+     top: 428.25px;
+     background: #FFFF;
+     border: 1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+     padding-Left: 30px;
+     background-image: url("images/Email.png");
+     background-size: 17px , auto;
+     background-position: 9px 10px;
+     background-repeat: no-repeat;
+     outline: none;
+     cursor: text;
+ }
+ 
+ 
+ .passWord{
+     width: 210px;
+     height: 35px;
+     left: 44px;
+     top: 463.51;
+     background: #FFFF;
+     border: 1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+     padding-Left: 30px;
+     background-image: url("images/contraseña.png");
+     background-size: 17px , auto;
+     background-position: 9px 5px;
+     background-repeat: no-repeat;
+     outline: none;
+     cursor: text;
+
+ }
+ 
+ 
+ .age{
+     width: 210px;
+     height: 35px;
+     left: 44px;
+     top: 463.51;
+     background: #FFFF;
+     border: 1px solid #F40F46;
+     border-radius: 10px;
+     margin-bottom: 10px;
+     padding-Left: 30px;
+     background-image: url("images/torta.png");
+     background-size: 17px , auto;
+     background-position: 9px 5px;
+     background-repeat: no-repeat;
+     outline: none;
+     cursor: pointer;
+ }
+ 
+ .bntbackHome{
+    width:240px;
+    height:40px;
+    left: calc(50% - 219px/2 + 0.5px);
+    top: 527px;
+    background: #FF946B;
+    border: 1px solid #FF946B;
+    border-radius: 10px;
+    color:#FFFFfF;
+    opacity: 1;
+    cursor: pointer;
+ }
+ .bntbackHome:hover {opacity: 0.8;}
+ .bntRegister{
+    width: 240px;
+    height: 40px;
+     left: 860px;
+     top: 798px;
+     background: #F40F46;
+     border: 1px solid #FF7563;
+     border-radius: 10px;
+     margin-bottom: 10px;
+     color: white;
+     opacity: 1;
+     cursor: pointer;
+ }
+
+ .bntRegister:hover {opacity: 0.8}
+ 
+/*welcomeDiv*/
+.welcomeAppDiv {display  : flex;
+    flex-direction  : column;
+    align-items: center;
+    
+  }
+  
+  .welcomeNav {
+  display  : inline-flex;
+    justify-content  : space-around;
+    align-items  : center;
+    width  : 360px;
+    height  : 72px;
+    background-color: #ff756316;
+  }
+  
+  .buttonTips{
+     width : 48px;
+   height : 48px;
+   background : #F40F46;
+   background-image: url("images/consejos.png");
+   background-position: 10px 3px;
+   background-size: 60%;
+   background-repeat: no-repeat;
+   border-radius: 50px;
+   border : none;
+   cursor: pointer;
+  }
+  
+  .buttonTips:hover {background-color: #FF946B}
+  
+  .divNavImg{
+      width  : 120px;
+      margin-right  : 30px;
+  }
+  
+  .divNavImg img{
+      width  : 100%;
+  }
+  
+
+  
+  .buttonPicture{
+      background : #F40F46;
+    background-image : url("images/usuario.png");
+    background-size : 50%;
+    background-position : 12px 8px;
+    background-repeat : no-repeat;
+    width : 48px;
+    height : 48px;
+    border-radius : 50px;
+    display : flex;
+    justify-content : center;
+    border : none;
+    cursor: pointer;
+  }
+  
+  .ListPicture{
+    display: none;
+    position : absolute;
+    background-color : white;
+    z-index : 1;
+    border-radius: 5px;
+    margin: 40px;
+  }
+
+  .btnPicture:hover .ListPicture {
+    display: block;}
+  
+  .buttonHome{
+      background : white;
+    border: none;
+    color : #F40F46;
+    width : 60px;
+    height : 40px;
+    border-radius: 5px;
+    text-decoration : none;
+    display : block;
+    cursor: pointer;
+  }
+  
+  .buttonProfile{
+    background : white;
+    color : #F40F46;
+    border: none;
+    text-decoration : none;
+    display : block;
+    width : 60px;
+    height : 40px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buttonHome:hover {background-color: #FFD7C8}
+  .buttonProfile:hover {background-color: #FFD7C8}
+  .btnPicture:hover .buttonPicture {
+      background-color: #FF946B;
+    }
+  
+  .Search{
+    background: #F40F46;
+    background-image: url("images/lupa.png");
+    background-size: 50%;
+    background-position: 11px 8px;
+    background-repeat: no-repeat;
+    padding-left : 40px;
+    border-radius: 50px;
+    width: 7px;
+    height: 47px;
+    border: none;
+    transition: width 0.4s ease-in-out;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .Search:hover {background-color: #FF946B}
+  .Search:focus {
+      width : 80px;
+      background-image : none;
+  
+    }
+  
+  .welcomeMain{
+      display : inline-flex;
+      margin-bottom : 20px;
+      width  : 360px;
+  }
+  
+  .divMainImage{
+      width : 131px;
+    height : 183px;
+  }
+  
+  .divMainImage img {
+      width : 100%
+  }
+  
+  .divMainPublisher{
+   display : flex;
+   justify-content : flex-start;
+   align-items : center;
+   flex-direction : column;
+   margin-left : 20px;
+   height: 700%;
+  }
+  
+
+  .inputPublisher{
+   width : 190px;
+   height : 94.5px;
+   border : 1px solid #F40F46;
+   border-radius : 10px 10px 10px 0px;
+   text-align : left start;
+   padding : 5px 7px;
+   cursor: text;
+   outline: none;
+  }
+.buttonMainPublisher{
+    display: flex;
+    width: 200px;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+  .selectPublisher{
+    background :#FF946B;
+    border-radius : 10px;
+    width: 140px;
+    height : 24px;
+    border : 1px solid #FF946B;
+    color : white;
+    cursor: pointer;
+    outline: none;
+    text-align:left;
+    
+  }
+
+.selectPublisher .option0{
+    background : white;
+    color : #b1b1b1;
+    width: 140px;
+  }
+  
+  .selectPublisher option{
+    background : white;
+    color : #F40F46;
+    width: 140px;}
+  
+  .buttonPublisher{
+    background : #F40F46;
+    border-radius : 10px;
+    width: 100px;
+    height : 24px;
+    border : 1px solid #F40F46;
+    color : white;
+    cursor: pointer;
+  }
+
+  .welcomeArt{
+    height: 500 px;
+    width: 100%;
+  }
+
+  .timeline{
+    width: 100%;
+    display: flex;
+  }
+
+  .post{
+    width: 100%;
+    margin: 20px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .containerPost{
+    min-height: 87px ;
+    padding: 10px 10px 0px 30px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+  }
+  .postEmail{
+    font-weight: 600;
+margin-bottom: 15px;
+margin-top: -20px;
+  }
+.containerLike{
+  margin-top: -15px;
+    margin-left: 85% ;
+    width: 100px;
+}
+  .like{
+    width: 40px;
+    height: 40px;
+    background-color: #FFFF;
+    background-image : url("images/corazon1.png");
+    background-size : 90%;
+    background-position : 2px -2px;
+    background-repeat : no-repeat;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /*.like:hover{background-image : url("images/corazon2.png");
+  }*/
+
+  .postLabel{
+    color: #e51243;
+    font-weight: 600;
+    padding-left: 20px;
+  }
+
+  .postText{
+    padding-left: 20px;
+  }
+  .popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+
+  }
+  
+
+  .inputEdit{
+    width : 300px;
+    height : 100px;
+    border : 1.5px solid #F40F46;
+    border-radius : 10px;
+    text-align : left start;
+    padding : 5px 7px;
+    cursor: text;
+    outline: none;
+    
+   }
+   .selectEdit{
+     background :#FF946B;
+     border-radius : 10px;
+     width: 140px;
+     height : 24px;
+     border : 1px solid #FF946B;
+     color : white;
+     cursor: pointer;
+     outline: none;
+     text-align:left;
+   }
+ 
+ .selectEdit .option0{
+     background : white;
+     color : #b1b1b1;
+     width: 140px;}
+   
+   .selectEdit option{
+     background : white;
+     color : #F40F46;
+     width: 140px;}
+   
+   .buttonEdit{
+     background : #F40F46;
+     border-radius : 10px;
+     width: 100px;
+     height : 24px;
+     border : 1px solid #F40F46;
+     color : white;
+     cursor: pointer;
+   }
+   .close-button{
+    display: flex;
+    justify-content: flex-end;
+    cursor: default;
+    color: #b1b1b1;
+    font-size: 30px;
+   }
+  /* ----- botones editar y borrar --- */
+  .btnPostConfig{
+    background : #ffffff;
+  background-image : url("images/editar.png");
+  background-size : 70%;
+  background-position : 7px 5px;
+  background-repeat : no-repeat;
+  width : 40px;
+  height : 40px;
+  border-radius : 50px;
+  display : flex;
+  justify-content : center;
+  border : none;
+  cursor: pointer;
+}
+
+.listPostConfig{
+  display: none;
+  position : absolute;
+  background-color : white;
+  z-index : 1;
+  border-radius: 5px;
+  margin: 40px;
+}
+
+.postConfig{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  width: 15%;
+  margin-left: 83%;
+}
+.postConfig:hover .listPostConfig {
+  display: block;}
+
+.btnConfigEdit{
+    background : white;
+  border: none;
+  color : #F40F46;
+  width : 60px;
+  height : 40px;
+  border-radius: 5px;
+  text-decoration : none;
+  display : block;
+  cursor: pointer;
+}
+
+.btnConfigDelete{
+  background : white;
+  color : #F40F46;
+  border: none;
+  text-decoration : none;
+  display : block;
+  width : 60px;
+  height : 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btnConfigDelete:hover {background-color: #FFD7C8}
+.btnConfigEdit:hover {background-color: #FFD7C8}
+.postConfig:hover .btnPostConfig {
+    background-color: #FF946B;
+  }
+
+  
+
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+
+    .homeDiv{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 50px;
+    margin-right: 300px;
+    
+
+    }
+    .img1{
+    width: 43%;
+    }
+
+    .img2{
+    width: 30%;
+
+    }
+    .email{
+        width: 160%;
+        
+    }
+    
+    .password{
+        width: 160%;
+      
+    }
+    .buttonWelcomeApp{
+        width: 175%;
+    
+    }
+
+    .buttonGoogle{
+        width: 175%;
+    }
+    
+    .buttonRegister{
+        width: 130%;
+  }
+
+  /*register*/
+  .regisDiv{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    padding: 50px;
+    margin-right: 200px;
+  }
+  .imag1{
+    width: 50%;
+  }
+  .imag2{
+    width: 35%;
+  }
+    .namE{
+        width: 92%;
+    }
+    
+    
+    .lastName{
+     width: 92%;
+    }
+    
+    
+    .Email{
+     width: 90%;
+    }
+    
+    
+    .passWord{
+        width: 90%
+    }
+    
+    
+    .age{
+        width: 90%
+    }
+    
+    .bntbackHome{
+        width: 99%;
+    }
+    
+    .bntRegister{
+        width: 99%;
+    }
+
+    .welcomeNav {
+          width  : 100%;
+        }
+        
+        .divNavImg{
+            margin-right  : 60%;
+        }
+        
+        .welcomeMain{
+            width  : 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 30px;
+        }
+        
+        .divMainImage{
+            width : 30%;
+          height : 20%;
+        }
+        
+        
+        .divMainPublisher{
+            width: 60%;
+            display: flex;
+            justify-content: start;
+            padding-top: 20px;
+        }
+        
+        .inputPublisher{
+         width : 100%;
+         max-height: 30%;
+        }
+
+        .buttonMainPublisher{
+            display: inline-flex;
+            justify-content: space-between;
+            width: 100%;
+            flex-direction: row;
+            margin-top: -30px;
+        }
+        .buttonPublisher{
+            margin-left: 5px;
+        }
+
+        .timeline{
+            width: 60%;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .post{
+          width: 90%;
+        }
+
+        .welcomeArt{
+            width: 96%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -23%;
+        }
+        .popup-container {
+          width: 100% ;
+      
+        }
+        
+   
+}
+
+@media only screen and (min-width: 1100px) {
+    .divNavImg{
+        margin-right  : 75%;
+    }
+
+    .welcomeArt{
+      margin-top: -26%;
+  }
+}
