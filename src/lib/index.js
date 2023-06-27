@@ -21,7 +21,7 @@ import {
 } from 'firebase/firestore';
 import { auth, db, provider } from '../firebase/firebaseConfig';
 
-export const saveName = (nombre1, apellido) => updateProfile(auth.currentUser, {
+export const saveName = (nombre1, apellido, usuario) => updateProfile(usuario, {
   displayName: `${nombre1} ${apellido}`,
 });
 

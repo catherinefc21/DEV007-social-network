@@ -2,6 +2,7 @@
 import { RegisterMailAndPassword, saveName } from '../lib';
 import logo from '../images/Logo.png';
 import monitaRegister from '../images/Monita3.png';
+import { auth } from '../firebase/firebaseConfig';
 
 export const register = (onNavigate) => {
   const regisDiv = document.createElement('div');
@@ -90,7 +91,7 @@ export const register = (onNavigate) => {
     }
 
     RegisterMailAndPassword(email, contraseña)
-      .then(() => saveName(nombre, apellido))
+      .then(() => saveName(nombre, apellido, auth.currentUser))
       .then(() => {
         onNavigate('/');
       })
