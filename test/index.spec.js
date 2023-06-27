@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
+  updateProfile,
 } from 'firebase/auth';
 import {
   addDoc,
@@ -21,6 +22,7 @@ import {
   AlreadyLiked,
   editPost,
   CountLikes,
+  saveName,
 } from '../src/lib/index';
 
 jest.mock('firebase/auth');
@@ -163,3 +165,18 @@ describe('la funcion de contar los likes', () => {
   });
 });
 // expect(user).toBe({mail: 'a',  crateUser})
+describe('saveName', () => {
+  it('should update the profile with the given name', async () => {
+    const currentUserMock = { displayName: null };
+    updateProfile.mockResolvedValueOnce(currentUserMock);
+
+    const nombre1 = 'John';
+    const apellido = 'Doe';
+
+    await saveName(nombre1, apellido);
+
+    expect(updateProfile).toHaveBeenCalledWith(currentUserMock, {
+      displayName: `${nombre1} ${apellido}`,
+    });
+  });
+});
