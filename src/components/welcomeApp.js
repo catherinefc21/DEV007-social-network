@@ -327,7 +327,7 @@ export const welcomeApp = (onNavigate) => {
             alert('Completa todos los campos');
             return;
           }
-          editPost(postId, editedText, editedTag, savePost.Email, auth.currentUser.displayName)
+          editPost(postId, editedText, editedTag)
             .then(() => {
               closePopup();
             })
