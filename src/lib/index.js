@@ -33,7 +33,8 @@ export const createPost = async (email, texto, etiqueta, post) => {
   });
 };
 // delete del post
-export const deletePost = async (id, post) => { await deleteDoc(doc(db, post, id)); };
+export const deletePost = async (id, post) => {
+  await deleteDoc(doc(db, post, id)); };
 
 // add like
 export const addLike = async (postId, userID, post) => {
