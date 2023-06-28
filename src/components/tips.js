@@ -119,6 +119,7 @@ export const tips = (onNavigate) => {
     const textPost = document.getElementById('inputPublisher').value;
     const selectT = document.getElementById('select').value;
     const nameEmail = auth.currentUser.displayName;
+
     console.log(textPost, selectT);
     // sin campos vacios.
     if (textPost === '' || selectT === 'Etiqueta tu post') {
@@ -129,7 +130,7 @@ export const tips = (onNavigate) => {
   });
   buttonPublisher.addEventListener('click', () => onNavigate('/tips'));
   /* const Publicaciones = collection(db,'publicaciones');
-    console.log(Publicaciones); */
+  console.log(Publicaciones); */
 
   /* esto tambien hay que hacerlo con la parte de buttontips, buttonProfile EN EL FUTURO */
   buttonHome.addEventListener('click', () => onNavigate('/'));
@@ -143,7 +144,7 @@ export const tips = (onNavigate) => {
   const post = document.createElement('div');
   post.setAttribute('class', 'post');
   /* onSnapshot(query(collection(db, 'posts'), orderBy('contenido', 'desc'), limit(7)), (querySnapshot) => { */
-  const q = query(collection(db, 'tips'), orderBy('fecha', 'desc'), limit(15));
+  const q = query(collection(db, 'tips'), orderBy('fecha', 'desc'), limit(6));
   onSnapshot(q, (querySnapshot) => {
     const savePostsArray = [];
 
@@ -224,11 +225,42 @@ export const tips = (onNavigate) => {
       });
 
       // boton eliminar + modal
+      /* btnConfigDelete.addEventListener('click', () => {
+        const ConfirmationDiv = document.createElement('div');
+        ConfirmationDiv.setAttribute('class', 'confirmation-content');
+
+        ConfirmationDiv.innerHTML = `
+    <div id='modal' class='modal'>
+      <p>¿Estás segura de borrar este post?</p>
+      <div class='container-confirmationBts'>
+        <button id='buttonYes' class='buttonEdit'>Sí</button>
+        <button id='buttonNo' class='buttonEdit'>No</button>
+      </div>
+    </div>`;
+
+        document.body.appendChild(ConfirmationDiv);
+
+        // Agrega el evento click al botón de confirmar del modal
+        document.getElementById('buttonYes').addEventListener('click', () => {
+          // Realizar la eliminación del post
+          deletePost(postId, NameColleccion);
+
+          // Ocultar el div modal
+          ConfirmationDiv.style.display = 'none';
+          document.body.removeChild(ConfirmationDiv);
+        });
+
+        // Agrega el evento click al botón de cancelar del modal
+        document.getElementById('buttonNo').addEventListener('click', () => {
+          // Ocultar el div modal
+          ConfirmationDiv.style.display = 'none';
+          document.body.removeChild(ConfirmationDiv);
+        });
+      }); */
+
       btnConfigDelete.addEventListener('click', () => {
         const opcion = confirm('¿Estás segura de borrar el post?');
-        if (opcion === true) {
-          deletePost(postId, NameColleccion);
-        }
+        if (opcion === true) { deletePost(postId, NameColleccion); }
       });
 
       postConfig.appendChild(btnPostConfig);
@@ -270,18 +302,18 @@ export const tips = (onNavigate) => {
         selectEdit.setAttribute('id', 'selectEdit');
         selectEdit.setAttribute('class', 'selectEdit');
         optionEdit0.setAttribute('class', 'option0');
-        optionEdit1.setAttribute('value', '#Lactancia');
-        optionEdit2.setAttribute('value', '#PrimeraComida');
-        optionEdit3.setAttribute('value', '#Formulaslacteas');
-        optionEdit4.setAttribute('value', '#TipsGenerales');
+        optionEdit1.setAttribute('value', 'Medico');
+        optionEdit2.setAttribute('value', 'Matrona');
+        optionEdit3.setAttribute('value', 'Enfermera');
+        optionEdit4.setAttribute('value', 'Nutricionista');
         buttonSaveChanges.setAttribute('class', 'buttonEdit');
         buttonSaveChanges.setAttribute('id', 'buttonSaveChanges');
         buttonSaveChanges.textContent = 'Guardar';
         optionEdit0.textContent = 'Etiqueta tu post';
-        optionEdit1.textContent = '#Lactancia';
-        optionEdit2.textContent = '#PrimeraComida';
-        optionEdit3.textContent = '#FormulasLacteas';
-        optionEdit4.textContent = '#TipsGenerales';
+        optionEdit1.textContent = 'Medico';
+        optionEdit2.textContent = 'Matrona';
+        optionEdit3.textContent = 'Enfermera';
+        optionEdit4.textContent = 'Nutricionista';
         inputEdit.textContent = savePost.Contenido;
         selectEdit.textContent = savePost.Etiqueta;
 

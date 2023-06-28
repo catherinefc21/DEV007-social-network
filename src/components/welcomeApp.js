@@ -144,7 +144,7 @@ export const welcomeApp = (onNavigate) => {
   const post = document.createElement('div');
   post.setAttribute('class', 'post');
   /* onSnapshot(query(collection(db, 'posts'), orderBy('contenido', 'desc'), limit(7)), (querySnapshot) => { */
-  const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'), limit(15));
+  const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'), limit(6));
   onSnapshot(q, (querySnapshot) => {
     const savePostsArray = [];
 
@@ -224,12 +224,43 @@ export const welcomeApp = (onNavigate) => {
         }
       });
 
-      // boton eliminar + modal
+      /* boton eliminar + modal
+      btnConfigDelete.addEventListener('click', () => {
+        const ConfirmationDiv = document.createElement('div');
+        ConfirmationDiv.setAttribute('class', 'confirmation-content');
+
+        ConfirmationDiv.innerHTML = `
+    <div id='modal' class='modal'>
+      <p>¿Estás segura de borrar este post?</p>
+      <div class='container-confirmationBts'>
+        <button id='buttonYes' class='buttonEdit'>Sí</button>
+        <button id='buttonNo' class='buttonEdit'>No</button>
+      </div>
+    </div>`;
+
+        document.body.appendChild(ConfirmationDiv);
+
+        // Agrega el evento click al botón de confirmar del modal
+        document.getElementById('buttonYes').addEventListener('click', () => {
+          // Realizar la eliminación del post
+          deletePost(postId, NameColleccion);
+
+          // Ocultar el div modal
+          ConfirmationDiv.style.display = 'none';
+          document.body.removeChild(ConfirmationDiv);
+        });
+
+        // Agrega el evento click al botón de cancelar del modal
+        document.getElementById('buttonNo').addEventListener('click', () => {
+          // Ocultar el div modal
+          ConfirmationDiv.style.display = 'none';
+          document.body.removeChild(ConfirmationDiv);
+        });
+      }); */
+
       btnConfigDelete.addEventListener('click', () => {
         const opcion = confirm('¿Estás segura de borrar el post?');
-        if (opcion === true) {
-          deletePost(postId, NameColleccion);
-        }
+        if (opcion === true) { deletePost(postId, NameColleccion); }
       });
 
       postConfig.appendChild(btnPostConfig);
