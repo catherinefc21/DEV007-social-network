@@ -691,7 +691,27 @@ margin-top: -20px;
     background-color: #FF946B;
   }
 
-  
+  .confirmation-content{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .container-confirmationBts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+    
+
+  }
 
   @media only screen and (min-width: 768px) {
     /* For desktop: */
