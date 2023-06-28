@@ -95,10 +95,10 @@ export const tips = (onNavigate) => {
   buttonPublisher.setAttribute('id', 'btnpublisher');
   buttonPublisher.textContent = 'Publicar';
   optionPublisher0.textContent = 'Etiqueta tu post';
-  optionPublisher1.textContent = 'Medico';
-  optionPublisher2.textContent = 'Matrona';
-  optionPublisher3.textContent = 'Enfermera';
-  optionPublisher4.textContent = 'Nutricionista';
+  optionPublisher1.textContent = '#Médico';
+  optionPublisher2.textContent = '#Matrona';
+  optionPublisher3.textContent = '#Enfermera';
+  optionPublisher4.textContent = '#Nutricionista';
 
   // orden de const
   divMainImage.appendChild(imgMain);
