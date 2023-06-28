@@ -4,10 +4,10 @@
 }
 body{
     background-color: #FFE8BE;
-    background-image: url("images/fondo.png");
+    /*background-image: url("images/fondo.png");
     background-size: 100%;
     background-repeat: no-repeat;
-    background-position: right-bottom;
+    background-position: right-bottom;*/
     margin: 0;
     font-family: 'inter', sans-serif;
 }
@@ -16,6 +16,11 @@ body{
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    background-image: url("images/fondo.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: right-bottom;
+    margin: 0;
     
 }
 
@@ -142,6 +147,11 @@ body{
     flex-direction: column;
     align-items : center;
     padding: 20px;
+    background-image: url("images/fondo.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: right-bottom;
+    margin: 0;
  
  }
  
@@ -351,6 +361,7 @@ body{
   
   .divNavImg img{
       width  : 100%;
+      
   }
   
 
@@ -437,7 +448,6 @@ body{
   
   .welcomeMain{
       display : inline-flex;
-      margin-bottom : 20px;
       width  : 360px;
   }
   
@@ -447,7 +457,7 @@ body{
   }
   
   .divMainImage img {
-      width : 100%
+      width : 118%;
   }
   
   .divMainPublisher{
@@ -519,6 +529,7 @@ body{
   .timeline{
     width: 100%;
     display: flex;
+    
   }
 
   .post{
@@ -724,11 +735,13 @@ margin-top: -20px;
     display: flex;
     flex-direction: row;
     align-content: center;
-    padding: 50px;
-    margin-right: 300px;
     
 
     }
+    .imgDiv{
+      margin-left: -50px;
+    }
+  
     .img1{
     width: 43%;
     }
@@ -764,14 +777,19 @@ margin-top: -20px;
     display: flex;
     flex-direction: row;
     align-content: center;
-    padding: 50px;
-    margin-right: 200px;
+
+  }
+  .divImg{
+    margin-left: -60px;
+  }
+  .registerDiv{
+    margin-left: -70px;
   }
   .imag1{
-    width: 50%;
+    width: 42%;
   }
   .imag2{
-    width: 35%;
+    width: 33%;
   }
     .namE{
         width: 92%;
@@ -817,12 +835,11 @@ margin-top: -20px;
             width  : 100%;
             display: flex;
             justify-content: center;
-            padding-top: 30px;
         }
         
         .divMainImage{
-            width : 30%;
-          height : 20%;
+          width : 30%;
+          height : 45%;
         }
         
         
@@ -830,7 +847,7 @@ margin-top: -20px;
             width: 60%;
             display: flex;
             justify-content: start;
-            padding-top: 20px;
+            padding-top: 40px;
         }
         
         .inputPublisher{
@@ -853,6 +870,7 @@ margin-top: -20px;
             width: 60%;
             display: flex;
             justify-content: flex-end;
+            margin-top: -50px;
         }
         .post{
           width: 90%;
@@ -868,7 +886,7 @@ margin-top: -20px;
           width: 100% ;
       
         }
-        
+  
    
 }
 

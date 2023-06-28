@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
@@ -9,7 +8,7 @@ import {
   createPost, deletePost, editPost, CountLikes, addLike, deleteLike, AlreadyLiked,
 } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
-import monitasdos from '../images/Monita2.png';
+import monitasdos from '../images/fondowelcome.png';
 import logo from '../images/Logo.png';
 import corazondos from '../images/corazon2.png';
 import corazonuno from '../images/corazon1.png';
@@ -226,10 +225,27 @@ export const welcomeApp = (onNavigate) => {
 
       // boton eliminar + modal
       btnConfigDelete.addEventListener('click', () => {
-        const opcion = confirm('¿Estás segura de borrar el post?');
-        if (opcion === true) {
+        const ConfirmationDiv = document.createElement('div');
+        ConfirmationDiv.setAttribute('class', 'confirmation-content');
+
+        document.body.appendChild(ConfirmationDiv);
+        ConfirmationDiv.innerHTML = `
+        <p> ¿Borrar posts? </p>
+        <<div class='container-container'>
+        <div class='container-confirmationBts'>
+          <button id='buttonYes' class='buttonYes'> Sí </button> <button id='buttonNo' class='buttonNo'> No </button>
+        </div>
+        </div>`;
+        ConfirmationDiv.style.display = 'block';
+        const buttonYes = document.querySelector('.buttonYes');
+        buttonYes.addEventListener('click', () => {
           deletePost(postId, NameColleccion);
-        }
+          ConfirmationDiv.style.display = 'none';
+        });
+        const buttonNo = document.querySelector('.buttonNo');
+        buttonNo.addEventListener('click', () => {
+          ConfirmationDiv.style.display = 'none';
+        });
       });
 
       postConfig.appendChild(btnPostConfig);
@@ -314,7 +330,7 @@ export const welcomeApp = (onNavigate) => {
             alert('Completa todos los campos');
             return;
           }
-          editPost(postId, editedText, editedTag, savePost.Email, auth.currentUser.displayName)
+          editPost(postId, editedText, editedTag, NameColleccion)
             .then(() => {
               closePopup();
             })
