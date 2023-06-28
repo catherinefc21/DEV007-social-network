@@ -230,10 +230,12 @@ export const welcomeApp = (onNavigate) => {
 
         document.body.appendChild(ConfirmationDiv);
         ConfirmationDiv.innerHTML = `
-              <p> ¿Borrar posts? </p>
-              <div class='container-confirmationBts'>
-                <button id='buttonYes' class='buttonYes'> Sí </button> <button id='buttonNo' class='buttonNo'> No </button>
-              </div>`;
+        <p> ¿Borrar posts? </p>
+        <<div class='container-container'>
+        <div class='container-confirmationBts'>
+          <button id='buttonYes' class='buttonYes'> Sí </button> <button id='buttonNo' class='buttonNo'> No </button>
+        </div>
+        </div>`;
         ConfirmationDiv.style.display = 'block';
         const buttonYes = document.querySelector('.buttonYes');
         buttonYes.addEventListener('click', () => {
