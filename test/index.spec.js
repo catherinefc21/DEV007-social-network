@@ -186,6 +186,13 @@ describe('la funcion de verificar si la coleccion contiene like de un user', () 
   it('debería ser una función', () => {
     expect(typeof AlreadyLiked).toBe('function');
   });
+
+  it('debería retornar false si no existe el like', async () => {
+    getDoc.mockResolvedValueOnce({ exists: false });
+    const response = await AlreadyLiked('ID', 'UserID');
+    expect(response.exists).toBe(false);
+    expect(getDoc).toHaveBeenCalled();
+  });
   /* it('deberia llamar a la funcion deleteDoc cuando es ejecutada', async () => {
     await AlreadyLiked('ID', 'UserID');
     expect(getDoc).toHaveBeenCalled();

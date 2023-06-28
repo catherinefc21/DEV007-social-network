@@ -8,12 +8,12 @@ import {
   createPost, deletePost, editPost, CountLikes, addLike, deleteLike, AlreadyLiked,
 } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
-import monitasdos from '../images/Monita2.png';
+import monitasdos from '../images/monita5.png';
 import logo from '../images/Logo.png';
 import corazondos from '../images/corazon2.png';
 import corazonuno from '../images/corazon1.png';
 
-export const welcomeApp = (onNavigate) => {
+export const tips = (onNavigate) => {
   // Contenedor General----------------------------------
   const welcomeAppDiv = document.createElement('div');
   welcomeAppDiv.setAttribute('class', 'welcomeAppDiv');
@@ -30,7 +30,7 @@ export const welcomeApp = (onNavigate) => {
   const buttonHome = document.createElement('button');
   const buttonProfile = document.createElement('button');
   /* const Search = document.createElement('input'); */
-  const buttonTips = document.createElement('button');
+  const buttonTimeline = document.createElement('button');
 
   welcomeNav.setAttribute('class', 'welcomeNav');
   divNavImg.setAttribute('class', 'divNavImg');
@@ -41,7 +41,7 @@ export const welcomeApp = (onNavigate) => {
   buttonHome.setAttribute('class', 'buttonHome');
   buttonProfile.setAttribute('class', 'buttonProfile');
   /* Search.setAttribute('class', 'Search'); */
-  buttonTips.setAttribute('class', 'buttonTips');
+  buttonTimeline.setAttribute('class', 'buttonTimeline');
   // falta enlazar la imagen de foto de perfil
 
   buttonProfile.textContent = 'Perfil';
@@ -55,7 +55,7 @@ export const welcomeApp = (onNavigate) => {
   divNavImg.appendChild(imgNav);
   welcomeNav.appendChild(divNavImg);
   /* welcomeNav.appendChild(Search); */
-  welcomeNav.appendChild(buttonTips);
+  welcomeNav.appendChild(buttonTimeline);
   welcomeNav.appendChild(btnPicture);
 
   /*  -------------------MAIN (monita+escribe tu comentario)------------------------------------------------------------------------  */
@@ -84,20 +84,20 @@ export const welcomeApp = (onNavigate) => {
   selectPublisher.setAttribute('class', 'selectPublisher');
   optionPublisher0.setAttribute('default', '');
   optionPublisher0.setAttribute('class', 'option0');
-  optionPublisher1.setAttribute('value', '#Lactancia');
-  optionPublisher2.setAttribute('value', '#PrimeraComida');
-  optionPublisher3.setAttribute('value', '#Formulaslacteas');
-  optionPublisher4.setAttribute('value', '#TipsGenerales');
+  optionPublisher1.setAttribute('value', 'Medico');
+  optionPublisher2.setAttribute('value', 'Matrona');
+  optionPublisher3.setAttribute('value', 'Enfermera');
+  optionPublisher4.setAttribute('value', 'Nutricionista');
   buttonPublisher.setAttribute('class', 'buttonPublisher');
   imgMain.setAttribute('src', monitasdos);
   inputPublisher.setAttribute('placeholder', '¿Que quieres compartir?');
   buttonPublisher.setAttribute('id', 'btnpublisher');
   buttonPublisher.textContent = 'Publicar';
   optionPublisher0.textContent = 'Etiqueta tu post';
-  optionPublisher1.textContent = '#Lactancia';
-  optionPublisher2.textContent = '#PrimeraComida';
-  optionPublisher3.textContent = '#FormulasLacteas';
-  optionPublisher4.textContent = '#TipsGenerales';
+  optionPublisher1.textContent = 'Medico';
+  optionPublisher2.textContent = 'Matrona';
+  optionPublisher3.textContent = 'Enfermera';
+  optionPublisher4.textContent = 'Nutricionista';
 
   // orden de const
   divMainImage.appendChild(imgMain);
@@ -112,13 +112,12 @@ export const welcomeApp = (onNavigate) => {
   buttonMainPublisher.appendChild(buttonPublisher);
   welcomeMain.appendChild(divMainImage);
   welcomeMain.appendChild(divMainPublisher);
-  const NameColleccion = 'posts';
+  const NameColleccion = 'tips';
   // publicar post
   buttonPublisher.addEventListener('click', () => {
     const textPost = document.getElementById('inputPublisher').value;
     const selectT = document.getElementById('select').value;
     const nameEmail = auth.currentUser.displayName;
-
     console.log(textPost, selectT);
     // sin campos vacios.
     if (textPost === '' || selectT === 'Etiqueta tu post') {
@@ -127,13 +126,13 @@ export const welcomeApp = (onNavigate) => {
     console.log(auth.currentUser);
     createPost(nameEmail, textPost, selectT, NameColleccion);
   });
-  buttonPublisher.addEventListener('click', () => onNavigate('/welcomeApp'));
+  buttonPublisher.addEventListener('click', () => onNavigate('/tips'));
   /* const Publicaciones = collection(db,'publicaciones');
-  console.log(Publicaciones); */
+    console.log(Publicaciones); */
 
   /* esto tambien hay que hacerlo con la parte de buttontips, buttonProfile EN EL FUTURO */
   buttonHome.addEventListener('click', () => onNavigate('/'));
-  buttonTips.addEventListener('click', () => onNavigate('/tips'));
+  buttonTimeline.addEventListener('click', () => onNavigate('/welcomeApp'));
 
   // ---------------------ARTICLE (Publicaciones de mamis "muro")--------------------------------------------------------------------------
 
@@ -143,7 +142,7 @@ export const welcomeApp = (onNavigate) => {
   const post = document.createElement('div');
   post.setAttribute('class', 'post');
   /* onSnapshot(query(collection(db, 'posts'), orderBy('contenido', 'desc'), limit(7)), (querySnapshot) => { */
-  const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'), limit(15));
+  const q = query(collection(db, 'tips'), orderBy('fecha', 'desc'), limit(15));
   onSnapshot(q, (querySnapshot) => {
     const savePostsArray = [];
 
@@ -230,10 +229,10 @@ export const welcomeApp = (onNavigate) => {
 
         document.body.appendChild(ConfirmationDiv);
         ConfirmationDiv.innerHTML = `
-              <p> ¿Borrar posts? </p>
-              <div class='container-confirmationBts'>
-                <button id='buttonYes' class='buttonYes'> Sí </button> <button id='buttonNo' class='buttonNo'> No </button>
-              </div>`;
+                <p> ¿Borrar posts? </p>
+                <div class='container-confirmationBts'>
+                  <button id='buttonYes' class='buttonYes'> Sí </button> <button id='buttonNo' class='buttonNo'> No </button>
+                </div>`;
         ConfirmationDiv.style.display = 'block';
         const buttonYes = document.querySelector('.buttonYes');
         buttonYes.addEventListener('click', () => {
