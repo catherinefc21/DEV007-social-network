@@ -715,8 +715,6 @@ margin-top: -20px;
     background-color: #FF946B;
   }
 
-<<<<<<< HEAD
-=======
   .container-container{
     position: fixed;
     top: 0;
@@ -729,7 +727,6 @@ margin-top: -20px;
     align-items: center;
   }
   
->>>>>>> 1868a669257b6735c243e1b881cbca2e12ffa052
 
   @media only screen and (min-width: 768px) {
     /* For desktop: */
