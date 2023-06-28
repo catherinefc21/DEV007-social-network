@@ -31,8 +31,8 @@ export const loginUser = (email, contraseña) => signInWithEmailAndPassword(auth
 
 export const loginGoogle = () => signInWithPopup(auth, provider);
 
-export const createPost = async (email, texto, etiqueta) => {
-  const docRef = await addDoc(collection(db, 'posts'), {
+export const createPost = async (email, texto, etiqueta, post) => {
+  const docRef = await addDoc(collection(db, post), {
     Contenido: texto,
     Etiqueta: etiqueta,
     Email: email,
@@ -40,37 +40,38 @@ export const createPost = async (email, texto, etiqueta) => {
   });
 };
 // delete del post
-export const deletePost = async (id) => { await deleteDoc(doc(db, 'posts', id)); };
+export const deletePost = async (id, post) => {
+  await deleteDoc(doc(db, post, id)); };
 
 // add like
-export const addLike = async (postId, userID) => {
-  const docRefLike = doc(db, 'posts', postId, 'likes', userID);
+export const addLike = async (postId, userID, post) => {
+  const docRefLike = doc(db, post, postId, 'likes', userID);
   await setDoc(docRefLike, { like: true });
 };
 
 // delete like
-export const deleteLike = async (postId, userID) => {
-  const docRefLike = doc(db, 'posts', postId, 'likes', userID);
+export const deleteLike = async (postId, userID, post) => {
+  const docRefLike = doc(db, post, postId, 'likes', userID);
   await deleteDoc(docRefLike);
 };
 
 // verificar si la publicacion tiene Like
-export const AlreadyLiked = async (postId, userID) => {
-  const docRefLike = doc(db, 'posts', postId, 'likes', userID);
-  const docSnap = await getDoc(docRefLike);
-  return docSnap.exists();
+export const AlreadyLiked = async (postId, userID, post) => {
+  const docRefLike = doc(db, post, postId, 'likes', userID);
+  const docSnap = (await getDoc(docRefLike));
+  return docSnap;
 };
 
 // contar los Likes
-export const CountLikes = (postId, conteo) => {
-  onSnapshot(query(collection(db, 'posts', postId, 'likes')), (snapshot) => {
+export const CountLikes = (postId, conteo, post) => {
+  onSnapshot(query(collection(db, post, postId, 'likes')), (snapshot) => {
     const likesCount = snapshot.size;
     conteo.textContent = `${likesCount}`; });
 };
 
 // Editar posts
-export const editPost = async (id1, newText, newTag) => {
-  const editPostRef = doc(db, 'posts', id1);
+export const editPost = async (id1, newText, newTag, post) => {
+  const editPostRef = doc(db, post, id1);
   await updateDoc(editPostRef, {
     Contenido: newText,
     Etiqueta: newTag,

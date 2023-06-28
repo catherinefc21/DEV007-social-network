@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-expressions */
 // import { expect } from '@jest/globals';//
 // importamos la funcion que vamos a testear
@@ -10,7 +11,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import {
-  addDoc,
+  addDoc, deleteDoc, doc, getDoc, onSnapshot, setDoc, updateDoc,
 } from 'firebase/firestore';
 import {
   RegisterMailAndPassword,
@@ -34,7 +35,13 @@ beforeEach(() => {
   createUserWithEmailAndPassword.mockClear();
   getAuth.mockClear();
   addDoc.mockClear();
+  doc.mockClear();
+  updateDoc.mockClear();
+  setDoc.mockClear();
+  deleteDoc.mockClear();
+  onSnapshot.mockClear();
   signInWithPopup.mockClear();
+  getDoc.mockClear();
   GoogleAuthProvider.mockClear();
 });
 
@@ -46,35 +53,15 @@ describe('La funcion de guardar nombre y apellido en Displayname', () => {
   it('debería ser una función', () => {
     expect(typeof saveName).toBe('function');
   });
-  it('should update the user profile with the given name and last name', async () => {
-    const currentUser = { displayName: 'John Doe' };
-    const nombre1 = 'John';
-    const apellido = 'Doe';
+  it('actualizar el perfil del usuario con el nombre y apellido proporcionados.', async () => {
+    const currentUser = { displayName: 'Viviana Gomez' };
+    const nombre1 = 'Viviana';
+    const apellido = 'Gomez';
 
     await saveName(nombre1, apellido, currentUser);
 
     expect(currentUser.displayName).toBe(`${nombre1} ${apellido}`);
   });
-  /* it('debería retornar Displayname considerando nombre y apellido', async () => {
-    // por aqui "mockeamos" signInWithEmailAndPassword y definimos que hará
-    updateProfile.mockReturnValueOnce({ user: { email: 'mvgomez.alonso@gmail.com' } });
-    const response = await loginUser('mvgomez.alonso@gmail.com', 'Vivi123');
-    expect(response.user.email).toBe('mvgomez.alonso@gmail.com');
-  });
-  it('should update the user display name in Firebase Auth', async () => {
-    // 1. Create a test user in Firebase Auth
-    const testUser = { user: { uid: 'test-uid' } };
-    createUserWithEmailAndPassword.mockResolvedValueOnce(testUser);
-
-    // 2. Call the saveName function with test data and the test user
-    await saveName('Viviana', 'Gomez', testUser);
-
-    // 3. Get the updated user from Firebase Auth and check that the display name is correct
-    const updatedUser = { displayName: 'Viviana Gomez' };
-    getAuth.mockReturnValueOnce({ currentUser: updatedUser });
-    const result = await saveName('Viviana', 'Gomez', testUser);
-    expect(result).toEqual(updatedUser);
-  }); */
 });
 
 /* ----------------------------------REGISTRO------------------------------------------- */
@@ -145,6 +132,10 @@ describe('la funcion de crear un post', () => {
   it('debería ser una función', () => {
     expect(typeof createPost).toBe('function');
   });
+  it('Deberia llamar a la funcion addDoc', async () => {
+    await createPost();
+    expect(addDoc).toHaveBeenCalled();
+  });
   it('debería crear un nuevo post en la base de datos', async () => {
     const email = 'test@example.com';
     const texto = 'Este es un nuevo post';
@@ -165,6 +156,10 @@ describe('la funcion de eliminar un post', () => {
   it('debería ser una función', () => {
     expect(typeof deletePost).toBe('function');
   });
+  it('deberia llamar a la funcion deleteDoc cuando es ejecutada', async () => {
+    await deletePost('ID');
+    expect(deleteDoc).toHaveBeenCalled();
+  });
 });
 
 /* ----------------------------------EDITAR POST ------------------------------------------- */
@@ -172,13 +167,18 @@ describe('la funcion de editar un post', () => {
   it('debería ser una función', () => {
     expect(typeof editPost).toBe('function');
   });
+  it('deberia llamar a la funcion deleteDoc cuando es ejecutada', async () => {
+    await editPost('ID');
+    expect(updateDoc).toHaveBeenCalled();
+  });
 });
 
 /* ----------------------------------DAR LIKE ------------------------------------------- */
 
 describe('la funcion de dar like a un post', () => {
-  it('debería ser una función', () => {
-    expect(typeof addLike).toBe('function');
+  it('deberia llamar a la funcion SetDoc cuando es ejecutada', async () => {
+    await addLike('ID', 'UserID');
+    expect(setDoc).toHaveBeenCalled();
   });
 });
 
@@ -187,19 +187,42 @@ describe('la funcion de verificar si la coleccion contiene like de un user', () 
   it('debería ser una función', () => {
     expect(typeof AlreadyLiked).toBe('function');
   });
+
+  it('debería retornar false si no existe el like', async () => {
+    getDoc.mockResolvedValueOnce({ exists: false });
+    const response = await AlreadyLiked('ID', 'UserID');
+    expect(response.exists).toBe(false);
+    expect(getDoc).toHaveBeenCalled();
+  });
+  /* it('deberia llamar a la funcion deleteDoc cuando es ejecutada', async () => {
+    await AlreadyLiked('ID', 'UserID');
+    expect(getDoc).toHaveBeenCalled();
+  }); */
 });
 
 /* ----------------------------------DELETE LIKE ------------------------------------------- */
 describe('la funcion de quitar like a un post', () => {
-  it('debería ser una función', () => {
-    expect(typeof deleteLike).toBe('function');
+  it('deberia llamar a la funcion deleteDoc cuando es ejecutada', async () => {
+    await deleteLike('ID', 'UserID');
+    expect(deleteDoc).toHaveBeenCalled();
   });
 });
 
 /* ----------------------------------CONTAR LIKES ------------------------------------------- */
 describe('la funcion de contar los likes', () => {
-  it('debería ser una función', () => {
-    expect(typeof CountLikes).toBe('function');
+  it('deberia llamar a la funcion onsnapshot cuando es ejecutada', async () => {
+    await CountLikes('ID', 'UserID');
+    expect(onSnapshot).toHaveBeenCalled();
+  });
+  it('debería llamar a la función onSnapshot cuando es ejecutada', () => {
+    const snapshotMock = { size: 3 }; // Mock conteo de likes
+    onSnapshot.mockImplementationOnce((query, callback) => {
+      callback(snapshotMock);
+    });
+    const conteo = { textContent: '' };
+    CountLikes('ID', conteo);
+    expect(onSnapshot).toHaveBeenCalled();
+    expect(conteo.textContent).toBe('3');
   });
 });
 // expect(user).toBe({mail: 'a',  crateUser})
