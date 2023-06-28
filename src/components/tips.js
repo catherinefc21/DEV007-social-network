@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-alert */
 /* eslint-disable no-console */
 /* eslint-disable max-len */
@@ -224,25 +225,10 @@ export const tips = (onNavigate) => {
 
       // boton eliminar + modal
       btnConfigDelete.addEventListener('click', () => {
-        const ConfirmationDiv = document.createElement('div');
-        ConfirmationDiv.setAttribute('class', 'confirmation-content');
-
-        document.body.appendChild(ConfirmationDiv);
-        ConfirmationDiv.innerHTML = `
-                <p> ¿Borrar posts? </p>
-                <div class='container-confirmationBts'>
-                  <button id='buttonYes' class='buttonYes'> Sí </button> <button id='buttonNo' class='buttonNo'> No </button>
-                </div>`;
-        ConfirmationDiv.style.display = 'block';
-        const buttonYes = document.querySelector('.buttonYes');
-        buttonYes.addEventListener('click', () => {
+        const opcion = confirm('¿Estás segura de borrar el post?');
+        if (opcion === true) {
           deletePost(postId, NameColleccion);
-          ConfirmationDiv.style.display = 'none';
-        });
-        const buttonNo = document.querySelector('.buttonNo');
-        buttonNo.addEventListener('click', () => {
-          ConfirmationDiv.style.display = 'none';
-        });
+        }
       });
 
       postConfig.appendChild(btnPostConfig);
