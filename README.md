@@ -209,13 +209,9 @@ Prototipo página de bienvenida.
 
 
 ## 5. Mejoras para futuro
-
-
-
-
-### Poder crear apartado de perfil con una imagen
-### Poder subir imágenes al post. 
-### Considerar una barra de búsqueda para filtrar por tema. 
+* Crear apartado de perfil con una imagen
+* Subir imágenes al post
+* Considerar una barra de búsqueda para filtrar por tema. 
 
 
 
