@@ -715,8 +715,9 @@ margin-top: -20px;
     background-color: #FF946B;
   }
 
-  .container-container{
-    position: fixed;
+  .confirmation-content{
+    position: absolute;
+    z-index: 2;
     top: 0;
     left: 0;
     width: 100%;
@@ -725,6 +726,22 @@ margin-top: -20px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+  }
+
+  .modal{
+    background-color: #eaeaea;
+    border-radius: 20px;
+    width: 80%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column ;
+    position: absolute;
+    z-index: 1;
+    
   }
   
 
@@ -886,7 +903,13 @@ margin-top: -20px;
           width: 100% ;
       
         }
-  
+
+        .modal{
+          background-color: #eaeaea;
+          border-radius: 20px;
+          width: 30%;
+          height: 20%;}
+
    
 }
 
