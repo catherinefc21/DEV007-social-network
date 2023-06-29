@@ -224,7 +224,7 @@ export const welcomeApp = (onNavigate) => {
         }
       });
 
-      /* boton eliminar + modal
+      // boton eliminar + modal
       btnConfigDelete.addEventListener('click', () => {
         const ConfirmationDiv = document.createElement('div');
         ConfirmationDiv.setAttribute('class', 'confirmation-content');
@@ -256,11 +256,6 @@ export const welcomeApp = (onNavigate) => {
           ConfirmationDiv.style.display = 'none';
           document.body.removeChild(ConfirmationDiv);
         });
-      }); */
-
-      btnConfigDelete.addEventListener('click', () => {
-        const opcion = confirm('¿Estás segura de borrar el post?');
-        if (opcion === true) { deletePost(postId, NameColleccion); }
       });
 
       postConfig.appendChild(btnPostConfig);
