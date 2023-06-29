@@ -15,7 +15,7 @@ El proyecto realizado tiene como nombre “Mom-Connect”, es una red social par
 
 ![Imagen1](img/Logo.png)
 
-
+Revisa nuestro proyecto aqui: [MomConnect](https://momconnect3-9d7fd.firebaseapp.com/tips)
 
 
 ## 2. Estudio de grupo objetivo
@@ -35,7 +35,7 @@ Se realizó un formulario con opciones de nombre de aplicación, paleta de color
 ![Imagen3](img/encuesta2_1.png)
 
 
-### por último también quisimos conocer qué funciones les gustaría en la red social
+### Por último también quisimos conocer qué funciones les gustaría en la red social
 
 
 En este punto se observó considerar selectores de temas predeterminados , además de un espacio donde se pudieran compartir tips profesionales. 
@@ -53,7 +53,8 @@ Criterios Mínimos:
 * Que se verifique si la cuenta y mail debe ser válido
 * Verificar usuarios repetidos.
 * Lo que se escribe en el campo contraseña debe ser secreto
-* Definición de terminado:
+
+Definición de terminado:
 * Debe ser una SPA.
 * Debe ser responsive.
 * Deben haber recibido code review de al menos una compañera de otro equipo.
@@ -63,121 +64,129 @@ Criterios Mínimos:
 * Desplegaron su aplicación y etiquetaron la versión (git tag).
 
 
-###Historia 2: Como usuario quiero poder registrarme en la app
+### Historia 2: Como usuario quiero poder registrarme en la app
+
 Criterios Mínimos:
-Validaciones:
-Solamente se permite el acceso a usuarios con cuentas válidas.
-No pueden haber usuarios repetidos.
-La cuenta de usuario debe ser un correo electrónico válido.
-Lo que se escriba en el campo (input) de contraseña debe ser secreto.
-Comportamiento:
-Al enviarse el formulario de registro o inicio de sesión, debe validarse.
-Si hay errores, se deben mostrar mensajes descriptivos para ayudar al usuario a corregirlos.
+  validaciones: 
+* Solamente se permite el acceso a usuarios con cuentas válidas.
+* No pueden haber usuarios repetidos.
+* La cuenta de usuario debe ser un correo electrónico válido.
+* Lo que se escriba en el campo (input) de contraseña debe ser secreto.
+  Comportamiento:
+* Al enviarse el formulario de registro o inicio de sesión, debe validarse.
+* Si hay errores, se deben mostrar mensajes descriptivos para ayudar al usuario a corregirlos.
+
 Definición de terminado:
-Debe ser una SPA.
-Debe ser responsive.
-Deben haber recibido code review de al menos una compañera de otro equipo.
-Hicieron los test unitarios
-Testeo manualmente buscando errores e imperfecciones simples.
-Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
-Despliegue su aplicación y etiquetaron la versión (git tag).
-###Historia 3: Yo como usuario quiero acceder con Google
+* Debe ser una SPA.
+* Debe ser responsive.
+* Deben haber recibido code review de al menos una compañera de otro equipo.
+* Hicieron los test unitarios
+* Testeo manualmente buscando errores e imperfecciones simples.
+* Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
+* Despliegue su aplicación y etiquetaron la versión (git tag).
+
+### Historia 3: Yo como usuario quiero acceder con Google
 Criterios Mínimos:
-Validaciones:
-Solamente se permite el acceso a usuarios con cuentas válidas.
-No pueden haber usuarios repetidos.
-La cuenta de usuario debe ser un correo electrónico válido.
-Que el botón cumpla con las especificaciones de google
+  Validaciones:
+* Solamente se permite el acceso a usuarios con cuentas válidas.
+* No pueden haber usuarios repetidos.
+* La cuenta de usuario debe ser un correo electrónico válido.
+* Que el botón cumpla con las especificaciones de google
+
 Definición de terminado:
-Debe ser una SPA.
-Debe ser responsive.
-Deben haber recibido code review de al menos una compañera de otro equipo.
-Realizar los test unitarios
-Testeo manualmente buscando errores e imperfecciones simples.
-Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
-Despliegue su aplicación y etiquetaron la versión (git tag).
+* Debe ser una SPA.
+* Debe ser responsive.
+* Deben haber recibido code review de al menos una compañera de otro equipo.
+* Realizar los test unitarios
+* Testeo manualmente buscando errores e imperfecciones simples.
+* Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
+* Despliegue su aplicación y etiquetaron la versión (git tag).
 
 
-###Historia 4: Que en el muro haya una sección de consejos profesionales sobre el tema.
+### Historia 4: Que en el muro haya una sección de consejos profesionales sobre el tema.
+
 Criterios Mínimos:
-Validaciones:
-Al publicar, se debe validar que exista contenido en el input.
-Comportamiento:
-Al recargar la aplicación, se debe verificar si el usuario está logueado antes de mostrar contenido.
-Poder publicar un post.
-Poder dar y quitar like a una publicación. Máximo uno por usuario.
-Llevar un conteo de los likes.
-Poder eliminar un post específico.
-Pedir confirmación antes de eliminar un post.
-Al dar click para editar un post, se debe cambiar el texto por un input que permite editar el texto y luego guardar los cambios.
-Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la información editada.
-Al recargar la página debo de poder ver los textos editados.
-Que puedan escribir consejos solo profesionales de la salud
+  Validaciones:
+* Al publicar, se debe validar que exista contenido en el input.
+  Comportamiento:
+* Al recargar la aplicación, se debe verificar si el usuario está logueado antes de mostrar contenido.
+* Poder publicar un post.
+* Poder dar y quitar like a una publicación. Máximo uno por usuario.
+* Llevar un conteo de los likes.
+* Poder eliminar un post específico.
+* Pedir confirmación antes de eliminar un post.
+* Al dar click para editar un post, se debe cambiar el texto por un input que permite editar el texto y luego guardar los cambios.
+* Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la información editada.
+* Al recargar la página debo de poder ver los textos editados.
+* Que puedan escribir consejos solo profesionales de la salud
+
 Definición de terminado:
-Debe ser una SPA.
-Debe ser responsive.
-Deben haber recibido code review de al menos una compañera de otro equipo.
-Realizar los test unitarios
-Testeo manualmente buscando errores e imperfecciones simples.
-Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
-Despliegue su aplicación y etiquetaron la versión (git tag).
+* Debe ser una SPA.
+* Debe ser responsive.
+* Deben haber recibido code review de al menos una compañera de otro equipo.
+* Realizar los test unitarios
+* Testeo manualmente buscando errores e imperfecciones simples.
+* Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
+* Despliegue su aplicación y etiquetaron la versión (git tag).
 
 
-###Historia 5: Como usuario quiero publicar un post.
+### Historia 5: Como usuario quiero publicar un post.
+
 Criterios Mínimos:
-Validaciones:
-Al publicar, se debe validar que exista contenido en el input.
-Comportamiento:
-Al recargar la aplicación, se debe verificar si el usuario está logueado antes de mostrar contenido.
-Poder seleccionar un hashtag según su tema de publicación mediante un select con opciones.
-Poder publicar un post.
+  Validaciones:
+* Al publicar, se debe validar que exista contenido en el input.
+  Comportamiento:
+* Al recargar la aplicación, se debe verificar si el usuario está logueado antes de mostrar contenido.
+* Poder seleccionar un hashtag según su tema de publicación mediante un select con opciones.
+* Poder publicar un post.
+
 Definición de terminado:
-Debe ser una SPA.
-Debe ser responsive.
-Deben haber recibido code review de al menos una compañera de otro equipo.
-Realizar los test unitarios
-Testeo manualmente buscando errores e imperfecciones simples.
-Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
-Despliegue su aplicación y etiquetaron la versión (git tag).
+* Debe ser una SPA.
+* Debe ser responsive.
+* Deben haber recibido code review de al menos una compañera de otro equipo.
+* Realizar los test unitarios
+* Testeo manualmente buscando errores e imperfecciones simples.
+* Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
+* Despliegue su aplicación y etiquetaron la versión (git tag).
 
 
-###Historia 6: Como usuario quiero tener la opción de ver y dar like a otros post.
+### Historia 6: Como usuario quiero tener la opción de ver y dar like a otros post.
+
 Criterios Mínimos:
-Comportamiento:
-Al recargar la aplicación, se debe verificar si el usuario está logueado antes de mostrar contenido.
-Poder dar y quitar like a una publicación. Máximo uno por usuario.
-Llevar un conteo de los likes.
+  Comportamiento:
+* Al recargar la aplicación, se debe verificar si el usuario está logueado antes de mostrar contenido.
+* Poder dar y quitar like a una publicación. Máximo uno por usuario.
+* Llevar un conteo de los likes.
+
 Definición de terminado:
-Debe ser una SPA.
-Debe ser responsive.
-Deben haber recibido code review de al menos una compañera de otro equipo.
-Realizar los test unitarios
-Testeo manualmente buscando errores e imperfecciones simples.
-Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
-Despliegue su aplicación y etiquetaron la versión (git tag).
+* Debe ser una SPA.
+* Debe ser responsive.
+* Deben haber recibido code review de al menos una compañera de otro equipo.
+* Realizar los test unitarios
+* Testeo manualmente buscando errores e imperfecciones simples.
+* Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
+* Despliegue su aplicación y etiquetaron la versión (git tag).
 
 
-###Historia 7: Como usuario quiero poder eliminar y editar mi post.
+### Historia 7: Como usuario quiero poder eliminar y editar mi post.
 Criterios Mínimos:
-Comportamiento:
-Al recargar la aplicación, se debe verificar si el usuario está logueado antes de mostrar contenido.
-Que aparezca un menú desplegable con la opción editar y eliminar, pero sólo a la persona que escribió ese post.
-Poder eliminar un post específico.
-Pedir confirmación antes de eliminar un post.
-Al dar click para editar un post, se debe cambiar el texto por un input que permite editar el texto y luego guardar los cambios.
-Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la información editada.
-Al recargar la página debo de poder ver los textos editados.
+  Comportamiento:
+* Al recargar la aplicación, se debe verificar si el usuario está logueado antes de mostrar contenido.
+* Que aparezca un menú desplegable con la opción editar y eliminar, pero sólo a la persona que escribió ese post.
+* Poder eliminar un post específico.
+* Pedir confirmación antes de eliminar un post.
+* Al dar click para editar un post, se debe cambiar el texto por un input que permite editar el texto y luego guardar los cambios.
+* Al guardar los cambios debe cambiar de vuelta a un texto normal pero con la información editada.
+* Al recargar la página debo de poder ver los textos editados.
+
 Definición de terminado:
-Debe ser una SPA.
-Debe ser responsive.
-Deben haber recibido code review de al menos una compañera de otro equipo.
-Realizar los test unitarios
-Testeo manualmente buscando errores e imperfecciones simples.
-Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
-Despliegue su aplicación y etiquetaron la versión (git tag).
-
-
-
+* Debe ser una SPA.
+* Debe ser responsive.
+* Deben haber recibido code review de al menos una compañera de otro equipo.
+* Realizar los test unitarios
+* Testeo manualmente buscando errores e imperfecciones simples.
+* Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
+* Despliegue su aplicación y etiquetaron la versión (git tag).
 
 ## 4. Prototipos
 
@@ -197,8 +206,6 @@ Prototipo página de registro:
 
 
 Prototipo página de inicio sesión 
-
-
 ![Imagen1](img/palta2.png)
 
 
@@ -209,8 +216,9 @@ Prototipo página de bienvenida.
 
 
 ## 5. Mejoras para futuro
-* Crear apartado de perfil con una imagen
-* Subir imágenes al post
+
+* Poder crear apartado de perfil con una imagen
+* Poder subir imágenes al post. 
 * Considerar una barra de búsqueda para filtrar por tema. 
 
 
