@@ -5,15 +5,8 @@
 /* eslint-disable no-bitwise */
 /* eslint-disable max-len */
 /* eslint-disable no-alert */
-/* eslint-disable no-bitwise */
-/* eslint-disable no-unused-expressions */
-
 import {
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  createUserWithEmailAndPassword,
-  updateProfile,
+  signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
 
 import {

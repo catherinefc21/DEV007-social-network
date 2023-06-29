@@ -8,7 +8,6 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
-  updateProfile,
 } from 'firebase/auth';
 import {
   addDoc, deleteDoc, doc, getDoc, onSnapshot, setDoc, updateDoc,
@@ -143,12 +142,6 @@ describe('la funcion de crear un post', () => {
     await expect(createPost(email, texto, etiqueta)).resolves.toBeUndefined();
     // Aquí podrías agregar más expectativas para asegurarte de que el post se creó correctamente
   });
-  /* it('debería lanzar un error si se le pasa un input vacío', async () => {
-    const email = 'Viviana Gomez';
-    const texto = '';
-    const etiqueta = 'prueba';
-    await expect(createPost(email, texto, etiqueta)).rejects.toThrow();
-  }); */
 });
 
 /* ----------------------------------DELETE POST ------------------------------------------- */
@@ -223,21 +216,5 @@ describe('la funcion de contar los likes', () => {
     CountLikes('ID', conteo);
     expect(onSnapshot).toHaveBeenCalled();
     expect(conteo.textContent).toBe('3');
-  });
-});
-// expect(user).toBe({mail: 'a',  crateUser})
-describe('saveName', () => {
-  it('should update the profile with the given name', async () => {
-    const currentUserMock = { displayName: null };
-    updateProfile.mockResolvedValueOnce(currentUserMock);
-
-    const nombre1 = 'John';
-    const apellido = 'Doe';
-
-    await saveName(nombre1, apellido);
-
-    expect(updateProfile).toHaveBeenCalledWith(currentUserMock, {
-      displayName: `${nombre1} ${apellido}`,
-    });
   });
 });

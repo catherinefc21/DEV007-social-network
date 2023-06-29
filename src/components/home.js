@@ -113,8 +113,3 @@ export const home = (onNavigate) => {
 
   return homeDiv;
 };
-
-// const imgHome = document.createElement('div');
-// const img = document.createElement('img');
-// img.src = 'src/components/imges/logo.png';
-// imgHome.appendChild(img);

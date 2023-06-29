@@ -4,10 +4,6 @@
 }
 body{
     background-color: #FFE8BE;
-    /*background-image: url("images/fondo.png");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: right-bottom;*/
     margin: 0;
     font-family: 'inter', sans-serif;
 }
@@ -191,7 +187,7 @@ body{
  }
  
  .namE{
-     width: 90px;
+     width: 91px;
      height: 35px;
      left: 44px;
      top: 394px;
@@ -210,7 +206,7 @@ body{
  
  
  .lastName{
-     width: 90px;
+     width: 91px;
      height: 35px;
      left: 44px;
      top: 394px;
@@ -423,30 +419,7 @@ body{
       background-color: #FF946B;
     }
   
-  /* .Search{
-    background: #F40F46;
-    background-image: url("images/lupa.png");
-    background-size: 50%;
-    background-position: 11px 8px;
-    background-repeat: no-repeat;
-    padding-left : 40px;
-    border-radius: 50px;
-    width: 7px;
-    height: 47px;
-    border: none;
-    transition: width 0.4s ease-in-out;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  .Search:hover {background-color: #FF946B}
-  .Search:focus {
-      width : 80px;
-      background-image : none;
-  
-    } */
-  
-  .welcomeMain{
+   .welcomeMain{
       display : inline-flex;
       width  : 360px;
   }
@@ -819,17 +792,17 @@ margin-top: -20px;
     
     
     .Email{
-     width: 90%;
+     width: 92%;
     }
     
     
     .passWord{
-        width: 90%
+        width: 92%
     }
     
     
     .age{
-        width: 90%
+        width: 92%
     }
     
     .bntbackHome{
