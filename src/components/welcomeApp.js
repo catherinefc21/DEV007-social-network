@@ -9,7 +9,7 @@ import {
   createPost, deletePost, editPost, CountLikes, addLike, deleteLike, AlreadyLiked,
 } from '../lib';
 import { auth, db } from '../firebase/firebaseConfig';
-import monitasdos from '../images/Monita2.png';
+import monitasdos from '../images/fondowelcome.png';
 import logo from '../images/Logo.png';
 import corazondos from '../images/corazon2.png';
 import corazonuno from '../images/corazon1.png';

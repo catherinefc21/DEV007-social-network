@@ -46,7 +46,6 @@ En este punto se observó considerar selectores de temas predeterminados , adem�
 
 ## 3. Historias de usuario
 
-
 ### Historia 1: Como usuario quiero poder iniciar sesión en la app
 Criterios Mínimos:
 * Que pueda escribir su mail y contraseña.
