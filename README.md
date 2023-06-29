@@ -15,7 +15,7 @@ El proyecto realizado tiene como nombre “Mom-Connect”, es una red social par
 
 ![Imagen1](img/Logo.png)
 
-
+Revisa nuestro proyecto aqui: [MomConnect](https://momconnect3-9d7fd.firebaseapp.com/tips)
 
 
 ## 2. Estudio de grupo objetivo
