@@ -46,22 +46,21 @@ En este punto se observó considerar selectores de temas predeterminados , adem�
 
 ## 3. Historias de usuario
 
-
-###Historia 1: Como usuario quiero poder iniciar sesión en la app
+### Historia 1: Como usuario quiero poder iniciar sesión en la app
 Criterios Mínimos:
-Que pueda escribir su mail y contraseña.
-Que al apretar botón iniciar sesión pueda ingresar a tu cuenta
-Que se verifique si la cuenta y mail debe ser válido
-Verificar usuarios repetidos.
-Lo que se escribe en el campo contraseña debe ser secreto
-Definición de terminado:
-Debe ser una SPA.
-Debe ser responsive.
-Deben haber recibido code review de al menos una compañera de otro equipo.
-Realizar los test unitarios
-Testeo manual buscando errores e imperfecciones simples.
-Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
-Desplegaron su aplicación y etiquetaron la versión (git tag).
+* Que pueda escribir su mail y contraseña.
+* Que al apretar botón iniciar sesión pueda ingresar a tu cuenta
+* Que se verifique si la cuenta y mail debe ser válido
+* Verificar usuarios repetidos.
+* Lo que se escribe en el campo contraseña debe ser secreto
+* Definición de terminado:
+* Debe ser una SPA.
+* Debe ser responsive.
+* Deben haber recibido code review de al menos una compañera de otro equipo.
+* Realizar los test unitarios
+* Testeo manual buscando errores e imperfecciones simples.
+* Realizar pruebas de usabilidad e incorporar el feedback de los usuarios como mejoras.
+* Desplegaron su aplicación y etiquetaron la versión (git tag).
 
 
 ###Historia 2: Como usuario quiero poder registrarme en la app
