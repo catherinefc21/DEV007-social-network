@@ -48,6 +48,10 @@ export const welcomeApp = (onNavigate) => {
   buttonProfile.textContent = 'Perfil';
   buttonHome.textContent = 'Cerrar sesión';
 
+  buttonHome.addEventListener('click', () => {
+    localStorage.clear('user12', auth.currentUser.email);
+  });
+
   // orden de const en Nav
   btnPicture.appendChild(buttonPicture);
   buttonPicture.appendChild(ListPicture);
@@ -208,13 +212,19 @@ export const welcomeApp = (onNavigate) => {
         btnPostConfig.style.visibility = 'hidden';
       }
       // LIKE---------------------------
-      // mantener like rojo
-      if ((await AlreadyLiked(postId, auth.currentUser.displayName, NameColleccion)).exists()) {
-        like.style.backgroundImage = `url(${corazondos})`;
-      }
-      // dar y quitar
+      // Obtener el estado del like al cargar la página
+      document.addEventListener('DOMContentLoaded', async () => {
+        const alreadyLiked = await AlreadyLiked(postId, auth.currentUser.displayName, NameColleccion);
+        if (alreadyLiked.exists()) {
+          like.style.backgroundImage = `url(${corazondos})`;
+        }
+      });
+
+      // Dar y quitar like
       like.addEventListener('click', async () => {
-        const existLiked = (await AlreadyLiked(postId, auth.currentUser.displayName, NameColleccion)).exists();
+        const alreadyLiked = await AlreadyLiked(postId, auth.currentUser.displayName, NameColleccion);
+        const existLiked = alreadyLiked.exists();
+
         if (existLiked) {
           deleteLike(postId, auth.currentUser.displayName, NameColleccion);
           like.style.backgroundImage = `url(${corazonuno})`;

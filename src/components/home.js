@@ -5,8 +5,12 @@
 import { loginUser, loginGoogle } from '../lib';
 import logo from '../images/Logo.png';
 import monitaHome from '../images/MONITA1.png';
+import { auth } from '../firebase/firebaseConfig';
 
 export const home = (onNavigate) => {
+  if (localStorage.getItem('user12')) {
+    onNavigate('/welcomeApp');
+  }
   const homeDiv = document.createElement('div');
 
   // div para las imágenes
@@ -75,6 +79,7 @@ export const home = (onNavigate) => {
     }
 
     loginUser(email1, contraseña1).then(() => {
+      localStorage.setItem('user12', auth.currentUser.email); //= > graba en local storage=> 2 parametros
       onNavigate('/welcomeApp');
     }).catch((error) => {
       const errorCode = error.code;
@@ -86,6 +91,7 @@ export const home = (onNavigate) => {
     try {
       loginGoogle(onNavigate).then(() => {
         onNavigate('/welcomeApp');
+        localStorage.setItem('user12', auth.currentUser.email);
       });
     } catch (error) {
       console.error(error);

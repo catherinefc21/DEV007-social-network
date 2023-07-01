@@ -76,6 +76,7 @@ describe('la funcion de registro', () => {
   it('debería retornar error cuando no funcione la dependencia', async () => {
     createUserWithEmailAndPassword.mockReturnValueOnce(new Error('error!'));
     const response = await RegisterMailAndPassword('.com', 'Vivi12');
+    // verificar que sea una instancia de error
     expect(response).toBeInstanceOf(Error);
     expect(createUserWithEmailAndPassword).toHaveBeenCalledTimes(1);
   });
@@ -166,7 +167,7 @@ describe('la funcion de editar un post', () => {
   it('debería ser una función', () => {
     expect(typeof editPost).toBe('function');
   });
-  it('deberia llamar a la funcion deleteDoc cuando es ejecutada', async () => {
+  it('deberia llamar a la funcion updateDoc cuando es ejecutada', async () => {
     await editPost('ID');
     expect(updateDoc).toHaveBeenCalled();
   });
@@ -188,6 +189,7 @@ describe('la funcion de verificar si la coleccion contiene like de un user', () 
   });
 
   it('debería retornar false si no existe el like', async () => {
+    // se simula que no existe Like
     getDoc.mockResolvedValueOnce({ exists: false });
     const response = await AlreadyLiked('ID', 'UserID');
     expect(response.exists).toBe(false);
@@ -214,7 +216,8 @@ describe('la funcion de contar los likes', () => {
     expect(onSnapshot).toHaveBeenCalled();
   });
   it('debería llamar a la función onSnapshot cuando es ejecutada', () => {
-    const snapshotMock = { size: 3 }; // Mock conteo de likes
+    // Mock conteo de likes
+    const snapshotMock = { size: 3 };
     onSnapshot.mockImplementationOnce((query, callback) => {
       callback(snapshotMock);
     });

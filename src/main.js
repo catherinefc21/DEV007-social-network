@@ -15,6 +15,7 @@ const routes = {
 };
 
 const onNavigate = (pathname) => {
+  // cambiar URL sin recargarla
   window.history.pushState(
     {},
     pathname,
@@ -27,7 +28,7 @@ const onNavigate = (pathname) => {
 };
 // rootDiv.appendChild(routes[window.location.pathname]());
 const component = routes[window.location.pathname];
-// Esto de abajo se supone que es para que funcione mejor(investigar???)
+// Para que navegue hacia delante y atras
 window.onpopstate = () => {
   rootDiv.appendChild(component(onNavigate));
 };
