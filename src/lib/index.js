@@ -49,6 +49,7 @@ export const deleteLike = async (postId, userID, post) => {
 };
 
 // verificar si la publicacion tiene Like
+// verificar si la publicacion tiene Like
 export const AlreadyLiked = async (postId, userID, post) => {
   const docRefLike = doc(db, post, postId, 'likes', userID);
   const docSnap = (await getDoc(docRefLike));
