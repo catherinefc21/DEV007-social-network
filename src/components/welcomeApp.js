@@ -133,9 +133,11 @@ export const welcomeApp = (onNavigate) => {
   console.log(Publicaciones); */
 
   /* esto tambien hay que hacerlo con la parte de buttontips, buttonProfile EN EL FUTURO */
-  buttonHome.addEventListener('click', () => onNavigate('/'));
   buttonTips.addEventListener('click', () => onNavigate('/tips'));
-
+  buttonHome.addEventListener('click', () => {
+    localStorage.clear('user12', auth.currentUser.email);
+    onNavigate('/');
+  });
   // ---------------------ARTICLE (Publicaciones de mamis "muro")--------------------------------------------------------------------------
 
   const timeline = document.createElement('div');
@@ -208,21 +210,28 @@ export const welcomeApp = (onNavigate) => {
         btnPostConfig.style.visibility = 'hidden';
       }
       // LIKE---------------------------
-      // mantener like rojo
-      if ((await AlreadyLiked(postId, auth.currentUser.displayName, NameColleccion)).exists()) {
-        like.style.backgroundImage = `url(${corazondos})`;
-      }
-      // dar y quitar
-      like.addEventListener('click', async () => {
-        const existLiked = (await AlreadyLiked(postId, auth.currentUser.displayName, NameColleccion)).exists();
-        if (existLiked) {
-          deleteLike(postId, auth.currentUser.displayName, NameColleccion);
-          like.style.backgroundImage = `url(${corazonuno})`;
-        } else {
-          addLike(postId, auth.currentUser.displayName, NameColleccion);
+      // que quede corazon rojo
+
+      const LikeReturn = async (likeFunction) => {
+        // LIKE---------------------------
+        // mantener like rojo
+        if ((await likeFunction(postId, auth.currentUser.displayName, NameColleccion)).exists()) {
           like.style.backgroundImage = `url(${corazondos})`;
         }
-      });
+        // dar y quitar
+        like.addEventListener('click', async () => {
+          const existLiked = (await likeFunction(postId, auth.currentUser.displayName, NameColleccion)).exists();
+          if (existLiked) {
+            deleteLike(postId, auth.currentUser.displayName, NameColleccion);
+            like.style.backgroundImage = `url(${corazonuno})`;
+          } else {
+            addLike(postId, auth.currentUser.displayName, NameColleccion);
+            like.style.backgroundImage = `url(${corazondos})`;
+          }
+        });
+      };
+
+      LikeReturn(AlreadyLiked);
 
       // boton eliminar + modal
       btnConfigDelete.addEventListener('click', () => {
