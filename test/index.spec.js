@@ -187,10 +187,6 @@ describe('la funcion de verificar si la coleccion contiene like de un user', () 
     expect(response.exists).toBe(false);
     expect(getDoc).toHaveBeenCalled();
   });
-  /* it('deberia llamar a la funcion deleteDoc cuando es ejecutada', async () => {
-    await AlreadyLiked('ID', 'UserID');
-    expect(getDoc).toHaveBeenCalled();
-  }); */
 });
 
 /* ----------------------------------DELETE LIKE ------------------------------------------- */

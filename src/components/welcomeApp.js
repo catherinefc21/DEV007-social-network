@@ -142,7 +142,7 @@ export const welcomeApp = (onNavigate) => {
 
   const post = document.createElement('div');
   post.setAttribute('class', 'post');
-  /* onSnapshot(query(collection(db, 'posts'), orderBy('contenido', 'desc'), limit(7)), (querySnapshot) => { */
+
   const q = query(collection(db, 'posts'), orderBy('fecha', 'desc'), limit(6));
   onSnapshot(q, (querySnapshot) => {
     const savePostsArray = [];
