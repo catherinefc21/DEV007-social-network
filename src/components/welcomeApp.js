@@ -15,6 +15,9 @@ import corazondos from '../images/corazon2.png';
 import corazonuno from '../images/corazon1.png';
 
 export const welcomeApp = (onNavigate) => {
+  /* if (!localStorage.getItem('user12')) {
+    onNavigate('/');
+  } */
   // Contenedor General----------------------------------
   const welcomeAppDiv = document.createElement('div');
   welcomeAppDiv.setAttribute('class', 'welcomeAppDiv');
@@ -135,7 +138,7 @@ export const welcomeApp = (onNavigate) => {
   /* esto tambien hay que hacerlo con la parte de buttontips, buttonProfile EN EL FUTURO */
   buttonTips.addEventListener('click', () => onNavigate('/tips'));
   buttonHome.addEventListener('click', () => {
-    localStorage.clear('user12', auth.currentUser.email);
+    localStorage.clear('user12');
     onNavigate('/');
   });
   // ---------------------ARTICLE (Publicaciones de mamis "muro")--------------------------------------------------------------------------

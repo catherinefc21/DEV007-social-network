@@ -471,6 +471,7 @@ body{
   
 
   .inputPublisher{
+    resize: none;
    width : 190px;
    height : 94.5px;
    border : 1px solid #F40F46;
